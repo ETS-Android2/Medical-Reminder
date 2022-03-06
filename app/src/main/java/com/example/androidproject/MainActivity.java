@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -42,8 +43,20 @@ public class MainActivity extends AppCompatActivity {
 
    public void addMedicine(View view){
 
-       Intent intent = new Intent(this , AddMedicine.class);
-       startActivity(intent);
+        Medicine medicine = new Medicine();
+        medicine.setMedicineForm(Medicine.Pill);
+        medicine.setMedicineStrength(500);
+        medicine.setName("gggg");
+        medicine.setRecurrence(3);
+        medicine.setDosagesPerTime(3);
+        medicine.setReasonOfTakingDrug("no reason");
+        medicine.setRecurrenceOfTakingDrug("every day");
+        medicine.setRefillReminder(3);
+        medicine.setTreatmentDuration(20);
+
+        String s = medicine.toString();
+       Log.i("TAG", "addMedicine: "+s);
+
 
     }
 
