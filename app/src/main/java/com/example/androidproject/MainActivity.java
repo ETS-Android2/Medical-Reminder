@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 new HorizontalCalendarView.OnCalendarListener() {
                     @Override
                     public void onDateSelected(String date) {
-                        Toast.makeText(MainActivity.this,date+" clicked!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,date+" shrouk clicked!",Toast.LENGTH_SHORT).show();
                     }
                 });
 
