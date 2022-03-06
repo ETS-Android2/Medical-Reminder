@@ -2,20 +2,17 @@ package com.example.androidproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 
 import in.akshit.horizontalcalendar.HorizontalCalendarView;
 import in.akshit.horizontalcalendar.Tools;
@@ -34,23 +31,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setMyCalendar(findViewById(R.id.calendar));
+
         fab = findViewById(R.id.fab);
 
         listView = findViewById(R.id.MyList);
-        addMedication();
+
 
 
     }
-    void addMedication(){
-        fab.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
 
-                    }
-                }
-        );
+   public void addMedicine(View view){
+
+       Intent intent = new Intent(this , AddMedicine.class);
+       startActivity(intent);
+
     }
+
+
 
 
 
