@@ -3,22 +3,60 @@ package com.example.androidproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
 
 import in.akshit.horizontalcalendar.HorizontalCalendarView;
 import in.akshit.horizontalcalendar.Tools;
 
 public class MainActivity extends AppCompatActivity {
 
+    ListView listView;
+    ArrayAdapter<String> arrayAdapter;
+
+    HashMap<String,ArrayList<String>> map = new HashMap<>();
+    FloatingActionButton fab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        HorizontalCalendarView calendarView = findViewById(R.id.calendar);
+        setMyCalendar(findViewById(R.id.calendar));
+        fab = findViewById(R.id.fab);
+
+        listView = findViewById(R.id.MyList);
+        addMedication();
+
+
+    }
+    void addMedication(){
+        fab.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                }
+        );
+    }
+
+
+
+    void setMyCalendar(View myCalendar){
+
+        HorizontalCalendarView calendarView = (HorizontalCalendarView) myCalendar;
 
         Calendar starttime = Calendar.getInstance();
         starttime.add(Calendar.MONTH,-6);
@@ -35,9 +73,32 @@ public class MainActivity extends AppCompatActivity {
                 new HorizontalCalendarView.OnCalendarListener() {
                     @Override
                     public void onDateSelected(String date) {
-                        Toast.makeText(MainActivity.this,date+" shrouk clicked!",Toast.LENGTH_SHORT).show();
+                        dateSelected(date);
                     }
                 });
+    }
+
+
+    void dateSelected(String date){
+
+        if (!map.containsKey(date)) {
+            ArrayList<String> list = new ArrayList<>();
+
+            list.add(date);
+
+            map.put(date, list);
+        }
+
+        ArrayList<String> list1 = map.get(date);
+
+
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,list1);
+
+        listView.setAdapter(arrayAdapter);
+
+        arrayAdapter.notifyDataSetChanged();
 
     }
+
+
 }
