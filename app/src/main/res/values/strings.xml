@@ -1,5 +1,35 @@
 <resources>
     <string name="app_name">AndroidProject</string>
     <string name="addMedications">Add Medications</string>
-    <string name="MedName">Name</string>
+    <string name="MedName">Enter Medicine Name</string>
+    <string name="MedForm">Choose Medicine Form</string>
+    <string name="MedStrength">Choose Medicine Strength</string>
+
+    <string-array name="Medicine_forms">
+        <item>Pill</item>
+        <item>Solution</item>
+        <item>Injection</item>
+        <item>Powder</item>
+        <item>Drops</item>
+        <item>Inhaler</item>
+
+    </string-array>
+
+    <string-array name="Medicine_Strength">
+        <item>g</item>
+        <item>mg</item>
+        <item>IU</item>
+        <item>mcg</item>
+        <item>mcg/ml</item>
+        <item>mEq</item>
+        <item>mL</item>
+        <item>%</item>
+        <item>mg/g</item>
+        <item>mg/cm2</item>
+        <item>mg/ml</item>
+        <item>mcg/hr</item>
+
+    </string-array>
+
+
 </resources>

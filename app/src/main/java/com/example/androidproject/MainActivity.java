@@ -63,12 +63,14 @@ public class MainActivity extends AppCompatActivity {
 
    public void addMedicine(View view){
 
-       Medicine medicine = new Medicine();
-       medicine.setName("name ");
-       medicineArrayList.add(medicine);
-       medicineListAdapter.notifyDataSetChanged();
+//       Medicine medicine = new Medicine();
+//       medicine.setName("name ");
+//       medicineArrayList.add(medicine);
+//       medicineListAdapter.notifyDataSetChanged();
+//
+//       Toast.makeText(this, "new Med Added ", Toast.LENGTH_SHORT).show();
 
-       Toast.makeText(this, "new Med Added ", Toast.LENGTH_SHORT).show();
+
     }
 
 
