@@ -12,7 +12,7 @@
         android:id="@+id/MedicineImg"
         android:layout_width="99dp"
         android:layout_height="122dp"
-        android:src="@drawable/Medicine_row_icon" />
+        android:src="@drawable/medicine_row_icon" />
 
     <TextView
         android:id="@+id/MedicineStrengthTextViewRow"
