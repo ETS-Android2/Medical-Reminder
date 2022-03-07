@@ -69,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
 //       medicineListAdapter.notifyDataSetChanged();
 //
 //       Toast.makeText(this, "new Med Added ", Toast.LENGTH_SHORT).show();
+       // Intent out = new Intent(getApplicationContext(),MedicineReasonRecurrencyActivity.class);
+      // startActivity(out);
 
 
     }

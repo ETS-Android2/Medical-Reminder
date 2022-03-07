@@ -58,11 +58,11 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/MedicineStrengthTextView"
+                    android:id="@+id/MedicineReasonTextView"
                     android:layout_width="match_parent"
                     android:layout_height="41dp"
                     android:gravity="center"
-                    android:text="@string/MedStrength"
+                    android:text="@string/MedReason"
                     android:textSize="20dp"
                     android:textColor="@color/very_dark_gray"/>
             </FrameLayout>
@@ -72,21 +72,30 @@
                 android:layout_height="341dp">
 
                 <EditText
-                    android:id="@+id/MedicineStrengthEditText"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:hint="Example:50"></EditText>
+                    android:id="@+id/MedicineReasonEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal">
 
+                </EditText>
+                <TextView
+                    android:id="@+id/MedicineRecurrencyTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="100dp"
+                    android:text="@string/MedRecurrency"
+                    android:gravity="center_horizontal"
+                    android:textSize="20dp" />
                 <Spinner
-                    android:layout_marginTop="70dp"
-                    android:id="@+id/MedicineStrengthSpinner"
+                    android:layout_marginTop="150dp"
+                    android:id="@+id/MedicineRecurrencySpinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <Button
-                    android:id="@+id/Next3Btn"
+                    android:id="@+id/Next4Btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="150dp"
                     android:layout_gravity="center"
                     android:background="@color/dark_gray"
                     android:text="Next" />
