@@ -1,6 +1,8 @@
 package com.example.androidproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,22 +10,27 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 import in.akshit.horizontalcalendar.HorizontalCalendarView;
 import in.akshit.horizontalcalendar.Tools;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView listView;
-    ArrayAdapter<String> arrayAdapter;
+    private RecyclerView recyclerView;
 
-    HashMap<String,ArrayList<String>> map = new HashMap<>();
+    private MedicineListAdapter medicineListAdapter;
+
+    ArrayList<Medicine> medicineArrayList = new ArrayList<>();
+
+    HashMap<String,ArrayList<Medicine>> map = new HashMap<>();
     FloatingActionButton fab;
 
     @Override
@@ -35,7 +42,20 @@ public class MainActivity extends AppCompatActivity {
 
         fab = findViewById(R.id.fab);
 
-        listView = findViewById(R.id.MyList);
+        recyclerView = findViewById(R.id.MyList);
+
+        ArrayList<Medicine> list =new ArrayList<>();
+        map.put("l1",list);
+        
+        recyclerView = findViewById(R.id.MyList);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+
+        medicineListAdapter = new MedicineListAdapter(this,medicineArrayList);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(medicineListAdapter);
+
 
 
 
@@ -43,21 +63,12 @@ public class MainActivity extends AppCompatActivity {
 
    public void addMedicine(View view){
 
-        Medicine medicine = new Medicine();
-        medicine.setMedicineForm(Medicine.Pill);
-        medicine.setMedicineStrength(500);
-        medicine.setName("gggg");
-        medicine.setRecurrence(3);
-        medicine.setDosagesPerTime(3);
-        medicine.setReasonOfTakingDrug("no reason");
-        medicine.setRecurrenceOfTakingDrug("every day");
-        medicine.setRefillReminder(3);
-        medicine.setTreatmentDuration(20);
+       Medicine medicine = new Medicine();
+       medicine.setName("name ");
+       medicineArrayList.add(medicine);
+       medicineListAdapter.notifyDataSetChanged();
 
-        String s = medicine.toString();
-       Log.i("TAG", "addMedicine: "+s);
-
-
+       Toast.makeText(this, "new Med Added ", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -90,23 +101,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     void dateSelected(String date){
-
-        if (!map.containsKey(date)) {
-            ArrayList<String> list = new ArrayList<>();
-
-            list.add(date);
-
-            map.put(date, list);
-        }
-
-        ArrayList<String> list1 = map.get(date);
-
-
-        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,list1);
-
-        listView.setAdapter(arrayAdapter);
-
-        arrayAdapter.notifyDataSetChanged();
+        Toast.makeText(this, ""+date, Toast.LENGTH_SHORT).show();
+        medicineListAdapter.notifyDataSetChanged();
 
     }
 

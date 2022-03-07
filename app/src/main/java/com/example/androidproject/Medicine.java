@@ -25,7 +25,7 @@ public class Medicine {
     Medicine() {
     }
 
-    Medicine getMedicine(String json) {
+    static Medicine getMedicine(String json) {
         Gson gson = new Gson();
         Medicine medicine = gson.fromJson(json, Medicine.class);
         return medicine;

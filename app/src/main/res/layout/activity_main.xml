@@ -7,17 +7,14 @@
     tools:context=".MainActivity">
 
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/MyList"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-
-
+        app:layout_constraintVertical_bias="0.137" />
 
     <in.akshit.horizontalcalendar.HorizontalCalendarView
         android:id="@+id/calendar"
