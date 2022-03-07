@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
 
-        medicineListAdapter = new MedicineListAdapter(this,medicineArrayList);
+        medicineListAdapter = new MedicineListAdapter(medicineArrayList);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(medicineListAdapter);
 
@@ -62,15 +62,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
    public void addMedicine(View view){
-
+//
 //       Medicine medicine = new Medicine();
 //       medicine.setName("name ");
+//       medicine.setDosagesPerTime(3);
+//       medicine.setMedicineStrength(555);
 //       medicineArrayList.add(medicine);
 //       medicineListAdapter.notifyDataSetChanged();
 //
 //       Toast.makeText(this, "new Med Added ", Toast.LENGTH_SHORT).show();
-       // Intent out = new Intent(getApplicationContext(),MedicineReasonRecurrencyActivity.class);
-      // startActivity(out);
+        Intent out = new Intent(getApplicationContext(),AddMedicine.class);
+      startActivity(out);
 
 
     }
