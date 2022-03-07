@@ -6,6 +6,11 @@
     <string name="MedStrength">Choose Medicine Strength</string>
     <string name="MedReason">The reason of taking this drug</string>
     <string name="MedRecurrency">The Recurrency of taking this drug</string>
+    <string name="MedDosages">The dosages per time</string>
+    <string name="MedDuration">Enter the duration of treatment</string>
+    <string name="RefillReminder">Refill Reminder</string>
+    <string name="RefillItem">the total number of items</string>
+    <string name="RefillLimit">limit at which you wanted reminded to refill</string>
 
     <string-array name="Medicine_forms">
         <item>Pill</item>
@@ -43,6 +48,11 @@
         <item>5 days a week</item>
         <item>Only as needed</item>
     </string-array>
-
+    <string-array name="Medicine_Dosages">
+        <item>Morning</item>
+        <item>Noon</item>
+        <item>Evening</item>
+        <item>Night</item>
+    </string-array>
 
 </resources>
