@@ -2,4 +2,25 @@
     <string name="app_name">AndroidProject</string>
     <string name="addMedications">Add Medications</string>
     <string name="MedName">Name</string>
+    <string name="DrugItemName">DrugItemName</string>
+    <string name="drugAmountTextView">drugAmountTextView</string>
+    <string name="reminderDrugItem">Reminder</string>
+    <string name="suspendDrugItem">Suspend</string>
+    <string name="prescriptionTextView">prescription</string>
+    <string name="numberOfDrugItemLeftTextView">numberOfDrugItemLeftTextView</string>
+    <string name="pillsLeft">pills Left</string>
+    <string name="Rxnumber">Rx numbers</string>
+    <string name="numberofRxTextView" />
+    <string name="pillsleft">Pills Left</string>
+    <string name="RefillreminderwhenIhave">"Refill reminder when I have "</string>
+    <string name="medremaining">med remaining</string>
+    <string name="refill">Refill</string>
+    <string name="howtouse">How To use</string>
+    <string name="adddrug">add Med</string>
+    <string name="txtview">Edit Medication</string>
+    <string name="doneButton">done</string>
+    <string name="refillx">Refill reminder when I have</string>
+    <string name="MedicationName">Medication Name</string>
+    <string name="reminderstimes">Reminders Times</string>
+    <string name="Strength">Strength</string>
 </resources>

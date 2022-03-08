@@ -63,12 +63,11 @@ public class MainActivity extends AppCompatActivity {
 
    public void addMedicine(View view){
 
-       Medicine medicine = new Medicine();
-       medicine.setName("name ");
-       medicineArrayList.add(medicine);
-       medicineListAdapter.notifyDataSetChanged();
+       Intent i=new Intent(this,EditMedicationDrugActivity.class
+       );
+       startActivity(i);
 
-       Toast.makeText(this, "new Med Added ", Toast.LENGTH_SHORT).show();
+
     }
 
 
