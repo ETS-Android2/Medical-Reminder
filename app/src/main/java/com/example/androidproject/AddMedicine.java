@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 public class AddMedicine extends AppCompatActivity {
 
-    MedicineFormActivity addMedicineFragment;
+    MedicineFormFragment addMedicineFragment;
     FragmentManager fragmentManager ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +16,7 @@ public class AddMedicine extends AppCompatActivity {
 
         fragmentManager = getSupportFragmentManager();
 
-            addMedicineFragment = new MedicineFormActivity();
+            addMedicineFragment = new MedicineFormFragment();
             fragmentManager.beginTransaction().add(R.id.FragmentContainerView,addMedicineFragment).commit();
 
     }

@@ -6,60 +6,49 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/MedicineReasonTextView"
+        android:id="@+id/MedicineStrengthTextView"
         android:layout_width="match_parent"
         android:layout_height="41dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
-        android:text="@string/MedReason"
+        android:text="@string/MedStrength"
         android:textColor="@color/very_dark_gray"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/MedicineReasonEditText"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:id="@+id/MedicineStrengthEditText"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="132dp"
-        android:hint="ُExample: I suffer from chronic migraines"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </EditText>
-
-    <TextView
-        android:id="@+id/MedicineRecurrencyTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="51dp"
-        android:gravity="center_horizontal"
-        android:text="@string/MedRecurrency"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MedicineReasonEditText" />
-
-    <Spinner
-        android:id="@+id/MedicineRecurrencySpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="63dp"
-        android:contentDescription="@string/MedRecurrency"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="72dp"
+        android:hint="Example:50"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MedicineRecurrencyTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/MedicineStrengthTextView"></EditText>
+
+    <Spinner
+        android:id="@+id/MedicineStrengthSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="77dp"
+        android:contentDescription="@string/MedStrength"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MedicineStrengthEditText" />
 
     <Button
-        android:id="@+id/NextReasonRecurrencyBtn"
+        android:id="@+id/NextStrengthBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="161dp"
-        android:layout_marginTop="81dp"
+        android:layout_marginTop="75dp"
         android:background="@color/dark_gray"
         android:text="Next"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MedicineRecurrencySpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/MedicineStrengthSpinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

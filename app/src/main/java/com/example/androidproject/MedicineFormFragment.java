@@ -10,10 +10,9 @@ import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-public class MedicineFormActivity extends Fragment implements AdapterView.OnItemSelectedListener {
+public class MedicineFormFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
 
     @Override
@@ -31,7 +30,7 @@ public class MedicineFormActivity extends Fragment implements AdapterView.OnItem
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_form, container, false);
+        View view = inflater.inflate(R.layout.fragment_form, container, false);
         return view;    }
 
     @Override
