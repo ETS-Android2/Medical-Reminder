@@ -1,6 +1,9 @@
 package com.example.androidproject;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -25,11 +29,9 @@ import in.akshit.horizontalcalendar.Tools;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-
+    ActionBarDrawerToggle mDrawerToggle;
     private MedicineListAdapter medicineListAdapter;
-
     ArrayList<Medicine> medicineArrayList = new ArrayList<>();
-
     HashMap<String,ArrayList<Medicine>> map = new HashMap<>();
     FloatingActionButton fab;
 
@@ -52,9 +54,30 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
 
-        medicineListAdapter = new MedicineListAdapter(this,medicineArrayList);
+        medicineListAdapter = new MedicineListAdapter(medicineArrayList);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(medicineListAdapter);
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        DrawerLayout drawerLayout = (DrawerLayout)  findViewById(R.id.drawer_layout);
+        mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.app_name,R.string.app_name) {
+
+            public void onDrawerClosed(View view)
+            {
+                supportInvalidateOptionsMenu();
+                //drawerOpened = false;
+            }
+
+            public void onDrawerOpened(View drawerView)
+            {
+                supportInvalidateOptionsMenu();
+                //drawerOpened = true;
+            }
+        };
+        mDrawerToggle.setDrawerIndicatorEnabled(true);
+        mDrawerToggle.syncState();
+
 
 
 
@@ -63,9 +86,15 @@ public class MainActivity extends AppCompatActivity {
 
    public void addMedicine(View view){
 
-       Intent i=new Intent(this,EditMedicationDrugActivity.class
-       );
-       startActivity(i);
+       Medicine medicine = new Medicine();
+       medicine.setName("name ");
+       medicine.setDosagesPerTime(3);
+       medicine.setMedicineStrength(555);
+       medicineArrayList.add(medicine);
+       medicineListAdapter.notifyDataSetChanged();
+
+       Toast.makeText(this, "new Med Added ", Toast.LENGTH_SHORT).show();
+
 
 
     }

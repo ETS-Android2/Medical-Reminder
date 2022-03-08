@@ -1,26 +1,60 @@
 <resources>
     <string name="app_name">AndroidProject</string>
     <string name="addMedications">Add Medications</string>
-    <string name="MedName">Name</string>
-    <string name="DrugItemName">DrugItemName</string>
-    <string name="drugAmountTextView">drugAmountTextView</string>
-    <string name="reminderDrugItem">Reminder</string>
-    <string name="suspendDrugItem">Suspend</string>
-    <string name="prescriptionTextView">prescription</string>
-    <string name="numberOfDrugItemLeftTextView">numberOfDrugItemLeftTextView</string>
-    <string name="pillsLeft">pills Left</string>
-    <string name="Rxnumber">Rx numbers</string>
-    <string name="numberofRxTextView" />
-    <string name="pillsleft">Pills Left</string>
-    <string name="RefillreminderwhenIhave">"Refill reminder when I have "</string>
-    <string name="medremaining">med remaining</string>
-    <string name="refill">Refill</string>
-    <string name="howtouse">How To use</string>
-    <string name="adddrug">add Med</string>
-    <string name="txtview">Edit Medication</string>
-    <string name="doneButton">done</string>
-    <string name="refillx">Refill reminder when I have</string>
-    <string name="MedicationName">Medication Name</string>
-    <string name="reminderstimes">Reminders Times</string>
-    <string name="Strength">Strength</string>
+    <string name="MedName">Enter Medicine Name</string>
+    <string name="MedForm">Choose Medicine Form</string>
+    <string name="MedStrength">Choose Medicine Strength</string>
+    <string name="MedReason">The reason of taking this drug</string>
+    <string name="MedRecurrency">The Recurrency of taking this drug</string>
+    <string name="MedDosages">The dosages per time</string>
+    <string name="MedDuration">Enter the duration of treatment</string>
+    <string name="RefillReminder">Refill Reminder</string>
+    <string name="RefillItem">the total number of items</string>
+    <string name="RefillLimit">limit at which you wanted reminded to refill</string>
+
+    <string-array name="Medicine_forms">
+        <item>Pill</item>
+        <item>Solution</item>
+        <item>Injection</item>
+        <item>Powder</item>
+        <item>Drops</item>
+        <item>Inhaler</item>
+
+    </string-array>
+
+    <string-array name="Medicine_Strength">
+        <item>g</item>
+        <item>mg</item>
+        <item>IU</item>
+        <item>mcg</item>
+        <item>mcg/ml</item>
+        <item>mEq</item>
+        <item>mL</item>
+        <item>%</item>
+        <item>mg/g</item>
+        <item>mg/cm2</item>
+        <item>mg/ml</item>
+        <item>mcg/hr</item>
+
+    </string-array>
+    <string-array name="Medicine_Recurrency">
+        <item>Once a week</item>
+        <item>Every day</item>
+        <item>Every 2 days</item>
+        <item>Every 3 days</item>
+        <item>2 days a week</item>
+        <item>3 days a week</item>
+        <item>Every 28 days</item>
+        <item>5 days a week</item>
+        <item>Only as needed</item>
+    </string-array>
+    <string-array name="Medicine_Dosages">
+        <item>Morning</item>
+        <item>Noon</item>
+        <item>Evening</item>
+        <item>Night</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

@@ -11,16 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapter.ViewHolder> {
-    private Handler handler;
-    private final Context context;
+
     private ArrayList<Medicine> medicineList;
 
 
-    public MedicineListAdapter(Context context, ArrayList<Medicine> medicineList) {
-        this.context = context;
+    public MedicineListAdapter(ArrayList<Medicine> medicineList) {
+
         this.medicineList = medicineList;
     }
 
@@ -28,7 +26,7 @@ public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapte
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.list_item, parent, false);
+        View view = layoutInflater.inflate(R.layout.medicine_row, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
 
         return viewHolder;
@@ -36,9 +34,11 @@ public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.titleTx.setText(medicineList.get(position).getName());
+        Medicine medicine = medicineList.get(position);
 
-
+        holder.medicineNameTextView.setText(medicine.getName());
+        holder.medicineStrengthText.setText(medicine.getMedicineStrength()+"");
+        holder.medicineDosageTextView.setText(medicine.getDosagesPerTime()+"");
     }
 
     @Override
@@ -53,13 +53,17 @@ public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapte
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView titleTx;
+        public TextView medicineNameTextView;
+        public TextView medicineStrengthText;
+        public TextView medicineDosageTextView;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            titleTx = itemView.findViewById(R.id.MedicineName);
+            medicineNameTextView = itemView.findViewById(R.id.MedicineNameTextViewRow);
+            medicineStrengthText = itemView.findViewById(R.id.MedicineStrengthTextViewRow);
+            medicineDosageTextView = itemView.findViewById(R.id.MedicineDosageTextViewRow);
 
         }
     }

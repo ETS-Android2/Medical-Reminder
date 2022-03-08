@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DosageFragment">
+
+    <TextView
+        android:id="@+id/MedicineDosagesTextView"
+        android:layout_width="265dp"
+        android:layout_height="134dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="@string/MedDosages"
+        android:textColor="@color/very_dark_gray"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/MedicineDosagesEditText"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="131dp"
+        android:hint="Example : 2 Pills"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MedicineDosagesTextView"></EditText>
+
+    <Spinner
+        android:id="@+id/MedicineDosagesSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:contentDescription="@string/addMedications"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MedicineDosagesEditText" />
+
+    <Button
+        android:id="@+id/NextDosagesBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="284dp"
+        android:background="@color/dark_gray"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
