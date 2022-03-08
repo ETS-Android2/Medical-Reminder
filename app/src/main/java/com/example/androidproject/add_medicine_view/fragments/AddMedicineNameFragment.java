@@ -1,4 +1,4 @@
-package com.example.androidproject;
+package com.example.androidproject.add_medicine_view.fragments;
 
 import android.os.Bundle;
 
@@ -10,13 +10,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+
+import com.example.androidproject.R;
+import com.example.androidproject.add_medicine_view.AddMedicineFragmentsCommunicator;
 
 
 public class AddMedicineNameFragment extends Fragment implements AdapterView.OnItemSelectedListener{
 
+    AddMedicineFragmentsCommunicator communicator;
+    Button next;
 
     public AddMedicineNameFragment() {
         // Required empty public constructor
+    }
+    public AddMedicineNameFragment(AddMedicineFragmentsCommunicator communicator) {
+        this.communicator = communicator;
+
     }
 
     @Override
@@ -34,6 +44,9 @@ public class AddMedicineNameFragment extends Fragment implements AdapterView.OnI
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        next = view.findViewById(R.id.NextAddNameBtn);
+        next.setOnClickListener(view1 -> communicator.nextFragment());
 
     }
 

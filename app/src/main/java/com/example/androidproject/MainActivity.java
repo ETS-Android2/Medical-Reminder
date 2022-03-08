@@ -9,19 +9,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.android.material.appbar.AppBarLayout;
+import com.example.androidproject.add_medicine_view.AddMedicine;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 
 import in.akshit.horizontalcalendar.HorizontalCalendarView;
 import in.akshit.horizontalcalendar.Tools;
@@ -93,8 +89,10 @@ public class MainActivity extends AppCompatActivity {
        medicineArrayList.add(medicine);
        medicineListAdapter.notifyDataSetChanged();
 
+       Intent i = new Intent(this, AddMedicine.class);
        Toast.makeText(this, "new Med Added ", Toast.LENGTH_SHORT).show();
 
+       startActivity(i);
 
 
     }
@@ -128,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     void dateSelected(String date){
         Toast.makeText(this, ""+date, Toast.LENGTH_SHORT).show();
         medicineListAdapter.notifyDataSetChanged();
@@ -135,4 +134,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+    }
 }

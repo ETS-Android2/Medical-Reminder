@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddMedicine"
+            android:name=".add_medicine_view.AddMedicine"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

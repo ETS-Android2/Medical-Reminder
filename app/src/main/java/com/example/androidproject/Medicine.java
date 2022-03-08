@@ -22,7 +22,7 @@ public class Medicine {
     private int RefillReminder;
 
 
-    Medicine() {
+    public Medicine() {
     }
 
     static Medicine getMedicine(String json) {

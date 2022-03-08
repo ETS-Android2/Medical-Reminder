@@ -6,26 +6,18 @@
         <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/activity_dosages.xml" value="0.2259963768115942" />
         <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/activity_dosagetime.xml" value="0.2259963768115942" />
         <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/activity_form.xml" value="0.1" />
-        <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/activity_main.xml" value="0.12360688956433637" />
         <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/activity_name.xml" value="0.264" />
         <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/activity_reason_recurrency.xml" value="0.2259963768115942" />
-        <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/activity_splash.xml" value="0.22509057971014493" />
         <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/activity_strength.xml" value="0.22760416666666666" />
         <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/add_medicine.xml" value="0.19067028985507245" />
-        <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/drawer_layout.xml" value="0.1" />
-        <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/fragment_add_medicine_name.xml" value="0.22509057971014493" />
         <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/fragment_dosage.xml" value="0.2259963768115942" />
         <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/fragment_duration.xml" value="0.2259963768115942" />
-        <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/fragment_form.xml" value="0.1" />
-        <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/fragment_name.xml" value="0.22509057971014493" />
-        <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/fragment_reason_recurrency.xml" value="0.2259963768115942" />
         <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/fragment_refill.xml" value="0.2259963768115942" />
-        <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/fragment_strength.xml" value="0.22509057971014493" />
-        <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/header_navigation_drawer.xml" value="0.3029366306027821" />
-        <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/home_layout.xml" value="0.11524822695035461" />
         <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/medicine_row.xml" value="0.2" />
-        <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/layout/toolbar.xml" value="0.1" />
-        <entry key="..\:/ITI fundementals/android/UI/AndroidProject/app/src/main/res/menu/navigation_drawer.xml" value="0.23854166666666668" />
+        <entry key="..\:/ITI/Android/AndroidProject/app/src/main/res/layout/activity_form.xml" value="0.21052631578947367" />
+        <entry key="..\:/ITI/Android/AndroidProject/app/src/main/res/layout/add_medicine.xml" value="0.21052631578947367" />
+        <entry key="..\:/ITI/Android/AndroidProject/app/src/main/res/layout/fragment_add_medicine_name.xml" value="0.21052631578947367" />
       </map>
     </option>
   </component>
