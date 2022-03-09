@@ -80,14 +80,16 @@ public class Register extends AppCompatActivity {
                     public void onSuccess(AuthResult authResult) {
                         //send user to Next Page
                         Log.i("TAG", "onSuccess:register done ");
-                        startActivity(new Intent(getApplicationContext(),Login.class));
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
+
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
                     }
+                    //====//
                 });
 
 
