@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.androidproject.add_medicine_view.AddMedicine;
+import com.example.androidproject.add_medicine.add_medicine_view.AddMedicine;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -89,14 +89,13 @@ public class MainActivity extends AppCompatActivity {
        medicineArrayList.add(medicine);
        medicineListAdapter.notifyDataSetChanged();
 
-       Intent i = new Intent(this, AddMedicine.class);
+       Intent i = new Intent(this, Register.class);
        Toast.makeText(this, "new Med Added ", Toast.LENGTH_SHORT).show();
 
        startActivity(i);
 
 
     }
-
 
 
 

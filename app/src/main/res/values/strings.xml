@@ -71,5 +71,15 @@
     <string name="medremaining">meds remaining</string>
     <string name="howtouse">How to use</string>
     <string name="adddrug">Add Dose</string>
+    <string name="Login">Login in Using</string>
+    <string name="Email">Email Address</string>
+    <string name="Password">Password</string>
+    <string name="LoginForm">Login</string>
+    <string name="FullName">Full Name</string>
+    <string name="ConfirmPassword">Confirm Password</string>
+    <string name="Register">Register</string>
+    <string name="CreateNewAccountButton">Create New Account</string>
+    <string name="GoToLoginButton">go To Login</string>
+    <string name="GoToLoginBtn">Go To Login</string>
 
 </resources>

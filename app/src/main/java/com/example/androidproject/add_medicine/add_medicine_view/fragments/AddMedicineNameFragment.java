@@ -1,4 +1,4 @@
-package com.example.androidproject.add_medicine_view.fragments;
+package com.example.androidproject.add_medicine.add_medicine_view.fragments;
 
 import android.os.Bundle;
 
@@ -13,7 +13,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 
 import com.example.androidproject.R;
-import com.example.androidproject.add_medicine_view.AddMedicineFragmentsCommunicator;
+import com.example.androidproject.add_medicine.add_medicine_view.AddMedicineFragmentsCommunicator;
 
 
 public class AddMedicineNameFragment extends Fragment implements AdapterView.OnItemSelectedListener{
