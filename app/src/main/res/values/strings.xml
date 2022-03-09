@@ -61,5 +61,15 @@
     <string name="MedicationName">Medication Name</string>
     <string name="doneButton">Done</string>
     <string name="txtview">Edit Medication</string>
+    <string name="Reminders">Reminders</string>
+    <string name="Suspend">Suspend</string>
+    <string name="Refill">Refill</string>
+    <string name="PrescriptionRefill">Prescription Refill</string>
+    <string name="pillsLeft">pills left</string>
+    <string name="Rxnumber">Rx Number:</string>
+    <string name="RefillreminderwhenIhave">Refill Reminder when I have</string>
+    <string name="medremaining">meds remaining</string>
+    <string name="howtouse">How to use</string>
+    <string name="adddrug">Add Dose</string>
 
 </resources>
