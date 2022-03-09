@@ -10,14 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".LoginScreenActivity"
-            android:exported="false" />
-        <activity
             android:name=".EditMedicationDrugActivity"
             android:exported="false" />
-        <activity
-            android:name=".Register"
-            android:exported="false" />
+
         <activity
             android:name=".SplashActivity"
             android:exported="true">

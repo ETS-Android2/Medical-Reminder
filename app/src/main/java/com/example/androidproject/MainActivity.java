@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
        medicineArrayList.add(medicine);
        medicineListAdapter.notifyDataSetChanged();
 
-       Intent i = new Intent(this, Register.class);
+       Intent i = new Intent(this, AddMedicine.class);
        Toast.makeText(this, "new Med Added ", Toast.LENGTH_SHORT).show();
 
        startActivity(i);
