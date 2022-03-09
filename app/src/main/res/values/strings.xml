@@ -71,5 +71,6 @@
     <string name="medremaining">meds remaining</string>
     <string name="howtouse">How to use</string>
     <string name="adddrug">Add Dose</string>
+    <string name="Login">Login in Using</string>
 
 </resources>
