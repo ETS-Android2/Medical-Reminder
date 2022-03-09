@@ -89,7 +89,7 @@ public class Register extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
                     }
-                    //====//
+
                 });
 
 
