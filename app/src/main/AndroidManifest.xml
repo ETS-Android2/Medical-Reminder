@@ -13,6 +13,12 @@
             android:name=".LoginScreenActivity"
             android:exported="false" />
         <activity
+            android:name=".LoginScreen"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterScreen"
+            android:exported="false" />
+        <activity
             android:name=".EditMedicationDrugActivity"
             android:exported="false" />
         <activity
@@ -25,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".add_medicine_view.AddMedicine"
+            android:name=".add_medicine.add_medicine_view.AddMedicine"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

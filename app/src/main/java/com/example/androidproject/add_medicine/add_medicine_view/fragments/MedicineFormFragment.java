@@ -1,4 +1,4 @@
-package com.example.androidproject.add_medicine_view.fragments;
+package com.example.androidproject.add_medicine.add_medicine_view.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.androidproject.R;
-import com.example.androidproject.add_medicine_view.AddMedicineFragmentsCommunicator;
+import com.example.androidproject.add_medicine.add_medicine_view.AddMedicineFragmentsCommunicator;
 
 public class MedicineFormFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 

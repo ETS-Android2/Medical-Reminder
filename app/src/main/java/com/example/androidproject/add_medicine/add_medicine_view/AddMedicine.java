@@ -1,4 +1,4 @@
-package com.example.androidproject.add_medicine_view;
+package com.example.androidproject.add_medicine.add_medicine_view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -8,13 +8,13 @@ import android.os.Bundle;
 
 import com.example.androidproject.Medicine;
 import com.example.androidproject.R;
-import com.example.androidproject.add_medicine_view.fragments.AddMedicineNameFragment;
-import com.example.androidproject.add_medicine_view.fragments.DosageFragment;
-import com.example.androidproject.add_medicine_view.fragments.DurationFragment;
-import com.example.androidproject.add_medicine_view.fragments.MedicineFormFragment;
-import com.example.androidproject.add_medicine_view.fragments.MedicineReasonRecurrencyFragment;
-import com.example.androidproject.add_medicine_view.fragments.MedicineStrengthFragment;
-import com.example.androidproject.add_medicine_view.fragments.RefillFragment;
+import com.example.androidproject.add_medicine.add_medicine_view.fragments.AddMedicineNameFragment;
+import com.example.androidproject.add_medicine.add_medicine_view.fragments.DosageFragment;
+import com.example.androidproject.add_medicine.add_medicine_view.fragments.DurationFragment;
+import com.example.androidproject.add_medicine.add_medicine_view.fragments.MedicineFormFragment;
+import com.example.androidproject.add_medicine.add_medicine_view.fragments.MedicineReasonRecurrencyFragment;
+import com.example.androidproject.add_medicine.add_medicine_view.fragments.MedicineStrengthFragment;
+import com.example.androidproject.add_medicine.add_medicine_view.fragments.RefillFragment;
 
 public class AddMedicine extends AppCompatActivity implements AddMedicineFragmentsCommunicator {
 
@@ -41,8 +41,9 @@ public class AddMedicine extends AppCompatActivity implements AddMedicineFragmen
         medicineFragment[2] = new MedicineStrengthFragment(this);
         medicineFragment[3] = new DosageFragment(this);
         medicineFragment[4] = new DurationFragment(this);
-        medicineFragment[5] = new RefillFragment(this);
-        medicineFragment[6] = new MedicineReasonRecurrencyFragment(this);
+        medicineFragment[6] = new RefillFragment(this);
+        medicineFragment[5] = new MedicineReasonRecurrencyFragment(this);
+
 
     }
 
@@ -64,6 +65,7 @@ public class AddMedicine extends AppCompatActivity implements AddMedicineFragmen
             currentFragment++;
             fragmentManager.beginTransaction().replace(R.id.FragmentContainerView, medicineFragment[currentFragment]).commit();
         }
+
     }
 
     @Override

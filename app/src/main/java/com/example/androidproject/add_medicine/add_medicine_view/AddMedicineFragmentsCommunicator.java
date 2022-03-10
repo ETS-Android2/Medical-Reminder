@@ -1,4 +1,4 @@
-package com.example.androidproject.add_medicine_view;
+package com.example.androidproject.add_medicine.add_medicine_view;
 
 public interface AddMedicineFragmentsCommunicator {
     public void nextFragment();
