@@ -1,14 +1,13 @@
 package com.example.androidproject;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Login extends AppCompatActivity {
+public class LoginScreen extends AppCompatActivity {
 
     Button createAccountButton;
 
@@ -20,7 +19,7 @@ public class Login extends AppCompatActivity {
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),Register.class));
+                startActivity(new Intent(getApplicationContext(), RegisterScreen.class));
 
             }
         });

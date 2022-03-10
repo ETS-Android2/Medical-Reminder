@@ -16,7 +16,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Register extends AppCompatActivity {
+public class RegisterScreen extends AppCompatActivity {
     TextView registerFullName,registerEmail,registerPassword,registerConfirmPassword;
     Button registerUserButton,goToLoginButton;
     FirebaseAuth fAuth;
