@@ -6,12 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".add_medicine.add_medicine_view.fragments.DosageFragment">
 
+
     <TextView
         android:id="@+id/MedicineRefillTextView"
-        android:layout_width="286dp"
-        android:layout_height="121dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="279dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="@string/RefillReminder"
         android:textColor="@color/very_dark_gray"
@@ -19,13 +20,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <EditText
         android:id="@+id/MedicineItemEditText"
         android:layout_width="118dp"
         android:layout_height="52dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="144dp"
         android:hint="Example : 30 "
         android:importantForAutofill="no"
@@ -40,19 +40,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="31dp"
         android:layout_marginEnd="160dp"
-        android:layout_marginBottom="124dp"
+        android:layout_marginBottom="280dp"
         android:background="@color/dark_gray"
         android:text="Next"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MedicineLimitEditText"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/totalItemTextView"
         android:layout_width="238dp"
         android:layout_height="40dp"
         android:layout_marginStart="96dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="24dp"
         android:text="@string/RefillItem"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,8 +76,8 @@
         android:id="@+id/MedicineLimitEditText"
         android:layout_width="129dp"
         android:layout_height="48dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
         android:gravity="center_horizontal"
         android:hint="5"

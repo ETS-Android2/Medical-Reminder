@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="160dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="96dp"
         android:background="@color/dark_gray"
         android:text="Next"
         app:layout_constraintStart_toStartOf="parent"

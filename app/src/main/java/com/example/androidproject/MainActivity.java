@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.androidproject.add_medicine_view.AddMedicine;
+import com.example.androidproject.add_medicine.add_medicine_view.AddMedicine;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
        Toast.makeText(this, "new Med Added ", Toast.LENGTH_SHORT).show();
 
 
-       Intent i = new Intent(getApplicationContext(), LoginScreenActivity.class);
+       Intent i = new Intent(getApplicationContext(), AddMedicine.class);
 
        startActivity(i);
 
