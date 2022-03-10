@@ -31,7 +31,7 @@ public class MedicineFormFragment extends Fragment implements AdapterView.OnItem
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        next = view.findViewById(R.id.Next2Btn);
+        next = view.findViewById(R.id.NextFormBtn);
         next.setOnClickListener(view1 -> communicator.nextFragment());
 
 
@@ -47,7 +47,7 @@ public class MedicineFormFragment extends Fragment implements AdapterView.OnItem
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_form, container, false);
+        View view = inflater.inflate(R.layout.fragment_form, container, false);
         return view;    }
 
     @Override
