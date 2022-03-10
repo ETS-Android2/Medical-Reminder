@@ -3,6 +3,7 @@ package com.example.androidproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -69,10 +70,21 @@ public class SplashActivity extends AppCompatActivity {
                                 diseases.add(row[1].getContents());
                             }
                         }
-                        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                        intent.putStringArrayListExtra(MEDICINES,medicines);
-                        intent.putStringArrayListExtra(DISEASES,diseases);
-                        startActivity(intent);
+
+                        SharedPreferences data = getSharedPreferences("LoginStatus", MODE_PRIVATE);
+                        boolean loggedIn = data.getBoolean("LoggedIn", false);
+
+                        if (loggedIn) {
+                            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                            intent.putStringArrayListExtra(MEDICINES, medicines);
+                            intent.putStringArrayListExtra(DISEASES, diseases);
+                            startActivity(intent);
+                        }else {
+                            Intent intent = new Intent(SplashActivity.this, LoginScreen.class);
+                            intent.putStringArrayListExtra(MEDICINES, medicines);
+                            intent.putStringArrayListExtra(DISEASES, diseases);
+                            startActivity(intent);
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     } catch (BiffException e) {
