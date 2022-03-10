@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -51,11 +52,15 @@ public class LoginScreen extends AppCompatActivity {
                     loginPassword.setError("Password is required");
                     return;
                 }
-                Toast.makeText(getApplicationContext(),"Login is Successful",Toast.LENGTH_SHORT).show();
 
                 firebaseAuth.signInWithEmailAndPassword(emailLogin,passwordLogin).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
+                        Toast.makeText(getApplicationContext(),"Login is Successful",Toast.LENGTH_SHORT).show();
+
+                        SharedPreferences data = getSharedPreferences("LoginStatus", MODE_PRIVATE);
+                        data.edit().putBoolean("LoggedIn",true).commit();
+
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
                     }
                 }).addOnFailureListener(new OnFailureListener() {

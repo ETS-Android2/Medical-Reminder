@@ -9,9 +9,7 @@
         android:roundIcon="@drawable/app_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity
-            android:name=".LoginScreenActivity"
-            android:exported="false" />
+
         <activity
             android:name=".LoginScreen"
             android:exported="false" />

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,8 +18,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterScreen extends AppCompatActivity {
-    TextView registerFullName,registerEmail,registerPassword,registerConfirmPassword;
-    Button registerUserButton,goToLoginButton;
+    TextView registerFullName, registerEmail, registerPassword, registerConfirmPassword;
+    Button registerUserButton, goToLoginButton;
     FirebaseAuth fAuth;
 
 
@@ -26,70 +27,69 @@ public class RegisterScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        registerFullName=findViewById(R.id.registerFullName);
-        registerEmail=findViewById(R.id.registerEmailAddress);
-        registerPassword=findViewById(R.id.registerPassword);
-        registerConfirmPassword=findViewById(R.id.confirmRegisterPassword);
-        registerUserButton=findViewById(R.id.registerbtn);
-        goToLoginButton=findViewById(R.id.goToLoginButton);
 
-        fAuth=FirebaseAuth.getInstance();
+        registerFullName = findViewById(R.id.registerFullName);
+        registerEmail = findViewById(R.id.registerEmailAddress);
+        registerPassword = findViewById(R.id.registerPassword);
+        registerConfirmPassword = findViewById(R.id.confirmRegisterPassword);
+        registerUserButton = findViewById(R.id.registerbtn);
+        goToLoginButton = findViewById(R.id.goToLoginButton);
+        fAuth = FirebaseAuth.getInstance();
 
         registerUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //extract the data from the Form
-                String fullName=registerFullName.getText().toString();
-                String emailAddress=registerEmail.getText().toString();
-                String password=registerPassword.getText().toString();
-                String confirmPassword=registerConfirmPassword.getText().toString();
+                String fullName = registerFullName.getText().toString();
+                String emailAddress = registerEmail.getText().toString();
+                String password = registerPassword.getText().toString();
+                String confirmPassword = registerConfirmPassword.getText().toString();
 
                 //validate the data
 
-                if(fullName.isEmpty()){
+                if (fullName.isEmpty()) {
                     registerFullName.setError("Full Name is required");
                     return;
                 }
-                if(emailAddress.isEmpty()){
+                if (emailAddress.isEmpty()) {
                     registerEmail.setError("Email Address is required");
                     return;
 
                 }
-                if(password.isEmpty()){
+                if (password.isEmpty()) {
 
                     registerPassword.setError("Password is required");
                     return;
                 }
-                if(confirmPassword.isEmpty()){
+                if (confirmPassword.isEmpty()) {
                     registerConfirmPassword.setError(" Confirm Password is required");
                     return;
 
                 }
-                if(!password.equals(confirmPassword)){
+                if (!password.equals(confirmPassword)) {
                     registerConfirmPassword.setError(" Password Do not match");
                     return;
-
                 }
 
                 //data is validated
-
-                Toast.makeText(getApplicationContext(),"Data is Validated",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Data is Validated", Toast.LENGTH_SHORT).show();
                 //register the user using firebase
-                fAuth.createUserWithEmailAndPassword(emailAddress,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                fAuth.createUserWithEmailAndPassword(emailAddress, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         //send user to Next Page
-                        Log.i("TAG", "onSuccess:register done ");
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        SharedPreferences data = getSharedPreferences("LoginStatus", MODE_PRIVATE);
+                        data.edit().putBoolean("LoggedIn",true).commit();
 
+                        Log.i("TAG", "onSuccess:register done ");
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
 
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
-
                 });
 
 
