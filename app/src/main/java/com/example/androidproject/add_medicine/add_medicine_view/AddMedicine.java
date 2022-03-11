@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 
-import com.example.androidproject.Medicine;
+import com.example.androidproject.model.Medicine;
 import com.example.androidproject.R;
 import com.example.androidproject.add_medicine.add_medicine_view.fragments.AddMedicineNameFragment;
 import com.example.androidproject.add_medicine.add_medicine_view.fragments.DosageFragment;
@@ -39,8 +39,8 @@ public class AddMedicine extends AppCompatActivity implements AddMedicineFragmen
         medicineFragment[0] = new AddMedicineNameFragment(this);
         medicineFragment[1] = new MedicineFormFragment(this);
         medicineFragment[2] = new MedicineStrengthFragment(this);
-        medicineFragment[3] = new DosageFragment(this);
-        medicineFragment[4] = new DurationFragment(this);
+        medicineFragment[4] = new DosageFragment(this);
+        medicineFragment[3] = new DurationFragment(this);
         medicineFragment[6] = new RefillFragment(this);
         medicineFragment[5] = new MedicineReasonRecurrencyFragment(this);
 

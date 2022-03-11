@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.androidproject.home.view.Home;
+import com.example.androidproject.registration.LoginScreen;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.FileAsyncHttpResponseHandler;
 
@@ -45,8 +47,8 @@ public class SplashActivity extends AppCompatActivity {
         asyncHttpClient.get(url, new FileAsyncHttpResponseHandler(this) {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, File file) {
-                Log.e(MainActivity.class.getSimpleName(), "Failed : " + statusCode);
-                Log.e(MainActivity.class.getSimpleName(), "Failed : " + file.getName());
+                Log.e(Home.class.getSimpleName(), "Failed : " + statusCode);
+                Log.e(Home.class.getSimpleName(), "Failed : " + file.getName());
             }
 
             @Override
@@ -75,7 +77,7 @@ public class SplashActivity extends AppCompatActivity {
                         boolean loggedIn = data.getBoolean("LoggedIn", false);
 
                         if (loggedIn) {
-                            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                            Intent intent = new Intent(SplashActivity.this, Home.class);
                             intent.putStringArrayListExtra(MEDICINES, medicines);
                             intent.putStringArrayListExtra(DISEASES, diseases);
                             startActivity(intent);

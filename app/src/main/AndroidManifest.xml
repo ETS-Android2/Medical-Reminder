@@ -11,10 +11,10 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <activity
-            android:name=".LoginScreen"
+            android:name=".registration.LoginScreen"
             android:exported="false" />
         <activity
-            android:name=".RegisterScreen"
+            android:name=".registration.RegisterScreen"
             android:exported="false" />
         <activity
             android:name=".EditMedicationDrugActivity"
@@ -32,7 +32,7 @@
             android:name=".add_medicine.add_medicine_view.AddMedicine"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".home.view.Home"
             android:exported="false" />
     </application>
 

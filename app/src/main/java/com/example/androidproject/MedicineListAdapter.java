@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.androidproject.model.Medicine;
+
 import java.util.ArrayList;
 
 public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapter.ViewHolder> {

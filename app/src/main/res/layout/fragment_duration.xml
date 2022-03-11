@@ -6,12 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".add_medicine.add_medicine_view.fragments.DosageFragment">
 
+
     <TextView
         android:id="@+id/MedicineDurationTextView"
-        android:layout_width="286dp"
-        android:layout_height="121dp"
+        android:layout_width="295dp"
+        android:layout_height="84dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="@string/MedDuration"
         android:textColor="@color/very_dark_gray"
@@ -19,14 +20,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <EditText
         android:id="@+id/MedicineDurationEditText"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="148dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="156dp"
         android:hint="Example : 2 "
         android:importantForAutofill="no"
         android:inputType="number"
@@ -40,21 +40,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginEnd="160dp"
+        android:layout_marginEnd="164dp"
         android:layout_marginBottom="392dp"
         android:background="@color/dark_gray"
         android:text="Next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MedicineDurationEditText"
-        app:layout_constraintVertical_bias="0.742" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/dayTextView"
         android:layout_width="82dp"
         android:layout_height="44dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="40dp"
         android:gravity="center_horizontal"
         android:text="Days"
         android:textSize="20sp"
