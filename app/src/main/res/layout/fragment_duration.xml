@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,9 +9,9 @@
 
     <TextView
         android:id="@+id/MedicineDurationTextView"
-        android:layout_width="295dp"
-        android:layout_height="84dp"
-        android:layout_marginStart="64dp"
+        android:layout_width="314dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="@string/MedDuration"
@@ -25,14 +25,14 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="156dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="20dp"
         android:hint="Example : 2 "
         android:importantForAutofill="no"
         android:inputType="number"
         android:minHeight="48dp"
         android:textColorHint="#546E7A"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MedicineDurationTextView"></EditText>
 
     <Button
@@ -40,26 +40,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginEnd="164dp"
-        android:layout_marginBottom="392dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="48dp"
         android:background="@color/dark_gray"
         android:text="Next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MedicineDurationEditText"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MedicineDurationEditText" />
 
     <TextView
         android:id="@+id/dayTextView"
-        android:layout_width="82dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="40dp"
+        android:layout_width="65dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
         android:gravity="center_horizontal"
         android:text="Days"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/MedicineDurationEditText"
         app:layout_constraintTop_toBottomOf="@+id/MedicineDurationTextView" />
 
 

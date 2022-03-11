@@ -28,7 +28,7 @@
                     android:layout_height="41dp"
                     android:gravity="center"
                     android:text="@string/MedForm"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textColor="@color/very_dark_gray"/>
             </FrameLayout>
 

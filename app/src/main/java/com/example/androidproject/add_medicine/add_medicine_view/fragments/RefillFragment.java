@@ -21,13 +21,13 @@ public class RefillFragment  extends Fragment {
     public RefillFragment(){}
     public RefillFragment(AddMedicineFragmentsCommunicator communicator) {
         this.communicator = communicator;
-
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_refill,container,false);
+        return view;
     }
 
     @Override
