@@ -11,6 +11,7 @@ public class ListRepository implements RepoInterface {
 
     private Context context;
     private LocalSource localSource;
+
     private ListRepository repository = null;
 
     private ListRepository(Context context, LocalSource localSource) {

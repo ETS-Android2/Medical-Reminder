@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         <activity
-            android:name=".EmailVerificatinScreen"
+            android:name=".registration.EmailVerificatinScreen"
             android:exported="false" />
         <activity
             android:name=".registration.LoginScreen"

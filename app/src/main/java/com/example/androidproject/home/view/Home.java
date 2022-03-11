@@ -31,7 +31,9 @@ public class Home extends AppCompatActivity implements HomeInterface {
     private ActionBarDrawerToggle mDrawerToggle;
     private MedicineListAdapter medicineListAdapter;
     private ArrayList<Medicine> medicineArrayList = new ArrayList<>();
+
     private HashMap<String, ArrayList<Medicine>> map = new HashMap<>();
+
     private HomePresenterInterface presenterInterface;
 
     @Override
