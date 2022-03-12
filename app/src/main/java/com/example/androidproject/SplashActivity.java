@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.example.androidproject.home.view.Home;
 import com.example.androidproject.registration.LoginScreen;
+import com.example.androidproject.registration.RegisterScreen;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.FileAsyncHttpResponseHandler;
 
@@ -42,7 +43,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
 
-        asyncHttpClient = new AsyncHttpClient();
+       /* asyncHttpClient = new AsyncHttpClient();
 
         asyncHttpClient.get(url, new FileAsyncHttpResponseHandler(this) {
             @Override
@@ -95,5 +96,9 @@ public class SplashActivity extends AppCompatActivity {
                 }
             }
         });
+
+        */
+        Intent i=new Intent(this, LoginScreen.class);
+        startActivity(i);
     }
 }

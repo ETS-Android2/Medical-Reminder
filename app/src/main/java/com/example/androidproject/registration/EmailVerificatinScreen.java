@@ -48,6 +48,7 @@ public class EmailVerificatinScreen extends AppCompatActivity {
                         //once verification is done we will hide the verifyMsg and Button
                         verifyEmailButton.setVisibility(View.GONE);
                         verifyMsg.setVisibility(View.GONE);
+                        finish();
                     }
                 });
             }

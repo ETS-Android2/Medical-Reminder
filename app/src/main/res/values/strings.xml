@@ -94,5 +94,9 @@
     <string name="btn">Verify</string>
     <string name="button">Verify Now</string>
     <string name="logoutbtn">LogOut</string>
+    <string name="SignUp">SignUp</string>
+    <string name="SignUpbtn">Sign Up</string>
+    <string name="SignInBtn">Sign in</string>
+    <string name="SignIN">Sign in</string>
 
 </resources>
