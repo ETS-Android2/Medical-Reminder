@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.androidproject.registration.EmailVerificatinScreen;
 import com.example.androidproject.R;
 import com.example.androidproject.home.view.Home;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -84,7 +85,9 @@ public class RegisterScreen extends AppCompatActivity {
                         data.edit().putBoolean("LoggedIn",true).commit();
 
                         Log.i("TAG", "onSuccess:register done ");
-                        startActivity(new Intent(getApplicationContext(), Home.class));
+                       // startActivity(new Intent(getApplicationContext(), Home.class));
+                        Intent outIntent=new Intent(getApplicationContext(), EmailVerificatinScreen.class);
+                        startActivity(outIntent);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
