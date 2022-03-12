@@ -12,9 +12,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.androidproject.add_medicine.add_medicine_view.AddMedicine;
 import com.example.androidproject.model.Medicine;
 import com.example.androidproject.R;
-import com.example.androidproject.add_medicine.add_medicine_view.AddMedicine;
 import com.example.androidproject.home.presenter.HomePresenter;
 import com.example.androidproject.home.presenter.HomePresenterInterface;
 
@@ -110,6 +110,12 @@ public class Home extends AppCompatActivity implements HomeInterface {
         Toast.makeText(this, "new Med Added ", Toast.LENGTH_SHORT).show();
 
         startActivity(i);
+
+////        DialogFragment timeFragment = new TimePickerFragment();
+////        timeFragment.show(getSupportFragmentManager(), "timePicker");
+//
+//        DialogFragment dateFragment = new DatePickerFragment();
+//        dateFragment.show(getSupportFragmentManager(), "datePicker");
 
 
     }

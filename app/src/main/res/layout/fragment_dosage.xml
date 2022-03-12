@@ -20,6 +20,7 @@
 
     <EditText
         android:id="@+id/MedicineDosagesEditText"
+        android:inputType="numberDecimal"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -28,7 +29,7 @@
         android:hint="Example : 2 Pills"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MedicineDosagesTextView"></EditText>
+        app:layout_constraintTop_toBottomOf="@+id/MedicineDosagesTextView"/>
 
     <Spinner
         android:id="@+id/MedicineDosagesSpinner"

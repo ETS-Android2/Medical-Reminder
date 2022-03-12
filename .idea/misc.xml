@@ -24,9 +24,12 @@
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/toolbar.xml" value="0.15604959384352288" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/xml/drug_screen.xml" value="0.1675929884566054" />
         <entry key="..\:/ITI/Android/AndroidProject/app/src/main/res/layout/activity_form.xml" value="0.21052631578947367" />
+        <entry key="..\:/ITI/Android/AndroidProject/app/src/main/res/layout/activity_login.xml" value="0.21052631578947367" />
         <entry key="..\:/ITI/Android/AndroidProject/app/src/main/res/layout/activity_login2.xml" value="0.21052631578947367" />
         <entry key="..\:/ITI/Android/AndroidProject/app/src/main/res/layout/activity_login_screen.xml" value="0.21052631578947367" />
         <entry key="..\:/ITI/Android/AndroidProject/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/ITI/Android/AndroidProject/app/src/main/res/layout/fragment_dosage.xml" value="0.10657894736842105" />
+        <entry key="..\:/ITI/Android/AndroidProject/app/src/main/res/layout/fragment_duration.xml" value="0.2037037037037037" />
       </map>
     </option>
   </component>
