@@ -30,45 +30,51 @@ public class LoginScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        createAccountButton=findViewById(R.id.CreateNewAccountButton);
-        loginEmail=findViewById(R.id.loginEmail);
+        createAccountButton = findViewById(R.id.SignUpButton);
+        loginEmail = findViewById(R.id.loginEmail);
         loginPassword = findViewById(R.id.loginPassword);
-        loginButton=findViewById(R.id.loginbtn);
+        loginButton = findViewById(R.id.loginbtn);
         FirebaseAuth firebaseAuth;
 
-        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String emailLogin=loginEmail.getText().toString();
-                String passwordLogin=loginPassword.getText().toString();
+                String emailLogin = loginEmail.getText().toString();
+                String passwordLogin = loginPassword.getText().toString();
 
-                if(emailLogin.isEmpty()){
+                if (emailLogin.isEmpty()) {
                     loginEmail.setError("Email Address is required");
                     return;
 
                 }
-                if(passwordLogin.isEmpty()){
+                if (passwordLogin.isEmpty()) {
 
                     loginPassword.setError("Password is required");
                     return;
                 }
 
-                firebaseAuth.signInWithEmailAndPassword(emailLogin,passwordLogin).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                firebaseAuth.signInWithEmailAndPassword(emailLogin, passwordLogin).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
-                        Toast.makeText(getApplicationContext(),"Login is Successful",Toast.LENGTH_SHORT).show();
+                        if (firebaseAuth.getCurrentUser().isEmailVerified()) {
+                            Toast.makeText(getApplicationContext(), "Login is Successful", Toast.LENGTH_SHORT).show();
 
-                        SharedPreferences data = getSharedPreferences("LoginStatus", MODE_PRIVATE);
-                        data.edit().putBoolean("LoggedIn",true).commit();
+                            SharedPreferences data = getSharedPreferences("LoginStatus", MODE_PRIVATE);
+                            data.edit().putBoolean("LoggedIn", true).commit();
 
-                        startActivity(new Intent(getApplicationContext(), Home.class));
+                            startActivity(new Intent(getApplicationContext(), Home.class));
+
+                        } else {
+                            Toast.makeText(getApplicationContext(), "please Verify your email  ", Toast.LENGTH_SHORT).show();
+                        }
+
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -78,14 +84,16 @@ public class LoginScreen extends AppCompatActivity {
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent outIntent=new Intent(getApplicationContext(),RegisterScreen.class);
+                Intent outIntent = new Intent(getApplicationContext(), RegisterScreen.class);
                 startActivity(outIntent);
-
-
             }
         });
 
 
     }
 
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+    }
 }

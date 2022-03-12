@@ -31,6 +31,8 @@ public class RegisterScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        if(savedInstanceState!=null){finish();} //register opened twice
+
         registerFullName = findViewById(R.id.registerFullName);
         registerEmail = findViewById(R.id.registerEmailAddress);
         registerPassword = findViewById(R.id.registerPassword);
@@ -81,9 +83,6 @@ public class RegisterScreen extends AppCompatActivity {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         //send user to Next Page
-                        SharedPreferences data = getSharedPreferences("LoginStatus", MODE_PRIVATE);
-                        data.edit().putBoolean("LoggedIn",true).commit();
-
                         Log.i("TAG", "onSuccess:register done ");
                        // startActivity(new Intent(getApplicationContext(), Home.class));
                         Intent outIntent=new Intent(getApplicationContext(), EmailVerificatinScreen.class);
@@ -98,6 +97,12 @@ public class RegisterScreen extends AppCompatActivity {
                 });
 
 
+            }
+        });
+        goToLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 
