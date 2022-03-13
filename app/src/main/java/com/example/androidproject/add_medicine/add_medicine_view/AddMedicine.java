@@ -46,13 +46,13 @@ public class AddMedicine extends AppCompatActivity implements AddMedicineFragmen
     }
 
     void initFragments(){
-        medicineFragment[4] = new AddMedicineNameFragment(this);
+        medicineFragment[0] = new AddMedicineNameFragment(this);
         medicineFragment[1] = new MedicineFormFragment(this);
         medicineFragment[2] = new MedicineStrengthFragment(this);
-        medicineFragment[0] = new DosageFragment(this);
-        medicineFragment[3] = new DurationFragment(this);
-        medicineFragment[6] = new RefillFragment(this);
-        medicineFragment[5] = new MedicineReasonRecurrencyFragment(this);
+        medicineFragment[3] = new DosageFragment(this);
+        medicineFragment[4] = new DurationFragment(this);
+        medicineFragment[5] = new RefillFragment(this);
+        medicineFragment[6] = new MedicineReasonRecurrencyFragment(this);
 
 
     }
@@ -94,6 +94,7 @@ public class AddMedicine extends AppCompatActivity implements AddMedicineFragmen
             fragmentManager.beginTransaction().replace(R.id.FragmentContainerView, medicineFragment[currentFragment]).commit();
         }else {
             confirmAddingMedicine();
+            finish();
         }
 
     }

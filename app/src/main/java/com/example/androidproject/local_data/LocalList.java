@@ -35,7 +35,7 @@ public class LocalList implements LocalSource {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                MedicineList list = findListByDate(medicineList.getDate());
+                MedicineList list = listDao.findListByDate(medicineList.getDate());
                 if (list != null) {
                     ArrayList<MedicineDose> doses = medicineList.getMedicineDoseArrayList();
                     for (MedicineDose dose : list.getMedicineDoseArrayList()) {
@@ -60,7 +60,6 @@ public class LocalList implements LocalSource {
 
     @Override
     public MedicineList findListByDate(String date) {
-
         return listDao.findListByDate(date);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.androidproject.home.view;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,18 +10,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.androidproject.add_medicine.add_medicine_view.AddMedicine;
+import com.example.androidproject.local_data.LocalList;
 import com.example.androidproject.model.Medicine;
 import com.example.androidproject.R;
 import com.example.androidproject.home.presenter.HomePresenter;
 import com.example.androidproject.home.presenter.HomePresenterInterface;
+import com.example.androidproject.model.MedicineDose;
+import com.example.androidproject.model.MedicineList;
+import com.example.androidproject.repo.ListRepository;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 import in.akshit.horizontalcalendar.HorizontalCalendarView;
 import in.akshit.horizontalcalendar.Tools;
@@ -30,10 +39,8 @@ public class Home extends AppCompatActivity implements HomeInterface {
     private RecyclerView recyclerView;
     private ActionBarDrawerToggle mDrawerToggle;
     private MedicineListAdapter medicineListAdapter;
-    private ArrayList<Medicine> medicineArrayList = new ArrayList<>();
-
-    private HashMap<String, ArrayList<Medicine>> map = new HashMap<>();
-
+    private ArrayList<MedicineDose> medicineArrayList = new ArrayList<>();
+    private Handler handler;
     private HomePresenterInterface presenterInterface;
 
     @Override
@@ -47,14 +54,27 @@ public class Home extends AppCompatActivity implements HomeInterface {
 
         setDrawer(findViewById(R.id.toolbar), findViewById(R.id.drawer_layout));
 
-        presenterInterface = new HomePresenter(this);
-        presenterInterface.getMedicineList();
+        presenterInterface = new HomePresenter(this, ListRepository.getInstance(this , LocalList.getInstance(this)));
 
+        handler = new Handler(Looper.myLooper()) {
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                medicineListAdapter.setMedicineList(medicineArrayList);
+                medicineListAdapter.notifyDataSetChanged();
+            }
+        };
     }
 
     @Override
-    public void updateMedicineList(HashMap<String, ArrayList<Medicine>> map) {
-        this.map = map;
+    public void updateList(MedicineList medicineList) {
+        if (medicineList != null) {
+            medicineArrayList = medicineList.getMedicineDoseArrayList();
+
+        }else{
+            medicineArrayList = new ArrayList<>();
+        }
+
+        handler.sendEmptyMessage(0);
     }
 
     private void setMedicineListAdapter(RecyclerView recyclerView) {
@@ -67,11 +87,6 @@ public class Home extends AppCompatActivity implements HomeInterface {
         this.recyclerView.setLayoutManager(linearLayoutManager);
         this.recyclerView.setAdapter(medicineListAdapter);
 
-    }
-
-    private void updateListAdapter(ArrayList<Medicine> list){
-        medicineListAdapter.setMedicineList(list);
-        medicineListAdapter.notifyDataSetChanged();
     }
 
     private void setDrawer(Toolbar bar, DrawerLayout drawer) {
@@ -98,25 +113,10 @@ public class Home extends AppCompatActivity implements HomeInterface {
     }
 
     public void addMedicine(View view) {
-
-        Medicine medicine = new Medicine();
-        medicine.setName("name ");
-        medicine.setDosagesPerTime(3);
-        medicine.setMedicineStrength(555);
-        medicineArrayList.add(medicine);
-        medicineListAdapter.notifyDataSetChanged();
-
         Intent i = new Intent(this, AddMedicine.class);
         Toast.makeText(this, "new Med Added ", Toast.LENGTH_SHORT).show();
 
         startActivity(i);
-
-////        DialogFragment timeFragment = new TimePickerFragment();
-////        timeFragment.show(getSupportFragmentManager(), "timePicker");
-//
-//        DialogFragment dateFragment = new DatePickerFragment();
-//        dateFragment.show(getSupportFragmentManager(), "datePicker");
-
 
     }
 
@@ -146,12 +146,11 @@ public class Home extends AppCompatActivity implements HomeInterface {
 
     private void dateSelected(String date) {
         Toast.makeText(this, "" + date, Toast.LENGTH_SHORT).show();
-        medicineListAdapter.notifyDataSetChanged();
+        presenterInterface.getMedicineList(date);
     }
 
     @Override
     public void onBackPressed() {
         finishAffinity();
     }
-
 }
