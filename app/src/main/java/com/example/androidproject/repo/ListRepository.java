@@ -12,14 +12,14 @@ public class ListRepository implements RepoInterface {
     private Context context;
     private LocalSource localSource;
 
-    private ListRepository repository = null;
+    private static ListRepository repository = null;
 
     private ListRepository(Context context, LocalSource localSource) {
         this.context = context;
         this.localSource = localSource;
     }
 
-    public ListRepository getInstance(Context context, LocalSource localSource) {
+    public static ListRepository getInstance(Context context, LocalSource localSource) {
         if (repository == null) {
             repository = new ListRepository(context, localSource);
         }
@@ -38,7 +38,7 @@ public class ListRepository implements RepoInterface {
     }
 
     @Override
-    public LiveData<MedicineList> findListByDate(String date) {
+    public MedicineList findListByDate(String date) {
         return localSource.findListByDate(date);
     }
 

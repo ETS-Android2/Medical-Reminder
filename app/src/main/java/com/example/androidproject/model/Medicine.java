@@ -19,7 +19,6 @@ public class Medicine {
     private String recurrenceOfTakingDrug;
     private int dosagesPerTime;
     private int medicineStrength;
-    private String medicineStrengthUnit;
     private int TreatmentDuration;
     private int recurrence;
     private int RefillReminder;
@@ -27,36 +26,11 @@ public class Medicine {
     private String startDate;
     private String endDate;
 
-    public Medicine(String name, String medicineForm, String reasonOfTakingDrug, String recurrenceOfTakingDrug, int dosagesPerTime, int medicineStrength, String medicineStrengthUnit, int treatmentDuration, int recurrence, int refillReminder) {
-        this.name = name;
-        this.medicineForm = medicineForm;
-        this.reasonOfTakingDrug = reasonOfTakingDrug;
-        this.recurrenceOfTakingDrug = recurrenceOfTakingDrug;
-        this.dosagesPerTime = dosagesPerTime;
-        this.medicineStrength = medicineStrength;
-        this.medicineStrengthUnit = medicineStrengthUnit;
-        TreatmentDuration = treatmentDuration;
-        this.recurrence = recurrence;
-        RefillReminder = refillReminder;
-    }
 
     private ArrayList<int[]> doseTime;
 
     public Medicine() {
     }
-
-
-
-    public String getMedicineStrengthUnit() {
-        return medicineStrengthUnit;
-    }
-
-    public void setMedicineStrengthUnit(String medicineStrengthUnit) {
-        this.medicineStrengthUnit = medicineStrengthUnit;
-    }
-
-
-
 
     static Medicine getMedicine(String json) {
         Gson gson = new Gson();

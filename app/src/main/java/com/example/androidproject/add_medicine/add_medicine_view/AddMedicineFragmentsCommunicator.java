@@ -1,5 +1,7 @@
 package com.example.androidproject.add_medicine.add_medicine_view;
 
+import com.example.androidproject.model.Medicine;
+
 import java.util.ArrayList;
 
 public interface AddMedicineFragmentsCommunicator {
@@ -22,7 +24,7 @@ public interface AddMedicineFragmentsCommunicator {
     public void setRecurrence(int recurrence);
 
     public void setRefillReminder(int refillReminder);
-    public void setMedicineStrengthUnit(String medicineStrengthUnit);
+
     public void confirmAddingMedicine();
 
     public void setStartDate(String startDate);
@@ -30,7 +32,5 @@ public interface AddMedicineFragmentsCommunicator {
     public void setEndDate(String endDate);
 
     public void setDoseTime(ArrayList<int[]> doseTime);
-
-
 
 }

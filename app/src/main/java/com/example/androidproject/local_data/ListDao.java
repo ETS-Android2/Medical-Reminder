@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public interface ListDao {
 
     @Query("SELECT * FROM medicine_list WHERE date LIKE :date " + "LIMIT 1")
-    LiveData<MedicineList> findListByDate(String date);
+    MedicineList findListByDate(String date);
 
     @Insert
     void insertList(MedicineList list);

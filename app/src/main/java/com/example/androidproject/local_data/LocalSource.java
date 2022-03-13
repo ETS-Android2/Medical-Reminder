@@ -9,5 +9,5 @@ import java.util.ArrayList;
 public interface LocalSource {
     public void insertList(MedicineList medicineList);
     public void deleteList(MedicineList medicineList);
-    public LiveData<MedicineList>  findListByDate(String date);
+    public MedicineList  findListByDate(String date);
 }

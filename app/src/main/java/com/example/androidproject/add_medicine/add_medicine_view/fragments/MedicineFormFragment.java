@@ -15,12 +15,12 @@ import androidx.fragment.app.Fragment;
 
 import com.example.androidproject.R;
 import com.example.androidproject.add_medicine.add_medicine_view.AddMedicineFragmentsCommunicator;
+import com.example.androidproject.model.Medicine;
 
 public class MedicineFormFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     AddMedicineFragmentsCommunicator communicator;
     Button next;
-    String SelectedForm;
 
     public MedicineFormFragment(){}
     public MedicineFormFragment(AddMedicineFragmentsCommunicator communicator) {
@@ -33,10 +33,11 @@ public class MedicineFormFragment extends Fragment implements AdapterView.OnItem
         super.onViewCreated(view, savedInstanceState);
 
         next = view.findViewById(R.id.Next2Btn);
-        next.setOnClickListener((view1)->
-                { communicator.setMedicineForm(SelectedForm);
-                communicator.nextFragment();
-                });
+        next.setOnClickListener(view1 -> {
+            communicator.setMedicineForm(Medicine.Pill);
+            communicator.nextFragment();
+        });
+
 
         Spinner medicineFormSpinner = (Spinner) view.findViewById(R.id.MedicineFormSpinner);
         ArrayAdapter<CharSequence> medicineFormAdapter = ArrayAdapter.createFromResource(view.getContext(), R.array.Medicine_forms, android.R.layout.simple_spinner_item);
@@ -55,7 +56,6 @@ public class MedicineFormFragment extends Fragment implements AdapterView.OnItem
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        SelectedForm = adapterView.getItemAtPosition(i).toString();
 
     }
 
