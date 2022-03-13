@@ -6,20 +6,27 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.androidproject.R;
 import com.example.androidproject.add_medicine.add_medicine_view.AddMedicineFragmentsCommunicator;
+import com.example.androidproject.model.Medicine;
+import com.example.androidproject.remote_data.MedicineDAO;
 
 
 public class AddMedicineNameFragment extends Fragment implements AdapterView.OnItemSelectedListener{
 
     AddMedicineFragmentsCommunicator communicator;
     Button next;
+    EditText name;
+    String TAG="";
 
     public AddMedicineNameFragment() {
         // Required empty public constructor
@@ -46,17 +53,23 @@ public class AddMedicineNameFragment extends Fragment implements AdapterView.OnI
         super.onViewCreated(view, savedInstanceState);
 
         next = view.findViewById(R.id.NextAddNameBtn);
-        next.setOnClickListener(view1 -> communicator.nextFragment());
+        name = view.findViewById(R.id.MedicineAddNameEditText);
+        next.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        communicator.setName(name.getText().toString());
+                        communicator.nextFragment();
 
+                    }});
     }
+        @Override
+        public void onItemSelected (AdapterView < ? > adapterView, View view,int i, long l){
 
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        }
 
+        @Override
+        public void onNothingSelected (AdapterView < ? > adapterView){
+
+        }
     }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
-}

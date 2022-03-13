@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +18,8 @@ public class RefillFragment  extends Fragment {
 
     AddMedicineFragmentsCommunicator communicator;
     Button next;
+    EditText total;
+    EditText minToRefill;
 
     public RefillFragment(){}
     public RefillFragment(AddMedicineFragmentsCommunicator communicator) {
@@ -34,6 +37,10 @@ public class RefillFragment  extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         next = view.findViewById(R.id.NextRefillBtn);
-        next.setOnClickListener(view1 -> communicator.nextFragment());
+        total = view.findViewById(R.id.MedicineItemEditText);
+        minToRefill = view.findViewById(R.id.MedicineLimitEditText);
+        next.setOnClickListener((view1) ->{
+            communicator.setRefillReminder(Integer.parseInt(minToRefill.getText().toString()));
+            communicator.confirmAddingMedicine();});
     }
 }

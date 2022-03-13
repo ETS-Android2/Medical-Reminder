@@ -33,9 +33,10 @@
 
     <Spinner
         android:id="@+id/MedicineDosagesSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_width="153dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="128dp"
         android:contentDescription="@string/addMedications"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"

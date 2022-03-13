@@ -23,17 +23,14 @@ import java.util.ArrayList;
 public class AddMedicine extends AppCompatActivity implements AddMedicineFragmentsCommunicator {
 
     Medicine medicine = new Medicine();
+    AddmedicinePresenterInterface addMedicine =  new AddMedicinePresenter();
     Fragment[] medicineFragment = new Fragment[7];
     FragmentManager fragmentManager ;
     int currentFragment = 0;
-    AddmedicinePresenterInterface presenterInterface;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_medicine);
-
-        presenterInterface = new AddMedicinePresenter();
 
         initFragments();
 
@@ -44,10 +41,10 @@ public class AddMedicine extends AppCompatActivity implements AddMedicineFragmen
     }
 
     void initFragments(){
-        medicineFragment[4] = new AddMedicineNameFragment(this);
+        medicineFragment[0] = new AddMedicineNameFragment(this);
         medicineFragment[1] = new MedicineFormFragment(this);
         medicineFragment[2] = new MedicineStrengthFragment(this);
-        medicineFragment[0] = new DosageFragment(this);
+        medicineFragment[4] = new DosageFragment(this);
         medicineFragment[3] = new DurationFragment(this);
         medicineFragment[6] = new RefillFragment(this);
         medicineFragment[5] = new MedicineReasonRecurrencyFragment(this);
@@ -65,26 +62,6 @@ public class AddMedicine extends AppCompatActivity implements AddMedicineFragmen
         }else {
             finish();
         }
-    }
-
-    @Override
-    public void confirmAddingMedicine() {
-        presenterInterface.addNewMedicine(medicine);
-    }
-
-    @Override
-    public void setStartDate(String startDate) {
-        medicine.setStartDate(startDate);
-    }
-
-    @Override
-    public void setEndDate(String endDate) {
-        medicine.setEndDate(endDate);
-    }
-
-    @Override
-    public void setDoseTime(ArrayList<int[]> doseTime) {
-        medicine.setDoseTime(doseTime);
     }
 
     @Override
@@ -139,5 +116,33 @@ public class AddMedicine extends AppCompatActivity implements AddMedicineFragmen
     @Override
     public void setRefillReminder(int refillReminder) {
         medicine.setRefillReminder(refillReminder);
+    }
+
+    @Override
+    public void setMedicineStrengthUnit(String medicineStrengthUnit) {
+
+    }
+
+
+    @Override
+    public void confirmAddingMedicine() {
+        if(medicine!=null) {
+            addMedicine.addNewMedicine(medicine);
+        }
+    }
+
+    @Override
+    public void setStartDate(String startDate) {
+
+    }
+
+    @Override
+    public void setEndDate(String endDate) {
+
+    }
+
+    @Override
+    public void setDoseTime(ArrayList<int[]> doseTime) {
+
     }
 }

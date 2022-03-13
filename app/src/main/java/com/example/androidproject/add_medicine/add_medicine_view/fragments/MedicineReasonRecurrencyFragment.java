@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,8 @@ public class MedicineReasonRecurrencyFragment extends Fragment implements Adapte
     View view;
     AddMedicineFragmentsCommunicator communicator;
     Button next;
+    EditText reason;
+    String recurrency;
 
     public MedicineReasonRecurrencyFragment(){}
     public MedicineReasonRecurrencyFragment(AddMedicineFragmentsCommunicator communicator) {
@@ -44,11 +47,19 @@ public class MedicineReasonRecurrencyFragment extends Fragment implements Adapte
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         next = view.findViewById(R.id.NextReasonRecurrencyBtn);
-        next.setOnClickListener(view1 -> communicator.nextFragment());
+        reason = view.findViewById(R.id.MedicineReasonEditText);
+
+        next.setOnClickListener((view1) ->
+        {
+            communicator.setRecurrenceOfTakingDrug(recurrency);
+            communicator.setReasonOfTakingDrug(reason.getText().toString());
+            communicator.nextFragment();
+        });
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        recurrency = adapterView.getItemAtPosition(i).toString();
 
     }
 

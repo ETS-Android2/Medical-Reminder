@@ -22,7 +22,7 @@ public interface AddMedicineFragmentsCommunicator {
     public void setRecurrence(int recurrence);
 
     public void setRefillReminder(int refillReminder);
-
+    public void setMedicineStrengthUnit(String medicineStrengthUnit);
     public void confirmAddingMedicine();
 
     public void setStartDate(String startDate);
