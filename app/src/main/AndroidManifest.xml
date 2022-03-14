@@ -11,13 +11,13 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <activity
-            android:name=".registration.EmailVerificatinScreen"
+            android:name=".email_verification.emailVerification_Viewer.EmailVerificatinScreen"
             android:exported="false" />
         <activity
-            android:name=".registration.LoginScreen"
+            android:name=".login.loginView.LoginScreen"
             android:exported="false" />
         <activity
-            android:name=".registration.RegisterScreen"
+            android:name=".registration.view.RegisterScreen"
             android:exported="false" />
         <activity
             android:name=".EditMedicationDrugActivity"

@@ -1,4 +1,4 @@
-package com.example.androidproject.registration;
+package com.example.androidproject.email_verification.emailVerification_Viewer;
 
 import androidx.appcompat.app.AppCompatActivity;
 

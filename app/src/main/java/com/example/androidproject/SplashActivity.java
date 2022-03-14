@@ -8,8 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.androidproject.home.view.Home;
-import com.example.androidproject.registration.LoginScreen;
-import com.example.androidproject.registration.RegisterScreen;
+import com.example.androidproject.login.loginView.LoginScreen;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.FileAsyncHttpResponseHandler;
 

@@ -1,4 +1,4 @@
-package com.example.androidproject.registration;
+package com.example.androidproject.login.loginView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.androidproject.R;
 import com.example.androidproject.home.view.Home;
+import com.example.androidproject.registration.view.RegisterScreen;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
