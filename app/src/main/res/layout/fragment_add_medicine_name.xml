@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MedicineAddNameEditText" />
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/MedicineAddNameEditText"
         android:layout_width="376dp"
         android:layout_height="48dp"

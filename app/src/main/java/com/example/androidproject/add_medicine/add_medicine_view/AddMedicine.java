@@ -89,7 +89,7 @@ public class AddMedicine extends AppCompatActivity implements AddMedicineFragmen
 
     @Override
     public void nextFragment() {
-        if (currentFragment<6) {
+        if (currentFragment<7) {
             currentFragment++;
             fragmentManager.beginTransaction().replace(R.id.FragmentContainerView, medicineFragment[currentFragment]).commit();
         }else {

@@ -16,6 +16,7 @@ import android.os.Message;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.androidproject.SplashActivity;
 import com.example.androidproject.add_medicine.add_medicine_view.AddMedicine;
 import com.example.androidproject.local_data.LocalList;
 import com.example.androidproject.model.Medicine;
@@ -42,11 +43,14 @@ public class Home extends AppCompatActivity implements HomeInterface {
     private ArrayList<MedicineDose> medicineArrayList = new ArrayList<>();
     private Handler handler;
     private HomePresenterInterface presenterInterface;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        intent = getIntent();
 
         setMyCalendar(findViewById(R.id.calendar));
 
@@ -115,7 +119,6 @@ public class Home extends AppCompatActivity implements HomeInterface {
     public void addMedicine(View view) {
         Intent i = new Intent(this, AddMedicine.class);
         Toast.makeText(this, "new Med Added ", Toast.LENGTH_SHORT).show();
-
         startActivity(i);
 
     }

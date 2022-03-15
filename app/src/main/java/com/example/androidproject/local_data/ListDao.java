@@ -14,13 +14,12 @@ import java.util.ArrayList;
 
 public interface ListDao {
 
-    @Query("SELECT * FROM medicine_list WHERE date LIKE :date " + "LIMIT 1")
+    @Query("SELECT * FROM medicine_list WHERE date LIKE :date LIMIT 1")
     MedicineList findListByDate(String date);
 
     @Insert
     void insertList(MedicineList list);
 
     @Delete
-
     void deleteList(MedicineList list);
 }

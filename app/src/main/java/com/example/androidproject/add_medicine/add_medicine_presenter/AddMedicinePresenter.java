@@ -28,16 +28,19 @@ public class AddMedicinePresenter implements AddmedicinePresenterInterface {
         String endDate = medicine.getEndDate();
         ArrayList<int[]> doses = medicine.getDoseTime();
 
-        Calendar startTime = Calendar.getInstance();
+        Calendar currentDate = Calendar.getInstance();
 
-        while (!startDate.equals(toString(startTime))){
-            Log.i("TAG", "start data: "+startDate + "   current date: "+toString(startTime));
-            startTime.add(Calendar.DAY_OF_MONTH,1);
+        while (!startDate.equals(toString(currentDate))){
+            Log.i("TAG", "start data: "+startDate + "   current date: "+toString(currentDate));
+            currentDate.add(Calendar.DAY_OF_MONTH,1);
         }
 
-        while (!endDate.equals(toString(startTime))){
+
+        while (!endDate.equals(toString(currentDate))){
             ArrayList<MedicineDose> doseArrayList = new ArrayList<>();
+
             for (int i = 0;i < doses.size();i++){
+
                 int[] time = doses.get(i);
                 MedicineDose medicineDose = new MedicineDose();
                 medicineDose.setName(medicine.getName());
@@ -50,20 +53,17 @@ public class AddMedicinePresenter implements AddmedicinePresenterInterface {
                 Log.i("TAG", "Dose added: "+i);
 
             }
+
+
             Log.i("TAG", "List added: ");
-            Log.i("TAG", "end data: "+endDate + "   current date: "+toString(startTime));
-            MedicineList list = new MedicineList(toString(startTime),doseArrayList);
+            Log.i("TAG", "end data: "+endDate + "   current date: "+toString(currentDate));
+
+            MedicineList list = new MedicineList(toString(currentDate),doseArrayList);
             repository.insertList(list);
 
-            startTime.add(Calendar.DAY_OF_MONTH,1);
+            currentDate.add(Calendar.DAY_OF_MONTH,1);
 
         }
-
-        Calendar endTime = Calendar.getInstance();
-        endTime.add(Calendar.MONTH, 1);
-
-
-
 
     }
 

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Spinner;
 
@@ -14,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.androidproject.R;
+import com.example.androidproject.SplashActivity;
 import com.example.androidproject.add_medicine.add_medicine_view.AddMedicineFragmentsCommunicator;
 
 public class MedicineReasonRecurrencyFragment extends Fragment implements AdapterView.OnItemSelectedListener{
@@ -43,6 +45,14 @@ public class MedicineReasonRecurrencyFragment extends Fragment implements Adapte
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
+        AutoCompleteTextView medAutoCompleteTextView = (AutoCompleteTextView) view.findViewById(R.id.MedicineReasonEditText);
+        ArrayAdapter<String> medArrayAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), R.layout.auto_complete_list_items, SplashActivity.diseases);
+        medAutoCompleteTextView.setThreshold(1);
+        medAutoCompleteTextView.setAdapter(medArrayAdapter);
+
+
         next = view.findViewById(R.id.NextReasonRecurrencyBtn);
         next.setOnClickListener(view1 -> communicator.nextFragment());
     }

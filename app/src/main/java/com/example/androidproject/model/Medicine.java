@@ -26,7 +26,6 @@ public class Medicine {
     private String startDate;
     private String endDate;
 
-
     private ArrayList<int[]> doseTime;
 
     public Medicine() {
