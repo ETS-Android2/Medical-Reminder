@@ -9,6 +9,9 @@ import com.example.androidproject.remote_data.MedicineDAO;
 import com.example.androidproject.remote_data.RemoteSource;
 import com.example.androidproject.repo.ListRepository;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -87,6 +90,7 @@ public class AddMedicinePresenter implements AddmedicinePresenterInterface {
     }
     private void uploadData(Medicine medicine){
 
+
         String id = UUID.randomUUID().toString();
         Map<String,Object> doc = new HashMap<>();
         Map<String,ArrayList<int[]>> doc2 = new HashMap<>();
@@ -100,7 +104,7 @@ public class AddMedicinePresenter implements AddmedicinePresenterInterface {
         doc.put("minItem",medicine.getRefillReminder());
         doc.put("totalItem",medicine.getTotalItem());
 
-       doc2.put("DoseTime", medicine.getDoseTime());
+   //    doc.put("DoseTime", Arrays.asList(medicine.getDoseTime()));
         doc.put("DosagesPerTime",medicine.getDosagesPerTime());
         remote.add(id,doc);
 

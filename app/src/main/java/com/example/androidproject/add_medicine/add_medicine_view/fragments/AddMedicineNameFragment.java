@@ -50,8 +50,7 @@ public class AddMedicineNameFragment extends Fragment implements AdapterView.OnI
         super.onViewCreated(view, savedInstanceState);
 
         next = view.findViewById(R.id.NextAddNameBtn);
-        communicator.setName("one");
-        next = view.findViewById(R.id.NextAddNameBtn);
+        name = view.findViewById(R.id.MedicineAddNameEditText);
         next.setOnClickListener((view1)-> {
             communicator.setName(name.getText().toString());
             communicator.nextFragment();
