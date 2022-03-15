@@ -78,7 +78,8 @@ public class SplashActivity extends AppCompatActivity {
         loggedIn = data.getBoolean("LoggedIn", false);
 
         if (medicines.size()>1&&diseases.size()>1){
-                if (loggedIn) {
+
+            if (loggedIn) {
                 Intent intent = new Intent(SplashActivity.this, Home.class);
                 startActivity(intent);
             } else {
@@ -89,6 +90,7 @@ public class SplashActivity extends AppCompatActivity {
             Toast.makeText(this, "Downloading", Toast.LENGTH_SHORT).show();
             getData();
         }
+
 
 
 

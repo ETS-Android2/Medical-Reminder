@@ -9,6 +9,8 @@ import com.example.androidproject.model.MedicineDose;
 import com.example.androidproject.model.MedicineList;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class LocalList implements LocalSource {
 
@@ -46,11 +48,25 @@ public class LocalList implements LocalSource {
                     deleteList(medicineList);
                 }
 
+                ArrayList<MedicineDose> doses = sortList(medicineList.getMedicineDoseArrayList());
+                medicineList.setMedicineDoseArrayList(doses);
 
                 listDao.insertList(medicineList);
             }
         }).start();
 
+    }
+
+    private ArrayList<MedicineDose> sortList(ArrayList<MedicineDose> dose){
+        ArrayList<MedicineDose> doseArrayList = new ArrayList<>();
+        Collections.sort(dose, new Comparator<MedicineDose>() {
+            @Override
+            public int compare(MedicineDose m1, MedicineDose m2) {
+                return m2.getHour() > m1.getDose() ? 1 : m1.getHour() > m2.getHour() ? -1 : 0 ;
+            }
+        });
+
+        return dose;
     }
 
     @Override
