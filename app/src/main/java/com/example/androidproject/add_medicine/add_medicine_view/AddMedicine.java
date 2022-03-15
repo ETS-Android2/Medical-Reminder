@@ -28,7 +28,7 @@ public class AddMedicine extends AppCompatActivity implements AddMedicineFragmen
     Fragment[] medicineFragment = new Fragment[7];
     FragmentManager fragmentManager ;
     int currentFragment = 0;
-    AddmedicinePresenterInterface presenterInterface;
+    AddmedicinePresenterInterface presenterInterface ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +87,7 @@ public class AddMedicine extends AppCompatActivity implements AddMedicineFragmen
         medicine.setDoseTime(doseTime);
     }
 
+
     @Override
     public void nextFragment() {
         if (currentFragment<7) {
@@ -143,4 +144,14 @@ public class AddMedicine extends AppCompatActivity implements AddMedicineFragmen
     public void setRefillReminder(int refillReminder) {
         medicine.setRefillReminder(refillReminder);
     }
+
+    @Override
+    public void setMedicineStrengthUnit(String medicineStrengthUnit) {
+        medicine.setMedicineStrengthUnit(medicineStrengthUnit);
+    }
+    @Override
+    public void setTotalItem(int totalItem) {
+        medicine.setTotalItem(totalItem);
+    }
+
 }
