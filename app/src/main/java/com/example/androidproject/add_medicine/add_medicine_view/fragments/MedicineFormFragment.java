@@ -21,7 +21,6 @@ public class MedicineFormFragment extends Fragment implements AdapterView.OnItem
 
     AddMedicineFragmentsCommunicator communicator;
     Button next;
-    String SelectedForm;
 
     public MedicineFormFragment(){}
     public MedicineFormFragment(AddMedicineFragmentsCommunicator communicator) {
@@ -35,7 +34,7 @@ public class MedicineFormFragment extends Fragment implements AdapterView.OnItem
 
         next = view.findViewById(R.id.Next2Btn);
         next.setOnClickListener(view1 -> {
-            communicator.setMedicineForm(SelectedForm);
+            communicator.setMedicineForm(Medicine.Pill);
             communicator.nextFragment();
         });
 
@@ -57,7 +56,6 @@ public class MedicineFormFragment extends Fragment implements AdapterView.OnItem
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        SelectedForm = adapterView.getItemAtPosition(i).toString();
 
     }
 

@@ -5,8 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,8 +17,6 @@ public class RefillFragment  extends Fragment {
 
     AddMedicineFragmentsCommunicator communicator;
     Button next;
-    EditText total;
-    EditText minToRefill;
 
     public RefillFragment(){}
     public RefillFragment(AddMedicineFragmentsCommunicator communicator) {
@@ -38,20 +34,6 @@ public class RefillFragment  extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         next = view.findViewById(R.id.NextRefillBtn);
-        total = view.findViewById(R.id.MedicineItemEditText);
-        minToRefill = view.findViewById(R.id.MedicineLimitEditText);
-        next.setOnClickListener((view1) ->{
-            if (total.getText().toString().matches("")) {
-                Toast.makeText(view.getContext(), "Please enter the total number of items ", Toast.LENGTH_SHORT).show();
-            }
-            else if(minToRefill.getText().toString().matches("")){
-                Toast.makeText(view.getContext(), "Please enter the limit ", Toast.LENGTH_SHORT).show();
-
-            }else {
-                communicator.setTotalItem(Integer.parseInt(total.getText().toString()));
-                communicator.setRefillReminder(Integer.parseInt(minToRefill.getText().toString()));
-                communicator.confirmAddingMedicine();
-            }
-            });
+        next.setOnClickListener(view1 -> communicator.nextFragment());
     }
 }

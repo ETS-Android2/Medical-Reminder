@@ -10,10 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
+import android.window.SplashScreen;
 
 import com.example.androidproject.R;
+import com.example.androidproject.SplashActivity;
 import com.example.androidproject.add_medicine.add_medicine_view.AddMedicineFragmentsCommunicator;
 import com.example.androidproject.model.Medicine;
 
@@ -22,8 +25,6 @@ public class AddMedicineNameFragment extends Fragment implements AdapterView.OnI
 
     AddMedicineFragmentsCommunicator communicator;
     Button next;
-    EditText name;
-
 
     public AddMedicineNameFragment() {
         // Required empty public constructor
@@ -49,12 +50,13 @@ public class AddMedicineNameFragment extends Fragment implements AdapterView.OnI
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        AutoCompleteTextView medAutoCompleteTextView = (AutoCompleteTextView) view.findViewById(R.id.MedicineAddNameEditText);
+        ArrayAdapter<String> medArrayAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), R.layout.auto_complete_list_items, SplashActivity.medicines);
+        medAutoCompleteTextView.setThreshold(1);
+        medAutoCompleteTextView.setAdapter(medArrayAdapter);
+
         next = view.findViewById(R.id.NextAddNameBtn);
-        name = view.findViewById(R.id.MedicineAddNameEditText);
-        next.setOnClickListener((view1)-> {
-            communicator.setName(name.getText().toString());
-            communicator.nextFragment();
-        });
+        next.setOnClickListener(view1 -> communicator.nextFragment());
 
     }
 

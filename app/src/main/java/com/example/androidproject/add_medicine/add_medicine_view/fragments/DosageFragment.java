@@ -35,7 +35,6 @@ public class DosageFragment extends Fragment implements AdapterView.OnItemSelect
     static ArrayList<int[]> doseTime = new ArrayList<>();
     static int dose;
     static EditText editText;
-    EditText dosage;
 
     Button next;
 
@@ -65,7 +64,6 @@ public class DosageFragment extends Fragment implements AdapterView.OnItemSelect
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         next = view.findViewById(R.id.NextDosagesBtn);
-        dosage = view.findViewById(R.id.MedicineDosagesEditText);
         next.setOnClickListener(view1 -> {
 
             String s = editText.getText().toString().trim();
@@ -74,7 +72,6 @@ public class DosageFragment extends Fragment implements AdapterView.OnItemSelect
             if (dose > 0) {
                 showDialog();
             }
-
         });
 
          editText = view.findViewById(R.id.MedicineDosagesEditText);

@@ -5,27 +5,16 @@ import android.util.Log;
 import com.example.androidproject.model.Medicine;
 import com.example.androidproject.model.MedicineDose;
 import com.example.androidproject.model.MedicineList;
-import com.example.androidproject.remote_data.MedicineDAO;
-import com.example.androidproject.remote_data.RemoteSource;
 import com.example.androidproject.repo.ListRepository;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 public class AddMedicinePresenter implements AddmedicinePresenterInterface {
 
 
     private ListRepository repository;
-    RemoteSource remote = new MedicineDAO();
 
     public AddMedicinePresenter(ListRepository repository){
         this.repository = repository;
@@ -37,7 +26,7 @@ public class AddMedicinePresenter implements AddmedicinePresenterInterface {
 
         String startDate = medicine.getStartDate();
         String endDate = medicine.getEndDate();
-        List<int[]> doses = medicine.getDoseTime();
+        ArrayList<int[]> doses = medicine.getDoseTime();
 
         Calendar currentDate = Calendar.getInstance();
 
@@ -66,7 +55,6 @@ public class AddMedicinePresenter implements AddmedicinePresenterInterface {
             }
 
 
-
             Log.i("TAG", "List added: ");
             Log.i("TAG", "end data: "+endDate + "   current date: "+toString(currentDate));
 
@@ -76,7 +64,6 @@ public class AddMedicinePresenter implements AddmedicinePresenterInterface {
             currentDate.add(Calendar.DAY_OF_MONTH,1);
 
         }
-        uploadData(medicine);
 
     }
 
@@ -87,27 +74,6 @@ public class AddMedicinePresenter implements AddmedicinePresenterInterface {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
         return sdf.format(calendar.getTime());
-    }
-    private void uploadData(Medicine medicine){
-
-
-        String id = UUID.randomUUID().toString();
-        Map<String,Object> doc = new HashMap<>();
-        Map<String,ArrayList<int[]>> doc2 = new HashMap<>();
-
-        doc.put("id",id);
-        doc.put("name",medicine.getName());
-        doc.put("form",medicine.getMedicineForm());
-        doc.put("reason",medicine.getReasonOfTakingDrug());
-        doc.put("recurrency",medicine.getRecurrenceOfTakingDrug());
-        doc.put("strength",medicine.getMedicineStrength()+medicine.getMedicineStrengthUnit());
-        doc.put("minItem",medicine.getRefillReminder());
-        doc.put("totalItem",medicine.getTotalItem());
-
-   //    doc.put("DoseTime", Arrays.asList(medicine.getDoseTime()));
-        doc.put("DosagesPerTime",medicine.getDosagesPerTime());
-        remote.add(id,doc);
-
     }
 
 }

@@ -7,9 +7,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,8 +20,7 @@ public class MedicineStrengthFragment extends Fragment implements AdapterView.On
     View view;
     AddMedicineFragmentsCommunicator communicator;
     Button next;
-    EditText strength;
-    String unit;
+
     public MedicineStrengthFragment(){}
     public MedicineStrengthFragment(AddMedicineFragmentsCommunicator communicator) {
         this.communicator = communicator;
@@ -45,23 +42,12 @@ public class MedicineStrengthFragment extends Fragment implements AdapterView.On
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         next = view.findViewById(R.id.NextStrengthBtn);
-        strength = view.findViewById(R.id.MedicineStrengthEditText);
-        next.setOnClickListener((view1) -> {
-            if (strength.getText().toString().matches("")){
-                Toast.makeText(view.getContext(), "Please enter the medicine strength", Toast.LENGTH_SHORT).show();
-
-            }else {
-                communicator.setMedicineStrength(Integer.parseInt(strength.getText().toString()));
-                communicator.setMedicineStrengthUnit(unit);
-                communicator.nextFragment();
-            }
-
-        });
+        next.setOnClickListener(view1 -> communicator.nextFragment());
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        unit = adapterView.getItemAtPosition(i).toString();
+
     }
 
     @Override

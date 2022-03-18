@@ -24,7 +24,6 @@ public interface AddMedicineFragmentsCommunicator {
     public void setRecurrence(int recurrence);
 
     public void setRefillReminder(int refillReminder);
-    public void setMedicineStrengthUnit(String medicineStrengthUnit);
 
     public void confirmAddingMedicine();
 
@@ -33,8 +32,5 @@ public interface AddMedicineFragmentsCommunicator {
     public void setEndDate(String endDate);
 
     public void setDoseTime(ArrayList<int[]> doseTime);
-
-    public void setTotalItem(int totalItem);
-
 
 }
