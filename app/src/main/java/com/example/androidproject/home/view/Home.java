@@ -7,6 +7,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,6 +33,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import in.akshit.horizontalcalendar.HorizontalCalendarView;
 import in.akshit.horizontalcalendar.Tools;
@@ -67,6 +70,14 @@ public class Home extends AppCompatActivity implements HomeInterface {
                 medicineListAdapter.notifyDataSetChanged();
             }
         };
+
+        WorkManager workManager = WorkManager.getInstance();
+        OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(MyWorkManager.class)
+                .setInitialDelay(7, TimeUnit.SECONDS)
+                .build();
+        workManager.enqueue(oneTimeWorkRequest);
+
+
     }
 
     @Override
