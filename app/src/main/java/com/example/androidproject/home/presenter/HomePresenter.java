@@ -24,6 +24,7 @@ public class HomePresenter implements HomePresenterInterface{
                updateList();
             }
         }).start();
+
     }
 
     void updateList(){

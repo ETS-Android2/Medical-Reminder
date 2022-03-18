@@ -7,15 +7,22 @@ import androidx.lifecycle.LiveData;
 
 import com.example.androidproject.model.MedicineDose;
 import com.example.androidproject.model.MedicineList;
+import com.example.androidproject.remote_data.MedicineDAO;
+import com.example.androidproject.remote_data.RemoteSource;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LocalList implements LocalSource {
 
     private static LocalList localList = null;
     private ListDao listDao;
+
+    RemoteSource remote = new MedicineDAO();
 
     private LocalList(Context context) {
         RoomDb database = RoomDb.getInstance(context);
@@ -49,7 +56,24 @@ public class LocalList implements LocalSource {
                 }
 
                 ArrayList<MedicineDose> doses = sortList(medicineList.getMedicineDoseArrayList());
+
                 medicineList.setMedicineDoseArrayList(doses);
+
+
+                String id = medicineList.getDate();
+                Map<String,Object> obj = new HashMap<>();
+
+                Gson gson = new Gson();
+                ArrayList<String> strings =new ArrayList<>();
+                for(MedicineDose d : medicineList.getMedicineDoseArrayList()){
+                    strings.add(gson.toJson(d,MedicineDose.class));
+
+                }
+
+                Log.i("TAG", "insertMedicineList: "+strings.toString());
+                obj.put("medicinesDose",strings.toString());
+
+                remote.addMedicineDose(id,obj);
 
                 listDao.insertList(medicineList);
             }

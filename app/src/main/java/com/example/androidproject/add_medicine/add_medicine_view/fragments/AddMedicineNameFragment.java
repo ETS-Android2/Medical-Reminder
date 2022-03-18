@@ -13,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.window.SplashScreen;
 
 import com.example.androidproject.R;
@@ -21,14 +23,16 @@ import com.example.androidproject.add_medicine.add_medicine_view.AddMedicineFrag
 import com.example.androidproject.model.Medicine;
 
 
-public class AddMedicineNameFragment extends Fragment implements AdapterView.OnItemSelectedListener{
+public class AddMedicineNameFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     AddMedicineFragmentsCommunicator communicator;
     Button next;
+    EditText name;
 
     public AddMedicineNameFragment() {
         // Required empty public constructor
     }
+
     public AddMedicineNameFragment(AddMedicineFragmentsCommunicator communicator) {
         this.communicator = communicator;
 
@@ -55,8 +59,14 @@ public class AddMedicineNameFragment extends Fragment implements AdapterView.OnI
         medAutoCompleteTextView.setThreshold(1);
         medAutoCompleteTextView.setAdapter(medArrayAdapter);
 
+
+        name = view.findViewById(R.id.MedicineAddNameEditText);
+
         next = view.findViewById(R.id.NextAddNameBtn);
-        next.setOnClickListener(view1 -> communicator.nextFragment());
+        next.setOnClickListener(view1 -> {
+            communicator.setName(name.getText().toString());
+            communicator.nextFragment();
+        });
 
     }
 
