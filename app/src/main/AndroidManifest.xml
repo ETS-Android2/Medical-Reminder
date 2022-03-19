@@ -3,7 +3,8 @@
     package="com.example.androidproject">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
 
     <application
@@ -13,7 +14,10 @@
         android:roundIcon="@drawable/app_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
+        <activity
+            android:name=".alarm_dialog.view.FloatingWindow"
+            android:theme="@style/Theme.Transparent"
+            android:exported="false" />
         <activity
             android:name=".email_verification.emailVerification_Viewer.EmailVerificatinScreen"
             android:exported="false" />

@@ -11,7 +11,9 @@ import com.example.androidproject.remote_data.MedicineDAO;
 import com.example.androidproject.remote_data.RemoteSource;
 import com.google.gson.Gson;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -101,5 +103,25 @@ public class LocalList implements LocalSource {
     @Override
     public MedicineList findListByDate(String date) {
         return listDao.findListByDate(date);
+    }
+
+    @Override
+    public ArrayList<Integer> getTodayTimes() {
+
+        ArrayList<Integer> timeList = new ArrayList<>();
+
+        Calendar today = Calendar.getInstance();
+        MedicineList list = findListByDate(new SimpleDateFormat("dd-MM-yyyy").format(today.getTime()));
+
+        int timeInMinutes = 0;
+        for (MedicineDose dose : list.getMedicineDoseArrayList()) {
+            timeInMinutes = dose.getHour() * 60 + dose.getMinute();
+            if (!timeList.contains(Integer.valueOf(timeInMinutes))){
+                timeList.add(Integer.valueOf(timeInMinutes));
+            }
+        }
+
+
+        return timeList;
     }
 }

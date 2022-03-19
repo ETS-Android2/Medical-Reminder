@@ -10,4 +10,5 @@ public interface LocalSource {
     public void insertList(MedicineList medicineList);
     public void deleteList(MedicineList medicineList);
     public MedicineList  findListByDate(String date);
+    public ArrayList<Integer> getTodayTimes();
 }

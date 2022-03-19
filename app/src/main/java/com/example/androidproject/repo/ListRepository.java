@@ -7,6 +7,8 @@ import androidx.lifecycle.LiveData;
 import com.example.androidproject.local_data.LocalSource;
 import com.example.androidproject.model.MedicineList;
 
+import java.util.ArrayList;
+
 public class ListRepository implements RepoInterface {
 
     private Context context;
@@ -40,6 +42,11 @@ public class ListRepository implements RepoInterface {
     @Override
     public MedicineList findListByDate(String date) {
         return localSource.findListByDate(date);
+    }
+
+    @Override
+    public ArrayList<Integer> getTimes() {
+        return localSource.getTodayTimes();
     }
 
 }

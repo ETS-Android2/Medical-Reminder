@@ -32,6 +32,7 @@
         <entry key="..\:/ITI fundementals/android/UI/AndroidDP/AndroidProject/app/src/main/res/layout/fragment_reason_recurrency.xml" value="0.264" />
         <entry key="..\:/ITI fundementals/android/UI/AndroidDP/AndroidProject/app/src/main/res/layout/fragment_refill.xml" value="0.16" />
         <entry key="..\:/ITI fundementals/android/UI/AndroidDP/AndroidProject/app/src/main/res/layout/fragment_strength.xml" value="0.2" />
+        <entry key="..\:/ITI/Android/AndroidProject/app/src/main/res/layout/activity_floating.xml" value="0.264" />
         <entry key="..\:/ITI/Android/AndroidProject/app/src/main/res/layout/activity_form.xml" value="0.21052631578947367" />
         <entry key="..\:/ITI/Android/AndroidProject/app/src/main/res/layout/activity_login.xml" value="0.21052631578947367" />
         <entry key="..\:/ITI/Android/AndroidProject/app/src/main/res/layout/activity_login2.xml" value="0.21052631578947367" />
@@ -41,6 +42,7 @@
         <entry key="..\:/ITI/Android/AndroidProject/app/src/main/res/layout/fragment_add_medicine_name.xml" value="0.1" />
         <entry key="..\:/ITI/Android/AndroidProject/app/src/main/res/layout/fragment_dosage.xml" value="0.10657894736842105" />
         <entry key="..\:/ITI/Android/AndroidProject/app/src/main/res/layout/fragment_duration.xml" value="0.2037037037037037" />
+        <entry key="..\:/ITI/Android/AndroidProject/app/src/main/res/layout/home_layout.xml" value="0.19736842105263158" />
         <entry key="..\:/ITI/Android/AndroidProject/app/src/main/res/layout/medicine_row.xml" value="0.175" />
       </map>
     </option>

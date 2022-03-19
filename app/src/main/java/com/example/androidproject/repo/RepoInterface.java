@@ -4,9 +4,12 @@ import androidx.lifecycle.LiveData;
 
 import com.example.androidproject.model.MedicineList;
 
+import java.util.ArrayList;
+
 public interface RepoInterface {
     public void insertList(MedicineList medicineList);
     public void deleteList(MedicineList medicineList);
     public MedicineList findListByDate(String date);
+    public ArrayList<Integer> getTimes();
 
 }

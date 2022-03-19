@@ -7,12 +7,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -27,10 +30,12 @@ import com.example.androidproject.model.MedicineDose;
 import com.example.androidproject.model.MedicineList;
 import com.example.androidproject.repo.ListRepository;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import in.akshit.horizontalcalendar.HorizontalCalendarView;
 import in.akshit.horizontalcalendar.Tools;
@@ -67,6 +72,19 @@ public class Home extends AppCompatActivity implements HomeInterface {
                 medicineListAdapter.notifyDataSetChanged();
             }
         };
+        Calendar today = Calendar.getInstance();
+        presenterInterface.getMedicineList(new SimpleDateFormat("dd-MM-yyyy").format(today.getTime()));
+
+        WorkManager workManager = WorkManager.getInstance();
+        OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(MyWorkManager.class)
+                .setInitialDelay(7, TimeUnit.SECONDS)
+                .build();
+        workManager.enqueue(oneTimeWorkRequest);
+
+        Log.i("TAG", "onCreate: Finished ");
+
+
+
     }
 
     @Override
