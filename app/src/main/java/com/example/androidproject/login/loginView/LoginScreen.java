@@ -13,18 +13,22 @@ import android.widget.Toast;
 
 import com.example.androidproject.R;
 import com.example.androidproject.home.view.Home;
+import com.example.androidproject.login.loginPresenter.LoginPresenter;
+import com.example.androidproject.login.loginPresenter.LoginPresenterInterface;
+import com.example.androidproject.login.login_repository.LoginRepositoryInterface;
 import com.example.androidproject.registration.view.RegisterScreen;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginScreen extends AppCompatActivity {
+public class LoginScreen extends AppCompatActivity implements LoginViewInterface{
 
     TextView loginEmail;
     TextView loginPassword;
     Button loginButton;
     Button createAccountButton;
+    LoginPresenterInterface presenterInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,49 +39,26 @@ public class LoginScreen extends AppCompatActivity {
         loginEmail = findViewById(R.id.loginEmail);
         loginPassword = findViewById(R.id.loginPassword);
         loginButton = findViewById(R.id.loginbtn);
-        FirebaseAuth firebaseAuth;
-
-        firebaseAuth = FirebaseAuth.getInstance();
+        presenterInterface = LoginPresenter.getPresenter(this);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String emailLogin = loginEmail.getText().toString();
                 String passwordLogin = loginPassword.getText().toString();
 
                 if (emailLogin.isEmpty()) {
                     loginEmail.setError("Email Address is required");
                     return;
-
                 }
                 if (passwordLogin.isEmpty()) {
-
                     loginPassword.setError("Password is required");
                     return;
                 }
 
-                firebaseAuth.signInWithEmailAndPassword(emailLogin, passwordLogin).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        if (firebaseAuth.getCurrentUser().isEmailVerified()) {
-                            Toast.makeText(getApplicationContext(), "Login is Successful", Toast.LENGTH_SHORT).show();
+                presenterInterface.login(emailLogin,passwordLogin);
 
-                            SharedPreferences data = getSharedPreferences("LoginStatus", MODE_PRIVATE);
-                            data.edit().putBoolean("LoggedIn", true).commit();
-
-                            startActivity(new Intent(getApplicationContext(), Home.class));
-
-                        } else {
-                            Toast.makeText(getApplicationContext(), "please Verify your email  ", Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
 
             }
         });
@@ -91,6 +72,18 @@ public class LoginScreen extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    public void loggedIn() {
+                    SharedPreferences data = getSharedPreferences("LoginStatus",MODE_PRIVATE);
+                    data.edit().putBoolean("LoggedIn", true).commit();
+                    startActivity(new Intent(getApplicationContext(), Home.class));
+    }
+
+    @Override
+    public void sendError(String error){
+        Toast.makeText(this,error,Toast.LENGTH_SHORT).show();
     }
 
     @Override
