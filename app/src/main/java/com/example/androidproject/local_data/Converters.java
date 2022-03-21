@@ -22,4 +22,22 @@ public class Converters {
         String json = gson.toJson(list);
         return json;
     }
+
+}
+
+class Converter2{
+
+    @TypeConverter
+    public static ArrayList<int[]> fromString(String value) {
+        Type listType = new TypeToken<ArrayList<int[]>>() {}.getType();
+        return new Gson().fromJson(value, listType);
+    }
+
+    @TypeConverter
+    public static String fromArrayList(ArrayList<int[]> list) {
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        return json;
+    }
+
 }

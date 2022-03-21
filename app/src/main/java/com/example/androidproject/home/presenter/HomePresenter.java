@@ -13,6 +13,7 @@ public class HomePresenter implements HomePresenterInterface{
     public HomePresenter(HomeInterface homeInterface, ListRepository repository){
         this.repository = repository;
         this.homeInterface = homeInterface;
+        repository.updateManagerTimes();
     }
 
     @Override

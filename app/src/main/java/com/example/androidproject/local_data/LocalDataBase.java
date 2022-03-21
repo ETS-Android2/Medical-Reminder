@@ -3,8 +3,7 @@ package com.example.androidproject.local_data;
 import android.content.Context;
 import android.util.Log;
 
-import androidx.lifecycle.LiveData;
-
+import com.example.androidproject.model.Medicine;
 import com.example.androidproject.model.MedicineDose;
 import com.example.androidproject.model.MedicineList;
 import com.example.androidproject.remote_data.MedicineDAO;
@@ -19,24 +18,24 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LocalList implements LocalSource {
+public class LocalDataBase implements LocalSource {
 
-    private static LocalList localList = null;
-    private ListDao listDao;
+    private static LocalDataBase localDataBase = null;
+    private MedicineDao medicineDao;
 
     RemoteSource remote = new MedicineDAO();
 
-    private LocalList(Context context) {
+    private LocalDataBase(Context context) {
         RoomDb database = RoomDb.getInstance(context);
-        listDao = database.listDao();
+        medicineDao = database.listDao();
 
     }
 
-    public static LocalList getInstance(Context context) {
-        if (localList == null) {
-            localList = new LocalList(context);
+    public static LocalDataBase getInstance(Context context) {
+        if (localDataBase == null) {
+            localDataBase = new LocalDataBase(context);
         }
-        return localList;
+        return localDataBase;
     }
 
 
@@ -46,7 +45,7 @@ public class LocalList implements LocalSource {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                MedicineList list = listDao.findListByDate(medicineList.getDate());
+                MedicineList list = medicineDao.findListByDate(medicineList.getDate());
                 if (list != null) {
                     ArrayList<MedicineDose> doses = medicineList.getMedicineDoseArrayList();
                     for (MedicineDose dose : list.getMedicineDoseArrayList()) {
@@ -77,7 +76,7 @@ public class LocalList implements LocalSource {
 
                 remote.addMedicineDose(id,obj);
 
-                listDao.insertList(medicineList);
+                medicineDao.insertList(medicineList);
             }
         }).start();
 
@@ -88,7 +87,7 @@ public class LocalList implements LocalSource {
         Collections.sort(dose, new Comparator<MedicineDose>() {
             @Override
             public int compare(MedicineDose m1, MedicineDose m2) {
-                return m2.getHour() > m1.getDose() ? 1 : m1.getHour() > m2.getHour() ? -1 : 0 ;
+                return m2.getHour()*60+m2.getMinute() > m1.getDose()*60+m1.getMinute() ? 1 : m1.getHour()*60+m1.getMinute() > m2.getHour()*60+m2.getMinute() ? -1 : 0 ;
             }
         });
 
@@ -97,12 +96,36 @@ public class LocalList implements LocalSource {
 
     @Override
     public void deleteList(MedicineList medicineList) {
-        listDao.deleteList(medicineList);
+        medicineDao.deleteList(medicineList);
     }
 
     @Override
     public MedicineList findListByDate(String date) {
-        return listDao.findListByDate(date);
+        return medicineDao.findListByDate(date);
+    }
+
+    @Override
+    public void insertMedicine(Medicine medicine) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Medicine oldMedicine= findMedicineByName(medicine.getName());
+                if (oldMedicine != null){
+                    deleteMedicine(medicine);
+                }
+                medicineDao.insertMedicine(medicine);
+            }
+        }).start();
+    }
+
+    @Override
+    public void deleteMedicine(Medicine medicine) {
+        medicineDao.deleteMedicine(medicine);
+    }
+
+    @Override
+    public Medicine findMedicineByName(String name) {
+        return medicineDao.findMedicineByName(name);
     }
 
     @Override
@@ -113,11 +136,14 @@ public class LocalList implements LocalSource {
         Calendar today = Calendar.getInstance();
         MedicineList list = findListByDate(new SimpleDateFormat("dd-MM-yyyy").format(today.getTime()));
 
-        int timeInMinutes = 0;
-        for (MedicineDose dose : list.getMedicineDoseArrayList()) {
-            timeInMinutes = dose.getHour() * 60 + dose.getMinute();
-            if (!timeList.contains(Integer.valueOf(timeInMinutes))){
-                timeList.add(Integer.valueOf(timeInMinutes));
+        if (list != null) {
+            int timeInMinutes = 0;
+            for (MedicineDose dose : list.getMedicineDoseArrayList()) {
+                timeInMinutes = dose.getHour() * 60 + dose.getMinute();
+                if (!timeList.contains(Integer.valueOf(timeInMinutes))) {
+                    timeList.add(Integer.valueOf(timeInMinutes));
+                    Log.i("TAG", "getTodayTimes: " + timeInMinutes);
+                }
             }
         }
 

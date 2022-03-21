@@ -21,14 +21,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class MyWorkManager extends Worker {
+public class MyWorker extends Worker {
 
     Calendar currentTime=Calendar.getInstance();
     Date  userSettedTime;
     int durationBetweenTimes;
 
 
-    public MyWorkManager(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+    public MyWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
 
@@ -50,7 +50,6 @@ public class MyWorkManager extends Worker {
                 Intent intent = new Intent(context, FloatingWindow.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
-
             }
         };
 
@@ -62,9 +61,9 @@ public class MyWorkManager extends Worker {
         return Result.success();
     }
 
-    OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(MyWorkManager.class)
+    OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(MyWorker.class)
                                             .setInitialDelay(durationBetweenTimes, TimeUnit.MINUTES)
                                             .build();
 
-     PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(MyWorkManager.class,12 ,TimeUnit.HOURS).build();
+     PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(MyWorker.class,12 ,TimeUnit.HOURS).build();
 }

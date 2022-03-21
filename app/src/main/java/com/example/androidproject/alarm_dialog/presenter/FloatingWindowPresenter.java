@@ -1,7 +1,6 @@
 package com.example.androidproject.alarm_dialog.presenter;
 
 import com.example.androidproject.alarm_dialog.view.FloatingWindowInterface;
-import com.example.androidproject.home.view.HomeInterface;
 import com.example.androidproject.repo.ListRepository;
 
 public class FloatingWindowPresenter implements FloatingWindowPresenterInterface{
@@ -17,11 +16,6 @@ public class FloatingWindowPresenter implements FloatingWindowPresenterInterface
 
     @Override
     public void getTimes() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                windowInterface.updateTimes(repository.getTimes());
-            }
-        });
+               repository.updateManagerTimes();
     }
 }
