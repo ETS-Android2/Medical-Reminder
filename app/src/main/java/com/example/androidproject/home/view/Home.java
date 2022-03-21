@@ -60,6 +60,7 @@ public class Home extends AppCompatActivity implements HomeInterface {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Notifications.showNotifications(this);
 
         checkOverlayPermission();
         checkStoragePermission();

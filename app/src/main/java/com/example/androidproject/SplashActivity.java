@@ -52,7 +52,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
 
-        FileInputStream fis;
+       /* FileInputStream fis;
 
         try {
 
@@ -92,8 +92,8 @@ public class SplashActivity extends AppCompatActivity {
         }
 
 
-
-
+*/
+        startActivity(new Intent(getApplicationContext(),Home.class));
     }
 
     void getData(){
@@ -150,7 +150,7 @@ public class SplashActivity extends AppCompatActivity {
                             Intent intent = new Intent(SplashActivity.this, Home.class);
                             startActivity(intent);
                         } else {
-                            Intent intent = new Intent(SplashActivity.this, LoginScreen.class);
+                            Intent intent = new Intent(SplashActivity.this, Home.class);
                             startActivity(intent);
                         }
                     } catch (IOException e) {

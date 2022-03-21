@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginRepository implements LoginRepositoryInterface {
 
-    LoginPresenterInterface presenterInterface = LoginPresenter.getPresenter();
+    LoginPresenterInterface presenterInterface = LoginPresenter.getPresenter(this);
 
     @Override
     public void login(String email,String password){
