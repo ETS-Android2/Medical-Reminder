@@ -5,11 +5,10 @@ import android.util.Log;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
-import com.example.androidproject.refill_reminder.presenter.MyRefillWorker;
+import com.example.androidproject.home.view.MyWorker;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
 public class MyWorkManager {
@@ -37,7 +36,6 @@ public class MyWorkManager {
 
     private static int getNextTime(ArrayList<Integer> times) {
         int res = 0;
-        Collections.sort(times);
 
         if (times.size() > 0) {
             Calendar today = Calendar.getInstance();
@@ -47,6 +45,7 @@ public class MyWorkManager {
                 Log.i("TAG", current + " getNextTime: Time is " + i.intValue());
                 if (current < i.intValue()) {
                     res = i.intValue()- current;
+                }else {
                     break;
                 }
             }
@@ -55,17 +54,5 @@ public class MyWorkManager {
         return res;
     }
 
-    public static void setCustomAlarm(int interval,String tag){
-        WorkManager workManager = WorkManager.getInstance();
-        workManager.cancelAllWorkByTag(tag);
-            OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(MyRefillWorker.class)
-                    .setInitialDelay(interval, TimeUnit.MINUTES).addTag(tag)
-                    .build();
-            workManager.enqueue(oneTimeWorkRequest);
-            Log.i("TAG", "setCustomAlarm: Done :) on  "+interval);
-
-    }
-
 
 }
-

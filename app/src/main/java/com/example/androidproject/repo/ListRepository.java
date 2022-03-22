@@ -4,7 +4,9 @@ import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.androidproject.alarm_dialog.presenter.MyWorkManager;
 import com.example.androidproject.local_data.LocalSource;
+import com.example.androidproject.model.Medicine;
 import com.example.androidproject.model.MedicineList;
 import com.example.androidproject.remote_data.MedicineDAO;
 import com.example.androidproject.remote_data.RemoteSource;
@@ -49,8 +51,28 @@ public class ListRepository implements RepoInterface {
     }
 
     @Override
-    public ArrayList<Integer> getTimes() {
-        return localSource.getTodayTimes();
+    public void insertMedicine(Medicine medicine) {
+        localSource.insertMedicine(medicine);
+    }
+
+    @Override
+    public void deleteMedicine(Medicine medicine) {
+        localSource.deleteMedicine(medicine);
+    }
+
+    @Override
+    public Medicine findMedicineByName(String name) {
+        return localSource.findMedicineByName(name);
+    }
+
+    @Override
+    public void updateManagerTimes() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                MyWorkManager.updateTimes(localSource.getTodayTimes());
+            }
+        }).start();
     }
 
 }

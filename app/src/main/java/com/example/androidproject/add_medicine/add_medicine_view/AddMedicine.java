@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import com.example.androidproject.add_medicine.add_medicine_presenter.AddMedicinePresenter;
 import com.example.androidproject.add_medicine.add_medicine_presenter.AddmedicinePresenterInterface;
-import com.example.androidproject.local_data.LocalList;
+import com.example.androidproject.local_data.LocalDataBase;
 import com.example.androidproject.model.Medicine;
 import com.example.androidproject.R;
 import com.example.androidproject.add_medicine.add_medicine_view.fragments.AddMedicineNameFragment;
@@ -35,7 +35,7 @@ public class AddMedicine extends AppCompatActivity implements AddMedicineFragmen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_medicine);
 
-        presenterInterface = new AddMedicinePresenter(ListRepository.getInstance(this , LocalList.getInstance(this)));
+        presenterInterface = new AddMedicinePresenter(ListRepository.getInstance(this , LocalDataBase.getInstance(this)));
 
         initFragments();
 
