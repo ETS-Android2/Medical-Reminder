@@ -3,6 +3,8 @@ package com.example.androidproject.model;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Medicine {
 
@@ -18,10 +20,15 @@ public class Medicine {
     private String reasonOfTakingDrug;
     private String recurrenceOfTakingDrug;
     private int dosagesPerTime;
+    private String medicineStrengthUnit;
+
     private int medicineStrength;
     private int TreatmentDuration;
     private int recurrence;
     private int RefillReminder;
+
+
+    private int TotalItem;
 
     private String startDate;
     private String endDate;
@@ -118,6 +125,13 @@ public class Medicine {
     public void setMedicineStrength(int medicineStrength) {
         this.medicineStrength = medicineStrength;
     }
+    public String getMedicineStrengthUnit() {
+        return medicineStrengthUnit;
+    }
+
+    public void setMedicineStrengthUnit(String medicineStrengthUnit) {
+        this.medicineStrengthUnit = medicineStrengthUnit;
+    }
 
     public int getTreatmentDuration() {
         return TreatmentDuration;
@@ -142,6 +156,14 @@ public class Medicine {
     public void setRefillReminder(int refillReminder) {
         RefillReminder = refillReminder;
     }
+    public int getTotalItem() {
+        return TotalItem;
+    }
+
+    public void setTotalItem(int totalItem) {
+        TotalItem = totalItem;
+    }
+
 
 
 }

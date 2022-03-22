@@ -5,25 +5,33 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.androidproject.model.MedicineDose;
+import com.example.androidproject.model.MedicineList;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class MedicineDAO implements RemoteSource {
     private DatabaseReference databaseReference;
     String TAG;
     public FirebaseFirestore fireStore;
-
+    MedicineList medicineList ;
+    MedicineDose medicineDose =  new MedicineDose();
+    String objectAsString;
+    ArrayList<MedicineDose> medicineDoseArrayList  = new ArrayList<>();
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
 
     public MedicineDAO() {
@@ -32,8 +40,8 @@ public class MedicineDAO implements RemoteSource {
     }
 
     public void add(String id, Object doc) {
-
-        fireStore.collection("Medicines").document(id).set(doc)
+        Log.i(TAG, "add: tessssst");
+        fireStore.collection(user.getUid()).document("Medicines").collection("myMedicinesList").document(id).set(doc)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
 
                     @Override
@@ -51,88 +59,71 @@ public class MedicineDAO implements RemoteSource {
 
     @Override
     public void addMedicineDose(String id, Object med) {
+        if(user.getUid()!=null) {
 
-        DocumentReference docIdRef = fireStore.collection("MedicineList").document(id);
-        docIdRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        docIdRef.set(med,SetOptions.merge());
-                        Log.i(TAG, "onComplete: "+"doneeeee");
+            DocumentReference docIdRef = fireStore.collection(user.getUid()).document("MedicineList").collection("DosesPerDay").document(id);
+            docIdRef.set(med);
+            docIdRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            docIdRef.set(med, SetOptions.merge());
+                            Log.i(TAG, "onComplete: " + "doneeeee");
+                        } else {
+                            docIdRef.set(med);
+                        }
                     } else {
-                        docIdRef.set(med);
-                    }
-                } else {
-                    Log.d(TAG, "onComplete: ", task.getException());
+                        Log.d(TAG, "onComplete: ", task.getException());
 
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     @Override
-    public void retrieveData(String date) {
-        Log.i(TAG, "retrieveData: ");
-        DocumentReference docRef = fireStore.collection("MedicineList").document(date);
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                Runnable r = new Runnable() {
-                    @Override
-                    public void run() {
-                        Object object =  documentSnapshot.getData();
+    public MedicineList retrieveData(String date) {
 
-
-                        Gson gson = new Gson();
-                        String json = gson.toJson(object);
-                        try {
-                            JSONObject infoObj = new JSONObject(json).getJSONObject("medicinesDose");
-                            MedicineDose m = gson.fromJson(json, MedicineDose.class);
-                            //     medicineListAdapter.notifyDataSetChanged();
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-//                        Map<String , Object> object = (Map<String, Object>) documentSnapshot.getData();
-//                        MedicineList medicineList1 = new MedicineList();
-//                        medicineList1.setDate(date);
-//                        medicineList1.setMedicineDoseArrayList((ArrayList<MedicineDose>) object.get("medicineDose"));
-//                        Log.i(TAG, "run: "+object.get("medicineDose"));
-
-//                        String json = new Gson().toJson(object);
-//                        Log.v("json", json);
-//                        try {
-//                            JSONObject infoObj = new JSONObject(json).getJSONObject("medicinesDose");
-//                            JSONArray jsonarray = new JSONArray(infoObj);
-//                            Iterator<String> iterator = infoObj.keys();
-//                            while (iterator.hasNext()) {
-//                                for (int i = 0; i < jsonarray.length(); i++) {
-//                                    Log.i(TAG, "run: "+i);
-//                                    String key = iterator.next();
-//                                    JSONObject jsonobject = jsonarray.getJSONObject(i);
-//                                   // JSONObject objArray = infoObj.getJSONObject(key);
-//                                    MedicineDose med = new MedicineDose();
-//                                    med.setName(jsonobject.getString("name"));
-//                                    med.setHour(jsonobject.getInt("hour"));
-//                                    med.setMinute(jsonobject.getInt("minute"));
-//                                    medicineList.add(med);
-//                                }
-//
-//                            }
-//
-//                        } catch (
-//                                JSONException e) {
-//                            e.printStackTrace();
-//                        }
+        if(user.getUid()!=null) {
+            DocumentReference docRef = fireStore.collection(user.getUid()).document("MedicineList").collection("DosesPerDay").document(date);
+            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.getData() != null) {
+                        String returnedString = String.valueOf(document.getData().values());
+                        convertString(returnedString);
+                        medicineList = new MedicineList(date, medicineDoseArrayList);
+                        Log.i(TAG, "retrieveData: "+returnedString);
+                    } else {
+                        Log.d(TAG, "Error getting documents: ", task.getException());
                     }
-                };
-                Thread th = new Thread(r);
-                th.start();
-            }
+                }
+            });
+        }
+        return medicineList;
+    }
 
-        });
+private void convertString(String returnedString){
+    String delimiter = "},";
+    String delimiter2 = " {";
+    String[] s = returnedString.split(Pattern.quote(delimiter+delimiter2));
+    Gson gson = new GsonBuilder()
+            .setLenient()
+            .create();
+    objectAsString = s[0].substring(2)+"}";
+    medicineDose = gson.fromJson(objectAsString, MedicineDose.class);
+    medicineDoseArrayList.add(medicineDose);
 
-
-    }}
+    for(int i=1;i<s.length-1;i++){
+        objectAsString = "{"+s[i]+"}";
+        medicineDose = gson.fromJson(objectAsString, MedicineDose.class);
+        medicineDoseArrayList.add(medicineDose);
+    }
+    objectAsString = "{"+s[s.length-1].substring(0,s[s.length-1].length()-2);
+    medicineDose = gson.fromJson(objectAsString, MedicineDose.class);
+    medicineDoseArrayList.add(medicineDose);
+}
+}

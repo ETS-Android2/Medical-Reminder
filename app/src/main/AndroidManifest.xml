@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
 
 
     <application
@@ -44,6 +45,15 @@
             android:exported="false" />
         <activity
             android:name=".home.view.Home"
+            android:exported="false" />
+        <activity
+            android:name=".add_tracker.AddTracker_Screen"
+            android:exported="false" />
+        <activity
+            android:name=".add_tracker.RequestList"
+            android:exported="false" />
+        <activity
+            android:name=".friend_list.FriendList"
             android:exported="false" />
     </application>
 

@@ -11,6 +11,8 @@
     <string name="RefillReminder">Refill Reminder</string>
     <string name="RefillItem">the total number of items</string>
     <string name="RefillLimit">limit at which you wanted reminded to refill</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">close navigation drawer</string>
 
     <string-array name="Medicine_forms">
         <item>Pill</item>

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,10 +24,12 @@ import java.util.Calendar;
 public class DurationFragment extends Fragment  {
     View view;
     static AddMedicineFragmentsCommunicator communicator;
-    Button next;
+    static Button next;
     static String startDate = null;
     static String endDate = null;
+    static int timeInterval=0;
 
+    EditText timeIntervalEditText;
 
 
     public DurationFragment(){}
@@ -47,10 +50,16 @@ public class DurationFragment extends Fragment  {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        timeIntervalEditText = view.findViewById(R.id.MedicineDurationEditText);
+        timeIntervalEditText.setText("0");
         next = view.findViewById(R.id.NextDurationBtn);
-        next.setOnClickListener(view1 -> showDialog() );
 
-        showDialog();
+        next.setText("Pick Start Date");
+        next.setOnClickListener(view1 -> {
+            timeInterval = Integer.parseInt(timeIntervalEditText.getText().toString().trim());
+            communicator.setTreatmentDuration(timeInterval);
+            showDialog();
+        });
 
     }
 
@@ -75,11 +84,14 @@ public class DurationFragment extends Fragment  {
 
         if (startDate == null){
             startDate = d+"-"+m+"-"+year;
+            next.setText("Pick End Date");
+            Toast.makeText(view.getContext(), "Pick End Date", Toast.LENGTH_SHORT).show();
+
+
         }else if (endDate == null){
             endDate = d+"-"+m+"-"+year;
             communicator.setStartDate(startDate);
             communicator.setEndDate(endDate);
-            communicator.setTreatmentDuration(5);
             communicator.nextFragment();
         }
     }

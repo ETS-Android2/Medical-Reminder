@@ -4,16 +4,23 @@
         android:id="@+id/group1"
         android:checkableBehavior="single">
         <item
-            android:id="@+id/item1"
+            android:id="@+id/home"
             android:title="Home"
             android:checked="true"
             />
         <item
-            android:id="@+id/item2"
-            android:title="your profile" />
+            android:id="@+id/reqList"
+            android:title="Pindig Request" />
         <item
-            android:id="@+id/item3"
-            android:title="Contact US" />
+            android:id="@+id/trackersList"
+            android:title="Your Health Trackers" />
+        <item
+            android:id="@+id/addTracker"
+            android:title="Add Health Tracker" />
+
+        <item
+            android:id="@+id/logout"
+            android:title="Logout" />
     </group>
 
 </menu>
