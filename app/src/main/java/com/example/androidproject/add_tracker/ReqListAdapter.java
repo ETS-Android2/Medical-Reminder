@@ -53,7 +53,7 @@ public class ReqListAdapter extends ArrayAdapter<RequestModel> {
             @Override
             public void onClick(View view) {
                 addTracker.updateStatus(personArr.get(position).getDocId());
-
+                addTracker.getMyFriendMedicines(personArr.get(position).getSenderID());
             }
         });
 

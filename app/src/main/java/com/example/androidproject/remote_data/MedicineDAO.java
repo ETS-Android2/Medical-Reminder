@@ -4,6 +4,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.androidproject.model.Medicine;
 import com.example.androidproject.model.MedicineDose;
 import com.example.androidproject.model.MedicineList;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -59,7 +60,7 @@ public class MedicineDAO implements RemoteSource {
 
     @Override
     public void addMedicineDose(String id, Object med) {
-        if(user.getUid()!=null) {
+        if(user!=null) {
 
             DocumentReference docIdRef = fireStore.collection(user.getUid()).document("MedicineList").collection("DosesPerDay").document(id);
             docIdRef.set(med);
@@ -86,7 +87,7 @@ public class MedicineDAO implements RemoteSource {
     @Override
     public MedicineList retrieveData(String date) {
 
-        if(user.getUid()!=null) {
+        if(user!=null) {
             DocumentReference docRef = fireStore.collection(user.getUid()).document("MedicineList").collection("DosesPerDay").document(date);
             docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override

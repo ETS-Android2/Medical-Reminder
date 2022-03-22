@@ -22,10 +22,10 @@ import com.example.androidproject.add_medicine.add_medicine_view.AddMedicine;
 import com.example.androidproject.add_tracker.AddTracker_Screen;
 import com.example.androidproject.add_tracker.RequestList;
 import com.example.androidproject.friend_list.FriendList;
-import com.example.androidproject.local_data.LocalList;
 import com.example.androidproject.R;
 import com.example.androidproject.home.presenter.HomePresenter;
 import com.example.androidproject.home.presenter.HomePresenterInterface;
+import com.example.androidproject.local_data.LocalDataBase;
 import com.example.androidproject.login.loginView.LoginScreen;
 import com.example.androidproject.model.MedicineDose;
 import com.example.androidproject.model.MedicineList;
@@ -62,8 +62,7 @@ public class Home extends AppCompatActivity implements HomeInterface , Navigatio
     AddTrackerInterface addTracker = new AddTracker();
     LoginScreen login = new LoginScreen();
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
-   String myEmail = user.getEmail();
-   String myID = user.getUid();
+    String myEmail ;
     ArrayList<RequestModel> persons  ;
     ArrayList<RequestModel> friends = new ArrayList<>();
 
@@ -71,6 +70,9 @@ public class Home extends AppCompatActivity implements HomeInterface , Navigatio
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if(user!=null){
+            myEmail = user.getEmail();
+        }
         currentDate = Calendar.getInstance();
         intent = getIntent();
         persons = new ArrayList<>();
@@ -85,7 +87,7 @@ public class Home extends AppCompatActivity implements HomeInterface , Navigatio
         NavigationView navigationView= (NavigationView) findViewById(R.id.nvView);
         navigationView.setNavigationItemSelectedListener(this);
 
-        presenterInterface = new HomePresenter(this, ListRepository.getInstance(this, LocalList.getInstance(this)));
+        presenterInterface = new HomePresenter(this, ListRepository.getInstance(this , LocalDataBase.getInstance(this)));
 
         handler = new Handler(Looper.myLooper()) {
             @Override
@@ -96,8 +98,6 @@ public class Home extends AppCompatActivity implements HomeInterface , Navigatio
         };
         addTracker.reqList(myEmail);
         addTracker.friendList(myEmail);
-        addTracker.test(myID);
-
 
     }
     public void onStart() {
@@ -108,6 +108,7 @@ public class Home extends AppCompatActivity implements HomeInterface , Navigatio
         if(currentUser == null){
             Intent sendIntent = new Intent(this, LoginScreen.class);
             startActivity(sendIntent);
+
         }
     }
 

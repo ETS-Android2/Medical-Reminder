@@ -95,27 +95,29 @@ public class AddMedicinePresenter implements AddmedicinePresenterInterface {
     private void uploadData(Medicine medicine) {
 
 
-        String id = medicine.getName();
+       String id = medicine.getName();
         Map<String, Object> doc = new HashMap<>();
         Map<String, ArrayList<int[]>> doc2 = new HashMap<>();
         Map<String, Object> nestedData = new HashMap<>();
 
 
-        doc.put("id", id);
-        doc.put("form", medicine.getMedicineForm());
-        doc.put("reason", medicine.getReasonOfTakingDrug());
-        doc.put("recurrency", medicine.getRecurrenceOfTakingDrug());
-        doc.put("strength", medicine.getMedicineStrength() + medicine.getMedicineStrengthUnit());
-        doc.put("minItem", medicine.getRefillReminder());
-        doc.put("totalItem", medicine.getTotalItem());
-        doc.put("startdate", medicine.getStartDate());
-        doc.put("enddate", medicine.getEndDate());
-        for (int i = 0; i < medicine.getDosagesPerTime(); i++) {
-            nestedData.put("" + i, Arrays.toString(medicine.getDoseTime().get(i)));
-        }
-        doc.put("DoseTime", nestedData);
+        doc.put("name", id);
+        doc.put("medicineForm", medicine.getMedicineForm());
+        doc.put("reasonOfTakingDrug", medicine.getReasonOfTakingDrug());
+        doc.put("recurrenceOfTakingDrug", medicine.getRecurrenceOfTakingDrug());
+        doc.put("medicineStrength", medicine.getMedicineStrength());
+        doc.put("recurrence", medicine.getRecurrence());
+        doc.put("TreatmentDuration", medicine.getTreatmentDuration());
+        doc.put("RefillReminder", medicine.getRefillReminder());
+        doc.put("startDate", medicine.getStartDate());
+        doc.put("endDate", medicine.getEndDate());
+     //   for (int i = 0; i < medicine.getDosagesPerTime(); i++) {
+       //     nestedData.put("" + i, Arrays.toString(medicine.getDoseTime().get(i)));
+       // }
+        for (int i = 0; i < medicine.getDosagesPerTime(); i++)
+        doc.put("doseTime", Arrays.asList(Arrays.toString(medicine.getDoseTime().get(i))));
 
-        doc.put("DosagesPerTime", medicine.getDosagesPerTime());
+        doc.put("dosagesPerTime", medicine.getDosagesPerTime());
 
         remote.add(id, doc);
         //   remote.addArr(id, medicine);

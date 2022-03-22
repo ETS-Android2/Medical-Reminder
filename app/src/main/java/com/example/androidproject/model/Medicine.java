@@ -1,11 +1,16 @@
 package com.example.androidproject.model;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+@Entity(tableName = "medicine")
 public class Medicine {
 
     public static final String Pill = "Pill";
@@ -15,26 +20,43 @@ public class Medicine {
     public static final String Drops = "Drops";
     public static final String Inhaler = "Inhaler";
 
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name = "name")
     private String name;
-    private String medicineForm;
-    private String reasonOfTakingDrug;
-    private String recurrenceOfTakingDrug;
-    private int dosagesPerTime;
-    private String medicineStrengthUnit;
 
+    @ColumnInfo(name = "medicineForm")
+    private String medicineForm;
+
+    @ColumnInfo(name = "reasonOfTakingDrug")
+    private String reasonOfTakingDrug;
+
+    @ColumnInfo(name = "recurrenceOfTakingDrug")
+    private String recurrenceOfTakingDrug;
+
+    @ColumnInfo(name = "dosagesPerTime")
+    private int dosagesPerTime;
+
+    @ColumnInfo(name = "medicineStrength")
     private int medicineStrength;
+
+    @ColumnInfo(name = "TreatmentDuration")
     private int TreatmentDuration;
+
+    @ColumnInfo(name = "recurrence")
     private int recurrence;
+
+    @ColumnInfo(name = "RefillReminder")
     private int RefillReminder;
 
-
-    private int TotalItem;
-
+    @ColumnInfo(name = "startDate")
     private String startDate;
+
+    @ColumnInfo(name = "endDate")
     private String endDate;
 
+    @ColumnInfo(name = "doseTime")
     private ArrayList<int[]> doseTime;
-
     public Medicine() {
     }
 
@@ -125,13 +147,6 @@ public class Medicine {
     public void setMedicineStrength(int medicineStrength) {
         this.medicineStrength = medicineStrength;
     }
-    public String getMedicineStrengthUnit() {
-        return medicineStrengthUnit;
-    }
-
-    public void setMedicineStrengthUnit(String medicineStrengthUnit) {
-        this.medicineStrengthUnit = medicineStrengthUnit;
-    }
 
     public int getTreatmentDuration() {
         return TreatmentDuration;
@@ -156,14 +171,6 @@ public class Medicine {
     public void setRefillReminder(int refillReminder) {
         RefillReminder = refillReminder;
     }
-    public int getTotalItem() {
-        return TotalItem;
-    }
-
-    public void setTotalItem(int totalItem) {
-        TotalItem = totalItem;
-    }
-
 
 
 }
