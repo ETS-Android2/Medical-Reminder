@@ -7,22 +7,30 @@
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/activity_drug_screen.xml" value="0.22" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/activity_edit_medication_drug.xml" value="0.18" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/activity_email_verificatin_screen.xml" value="0.1675929884566054" />
-        <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/activity_floating.xml" value="0.1675929884566054" />
+        <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/activity_form.xml" value="0.1675929884566054" />
+        <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/activity_login_screen.xml" value="0.1675929884566054" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/activity_main.xml" value="0.15" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/activity_name.xml" value="0.13020833333333334" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/add_medicine.xml" value="0.1" />
+        <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/auto_complete_list_items.xml" value="0.1675929884566054" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/drug_screen.xml" value="0.22" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/drugscreen.xml" value="0.17192982456140352" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/editmedication_drugscreen.xml" value="0.33" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/editmedicationdrugscreen.xml" value="0.1675929884566054" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/editmedicine.xml" value="0.1" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/fragment_add_medicine_name.xml" value="0.15604959384352288" />
+        <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/fragment_duration.xml" value="0.1675929884566054" />
+        <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/fragment_reason_recurrency.xml" value="0.1675929884566054" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/fragment_refill.xml" value="0.15604959384352288" />
+        <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/fragment_strength.xml" value="0.1675929884566054" />
+        <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/header_navigation_drawer.xml" value="0.1675929884566054" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/home_layout.xml" value="0.1675929884566054" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/list_item.xml" value="0.13020833333333334" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/medication_drugscreen.xml" value="0.22" />
+        <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/medicine_row.xml" value="0.1675929884566054" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/layout/toolbar.xml" value="0.15604959384352288" />
         <entry key="..\:/Android/AndroidProject/app/src/main/res/xml/drug_screen.xml" value="0.1675929884566054" />
         <entry key="..\:/ITI fundementals/android/UI/AndroidDP/AndroidProject/app/src/main/res/layout/fragment_add_medicine_name.xml" value="0.1" />

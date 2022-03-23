@@ -184,6 +184,7 @@ public class Home extends AppCompatActivity implements HomeInterface {
     public void checkOverlayPermission(){
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
             if (!Settings.canDrawOverlays(this)) {
                 // send user to the device settings
                 Intent myIntent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);

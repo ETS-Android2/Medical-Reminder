@@ -11,10 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.androidproject.email_verification.emailVerification_Viewer.EmailVerificatinScreen;
+
 import com.example.androidproject.R;
-import com.example.androidproject.home.view.Home;
-import com.example.androidproject.login.loginView.LoginScreen;
 import com.example.androidproject.registration.presenter.RegisterPresenter;
 import com.example.androidproject.registration.presenter.RegisterPresenterInterface;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -22,19 +20,16 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class RegisterScreen extends AppCompatActivity implements RegisterViewInterface {
+public class RegisterScreen extends AppCompatActivity implements RegisterViewInterface{
     TextView registerFullName, registerEmail, registerPassword, registerConfirmPassword;
     Button registerUserButton, goToLoginButton;
-    RegisterPresenterInterface registerPresenterInterface;
 
-
+    RegisterPresenterInterface presenterInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-        if(savedInstanceState!=null){finish();} //register opened twice
 
         registerFullName = findViewById(R.id.registerFullName);
         registerEmail = findViewById(R.id.registerEmailAddress);
@@ -43,8 +38,7 @@ public class RegisterScreen extends AppCompatActivity implements RegisterViewInt
         registerUserButton = findViewById(R.id.registerbtn);
         goToLoginButton = findViewById(R.id.goToLoginButton);
 
-        registerPresenterInterface= RegisterPresenter.getPresenter(this);
-        //fAuth = FirebaseAuth.getInstance();
+        presenterInterface = new RegisterPresenter(this);
 
         registerUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,13 +74,10 @@ public class RegisterScreen extends AppCompatActivity implements RegisterViewInt
                     registerConfirmPassword.setError(" Password Do not match");
                     return;
                 }
-                registerPresenterInterface.register(emailAddress,password);
 
                 //data is validated
-               // Toast.makeText(getApplicationContext(), "Data is Validated", Toast.LENGTH_SHORT).show();
-
-
-
+                Toast.makeText(getApplicationContext(), "Data is Validated", Toast.LENGTH_SHORT).show();
+              presenterInterface.register(emailAddress,password);
 
 
             }
@@ -99,15 +90,15 @@ public class RegisterScreen extends AppCompatActivity implements RegisterViewInt
         });
 
     }
+
     @Override
-    public void registeredSuccessfully(){
-        Toast.makeText(getApplicationContext(),"Data is validated Successfully",Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(getApplicationContext(), LoginScreen.class));
+    public void registered() {
+        Toast.makeText(this, "Registered ,, Check your Mail for Verification", Toast.LENGTH_LONG).show();
+        finish();
     }
 
     @Override
-    public void sendError(String error){
-        Toast.makeText(this,error,Toast.LENGTH_SHORT).show();
+    public void error(String error) {
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
     }
-
 }
