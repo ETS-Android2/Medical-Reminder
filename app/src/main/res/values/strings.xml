@@ -101,6 +101,8 @@
     <string name="SignInBtn">Sign in</string>
     <string name="SignIN">Sign in</string>
     <string name="reason">Reason Of Taking Drug</string>
+    <string name="signup">Sign Up</string>
+    <string name="SIGNUP">Sign Up</string>
 
 
 </resources>
