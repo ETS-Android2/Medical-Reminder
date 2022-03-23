@@ -1,49 +1,43 @@
 package com.example.androidproject.login.loginPresenter;
 
+import androidx.annotation.NonNull;
+
 import com.example.androidproject.login.loginView.LoginViewInterface;
-import com.example.androidproject.login.login_repository.LoginRepository;
-import com.example.androidproject.login.login_repository.LoginRepositoryInterface;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginPresenter implements LoginPresenterInterface{
 
-   //LoginRepositoryInterface repositoryInterface= new LoginRepository();
-   public static LoginRepositoryInterface repositoryInterface;
     public static LoginViewInterface viewInterface ;
 
-    private static LoginPresenter presenter = null;
-
-    private LoginPresenter(){
-
-
-    }
-
-    public static LoginPresenter getPresenter(LoginRepositoryInterface loginRepositoryInterface){
-        repositoryInterface =loginRepositoryInterface;
-        if(presenter == null)
-            presenter = new LoginPresenter();
-
-        return presenter;
-    }
-    public static LoginPresenter getPresenter( LoginViewInterface viewInterface1){
+    public LoginPresenter( LoginViewInterface viewInterface1){
         viewInterface = viewInterface1;
-        if(presenter == null)
-            presenter = new LoginPresenter();
-
-        return presenter;
     }
 
     @Override
     public void login(String email, String password) {
-        repositoryInterface.login(email,password);
+        FirebaseAuth firebaseAuth;
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            @Override
+            public void onSuccess(AuthResult authResult) {
+                if (firebaseAuth.getCurrentUser().isEmailVerified()) {
+                    viewInterface.loggedIn();
+                } else {
+                    viewInterface.sendError("please Verify your email ");
+                }
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                viewInterface.sendError(e.getMessage());
+            }
+        });
+
     }
 
-    @Override
-    public void loggedIn() {
-        viewInterface.loggedIn();
-    }
-
-    @Override
-    public void sendError(String error) {
-        viewInterface.sendError(error);
-    }
 }

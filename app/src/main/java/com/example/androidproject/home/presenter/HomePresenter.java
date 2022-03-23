@@ -1,5 +1,7 @@
 package com.example.androidproject.home.presenter;
 
+import android.util.Log;
+
 import com.example.androidproject.home.view.HomeInterface;
 import com.example.androidproject.model.MedicineList;
 import com.example.androidproject.repo.ListRepository;
@@ -22,6 +24,7 @@ public class HomePresenter implements HomePresenterInterface{
             @Override
             public void run() {
               medicineList = repository.findListByDate(date);
+                Log.i("TAG", "run: list is here "+date);
                updateList();
             }
         }).start();

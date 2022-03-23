@@ -1,57 +1,57 @@
 package com.example.androidproject.registration.presenter;
 
+import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
-import com.example.androidproject.login.loginPresenter.LoginPresenter;
-import com.example.androidproject.login.loginView.LoginViewInterface;
-import com.example.androidproject.login.login_repository.LoginRepository;
-import com.example.androidproject.login.login_repository.LoginRepositoryInterface;
-import com.example.androidproject.registration.RegisterRepository.RegisterRepository;
-import com.example.androidproject.registration.RegisterRepository.RegisterRepositoryInterface;
+import androidx.annotation.NonNull;
+
 import com.example.androidproject.registration.view.RegisterViewInterface;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterPresenter implements RegisterPresenterInterface{
 
-    public static RegisterRepositoryInterface repositoryInterface;
-    public static RegisterViewInterface viewInterface ;
+    RegisterViewInterface viewInterface;
+    FirebaseAuth fAuth;
 
-    private static RegisterPresenter presenter = null;
-
-    private RegisterPresenter(){
-
-    }
-
-    public static RegisterPresenter getPresenter(RegisterRepositoryInterface registerRepositoryInterface){
-        repositoryInterface=registerRepositoryInterface;
-        if(presenter == null)
-            presenter = new RegisterPresenter();
-
-        return presenter;
-    }
-    public static RegisterPresenter getPresenter( RegisterViewInterface viewInterface1){
-        viewInterface = viewInterface1;
-        if(presenter == null)
-            presenter = new RegisterPresenter();
-
-        return presenter;
+    public RegisterPresenter(RegisterViewInterface viewInterface){
+        this.viewInterface = viewInterface;
     }
 
     @Override
     public void register(String emailAddress, String password) {
 
-        Log.i("TAG","register presenter");
 
-        repositoryInterface.register(emailAddress,password);
-    }
+        fAuth = FirebaseAuth.getInstance();
 
-    @Override
-    public void sendError(String error) {
-        viewInterface.sendError(error);
-    }
+        fAuth.createUserWithEmailAndPassword(emailAddress, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            @Override
+            public void onSuccess(AuthResult authResult) {
+                //send user to Next Page
+                Log.i("TAG", "onSuccess:register done ");
+                fAuth.getCurrentUser().sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        viewInterface.registered();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        viewInterface.error(e.getMessage());
+                    }
+                });
 
-    @Override
-    public void registeredSuccessfully(){
-        viewInterface.registeredSuccessfully();
-        Log.i("TAG","view registered successfully");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                viewInterface.error(e.getMessage());
+            }
+        });
+
+
     }
 }

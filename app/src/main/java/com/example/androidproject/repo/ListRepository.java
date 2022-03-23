@@ -46,8 +46,9 @@ public class ListRepository implements RepoInterface {
 
     @Override
     public MedicineList findListByDate(String date) {
-        return remoteSource.retrieveData(date);
-        // localSource.findListByDate(date);
+        MedicineList medicineList =  localSource.findListByDate(date);
+        if (medicineList == null) medicineList = remoteSource.retrieveData(date);
+        return medicineList;
     }
 
     @Override

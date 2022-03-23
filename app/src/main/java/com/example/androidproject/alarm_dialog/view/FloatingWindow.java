@@ -29,7 +29,7 @@ public class FloatingWindow extends AppCompatActivity implements FloatingWindowI
 
     FloatingWindowPresenterInterface presenterInterface;
     MediaPlayer mMediaPlayer;
-    Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+    Vibrator vibrator;
 
 
     @Override
@@ -41,6 +41,7 @@ public class FloatingWindow extends AppCompatActivity implements FloatingWindowI
                 WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_floating);
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         setMediaPlayer();
 
         presenterInterface = new FloatingWindowPresenter(this, ListRepository.getInstance(this , LocalDataBase.getInstance(this)));
