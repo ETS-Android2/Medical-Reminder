@@ -16,6 +16,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class LocalDataBase implements LocalSource {
@@ -62,19 +63,19 @@ public class LocalDataBase implements LocalSource {
 
 
                 String id = medicineList.getDate();
-                Map<String,Object> obj = new HashMap<>();
+                Map<String, Object> obj = new HashMap<>();
 
                 Gson gson = new Gson();
-                ArrayList<String> strings =new ArrayList<>();
-                for(MedicineDose d : medicineList.getMedicineDoseArrayList()){
-                    strings.add(gson.toJson(d,MedicineDose.class));
+                ArrayList<String> strings = new ArrayList<>();
+                for (MedicineDose d : medicineList.getMedicineDoseArrayList()) {
+                    strings.add(gson.toJson(d, MedicineDose.class));
 
                 }
 
-                Log.i("TAG", "insertMedicineList: "+strings.toString());
-                obj.put("medicinesDose",strings.toString());
+                Log.i("TAG", "insertMedicineList: " + strings.toString());
+                obj.put("medicinesDose", strings.toString());
 
-                remote.addMedicineDose(id,obj);
+                remote.addMedicineDose(id, obj);
 
                 medicineDao.insertList(medicineList);
             }
@@ -82,12 +83,12 @@ public class LocalDataBase implements LocalSource {
 
     }
 
-    private ArrayList<MedicineDose> sortList(ArrayList<MedicineDose> dose){
+    private ArrayList<MedicineDose> sortList(ArrayList<MedicineDose> dose) {
         ArrayList<MedicineDose> doseArrayList = new ArrayList<>();
         Collections.sort(dose, new Comparator<MedicineDose>() {
             @Override
             public int compare(MedicineDose m1, MedicineDose m2) {
-                return m2.getHour()*60+m2.getMinute() > m1.getDose()*60+m1.getMinute() ? 1 : m1.getHour()*60+m1.getMinute() > m2.getHour()*60+m2.getMinute() ? -1 : 0 ;
+                return m2.getHour() * 60 + m2.getMinute() > m1.getDose() * 60 + m1.getMinute() ? 1 : m1.getHour() * 60 + m1.getMinute() > m2.getHour() * 60 + m2.getMinute() ? -1 : 0;
             }
         });
 
@@ -105,12 +106,41 @@ public class LocalDataBase implements LocalSource {
     }
 
     @Override
+    public List<MedicineList> findAll() {
+        return medicineDao.findAll();
+    }
+
+    @Override
+    public void deleteMedicineByName(String name) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                medicineDao.deleteMedicine(medicineDao.findMedicineByName(name));
+                List<MedicineList> medicineLists = medicineDao.findAll();
+                Log.i("TAG", "run: findAll size is " + medicineLists.size());
+                for (MedicineList list : medicineLists) {
+                    ArrayList<MedicineDose> doses = list.getMedicineDoseArrayList();
+                    for (MedicineDose dose : doses) {
+                        if (dose.getName().equals(name)) {
+                            doses.remove(dose);
+                            Log.i("TAG", "run: removed from "+list.getDate());
+                        }
+                    }
+                    medicineDao.deleteList(list);
+                    list.setMedicineDoseArrayList(doses);
+                    medicineDao.insertList(list);
+                }
+            }
+        }).start();
+    }
+
+    @Override
     public void insertMedicine(Medicine medicine) {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Medicine oldMedicine= findMedicineByName(medicine.getName());
-                if (oldMedicine != null){
+                Medicine oldMedicine = findMedicineByName(medicine.getName());
+                if (oldMedicine != null) {
                     deleteMedicine(medicine);
                 }
                 medicineDao.insertMedicine(medicine);

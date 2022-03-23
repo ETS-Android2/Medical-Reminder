@@ -7,12 +7,18 @@ import androidx.room.Query;
 import com.example.androidproject.model.Medicine;
 import com.example.androidproject.model.MedicineList;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @androidx.room.Dao
 
 public interface MedicineDao {
 
     @Query("SELECT * FROM medicine_list WHERE date LIKE :date LIMIT 1")
     MedicineList findListByDate(String date);
+
+    @Query("SELECT * FROM medicine_list")
+    List<MedicineList> findAll();
 
     @Insert
     void insertList(MedicineList list);
@@ -28,6 +34,7 @@ public interface MedicineDao {
 
     @Delete
     void deleteMedicine(Medicine medicine);
+
 
 
 }

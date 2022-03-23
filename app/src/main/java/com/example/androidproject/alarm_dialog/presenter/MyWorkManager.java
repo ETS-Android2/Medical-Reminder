@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
+import com.example.androidproject.alarm_dialog.view.FloatingWindow;
 import com.example.androidproject.refill_reminder.presenter.MyRefillWorker;
 
 import java.util.ArrayList;
@@ -66,6 +67,13 @@ public class MyWorkManager {
 
     }
 
-
+    public static void snooze(){
+        WorkManager workManager = WorkManager.getInstance();
+        OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(MyWorker.class)
+                .setInitialDelay(5, TimeUnit.MINUTES)
+                .build();
+        workManager.enqueue(oneTimeWorkRequest);
+        Log.i("TAG", "Snoozed: Done :) for 5 Minutes  ");
+    }
 }
 

@@ -32,4 +32,9 @@ public class DrugScreenPresenter implements DrugScreenPresenterInterface{
             }
         }).start();
     }
+
+    @Override
+    public void deleteMedicine(String name) {
+        repository.deleteMedicineByName(name);
+    }
 }

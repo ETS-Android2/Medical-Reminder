@@ -17,7 +17,7 @@ import com.example.androidproject.R;
 public class RefillReminder extends AppCompatActivity {
 
     MediaPlayer mMediaPlayer;
-    Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+    Vibrator vibrator ;
 
 
     @Override
@@ -29,6 +29,7 @@ public class RefillReminder extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_refill_reminder);
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         setMediaPlayer();
 
 

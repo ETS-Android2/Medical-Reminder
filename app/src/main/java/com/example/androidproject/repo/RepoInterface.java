@@ -15,6 +15,7 @@ public interface RepoInterface {
     public void insertMedicine(Medicine medicine);
     public void deleteMedicine(Medicine medicine);
     public Medicine findMedicineByName(String name);
+    public void deleteMedicineByName(String name);
 
     public void updateManagerTimes();
 

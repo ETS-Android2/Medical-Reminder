@@ -31,6 +31,7 @@ public class AddMedicinePresenter implements AddmedicinePresenterInterface {
     public void addNewMedicine(Medicine medicine) {
         Log.i("TAG", " New medicine was added :) ");
 
+        Log.i("TAG", "addNewMedicine: "+medicine.toString());
         String startDate = medicine.getStartDate();
         String endDate = medicine.getEndDate();
         ArrayList<int[]> doses = medicine.getDoseTime();

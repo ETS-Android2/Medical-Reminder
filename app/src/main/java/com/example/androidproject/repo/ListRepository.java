@@ -67,6 +67,11 @@ public class ListRepository implements RepoInterface {
     }
 
     @Override
+    public void deleteMedicineByName(String name) {
+        localSource.deleteMedicineByName(name);
+    }
+
+    @Override
     public void updateManagerTimes() {
         new Thread(new Runnable() {
             @Override

@@ -81,8 +81,8 @@ public class FloatingWindow extends AppCompatActivity implements FloatingWindowI
     public void snoozeAlarm(View view){
         mMediaPlayer.stop();
         vibrator.cancel();
-        MyWorkManager.setCustomAlarm(10,"Snooze");
-        Toast.makeText(this, "Snoozed 10 Minutes", Toast.LENGTH_SHORT).show();
+        MyWorkManager.snooze();
+        Toast.makeText(this, "Snoozed 5 Minutes", Toast.LENGTH_SHORT).show();
         finish();
     }
 
