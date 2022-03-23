@@ -8,9 +8,10 @@
 
     <TextView
         android:id="@+id/MedicineDosagesTextView"
-        android:layout_width="246dp"
-        android:layout_height="49dp"
-        android:layout_marginEnd="80dp"
+        android:layout_width="329dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="40dp"
         android:gravity="center"
         android:text="@string/MedDosages"
         android:textColor="@color/very_dark_gray"
@@ -20,38 +21,28 @@
 
     <EditText
         android:id="@+id/MedicineDosagesEditText"
-        android:inputType="numberDecimal"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="131dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="128dp"
         android:hint="Example : 2 Pills"
+        android:inputType="numberDecimal"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MedicineDosagesTextView"/>
-
-    <Spinner
-        android:id="@+id/MedicineDosagesSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:contentDescription="@string/addMedications"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MedicineDosagesEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/MedicineDosagesTextView" />
 
     <Button
         android:id="@+id/NextDosagesBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="162dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="160dp"
         android:background="@color/dark_gray"
         android:text="Next"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MedicineDosagesSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/MedicineDosagesEditText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.loginView.GoogelAuthentication">
+
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <com.shaishavgandhi.loginbuttons.FacebookButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Sign In With Facebook"
+            android:textAlignment="center"
+            app:iconSize="30sp"
+
+
+            />
+
+
+        <com.shaishavgandhi.loginbuttons.GoogleButton
+            android:id="@+id/loginWithGoogle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Sign In With Google"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_red_dark"
+            app:iconSize="30sp"
+
+
+            />
+
+        <com.shaishavgandhi.loginbuttons.TwitterButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Sign In With Twitter"
+            android:textAlignment="center"
+            app:iconSize="30sp"
+
+
+            />
+
+
+        <com.shaishavgandhi.loginbuttons.LinkedInButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Sign In With Linkedin"
+            android:textAlignment="center"
+            app:iconSize="30sp"
+
+
+            />
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

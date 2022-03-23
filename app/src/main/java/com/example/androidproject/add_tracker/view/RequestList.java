@@ -1,4 +1,4 @@
-package com.example.androidproject.add_tracker;
+package com.example.androidproject.add_tracker.view;
 
 
 import android.content.Intent;
@@ -19,7 +19,6 @@ import com.example.androidproject.remote_data.AddTrackerInterface;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class RequestList extends AppCompatActivity  {

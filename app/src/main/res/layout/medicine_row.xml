@@ -5,14 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#e8eaf6">
+    android:background="#EAFAF1">
 
 
     <ImageView
         android:id="@+id/MedicineImg"
+        android:layout_marginStart="10dp"
         android:layout_width="99dp"
         android:layout_height="122dp"
-        android:src="@drawable/medicine_row_icon" />
+        android:src="@drawable/medication" />
 
     <TextView
         android:id="@+id/MedicineStrengthTextViewRow"

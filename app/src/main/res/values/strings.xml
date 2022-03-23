@@ -5,12 +5,12 @@
     <string name="MedForm">Choose Medicine Form</string>
     <string name="MedStrength">Choose Medicine Strength</string>
     <string name="MedReason">The reason of taking this drug</string>
-    <string name="MedRecurrency">The Recurrency of taking this drug</string>
-    <string name="MedDosages">The dosages per time</string>
+    <string name="MedRecurrency">The Recurrence of taking this drug</string>
+    <string name="MedDosages">The Recurrence of taking this drug per day</string>
     <string name="MedDuration">Enter the duration of treatment</string>
     <string name="RefillReminder">Refill Reminder</string>
     <string name="RefillItem">the total number of items</string>
-    <string name="RefillLimit">limit at which you wanted reminded to refill</string>
+    <string name="RefillLimit">limit wanted reminded to refill</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">close navigation drawer</string>
 

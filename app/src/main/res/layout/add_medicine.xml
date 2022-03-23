@@ -27,14 +27,14 @@
                 android:layout_width="150dp"
                 android:layout_height="300dp"
                 android:layout_gravity="center"
-                android:src="@drawable/pill"
+                android:src="@drawable/capsules"
                 app:layout_collapseMode="parallax" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/bluelogo"
+                android:background="#138D75"
                 app:layout_collapseMode="pin">
 
 
@@ -51,7 +51,7 @@
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/FragmentContainerView"
             android:layout_width="match_parent"
-            android:layout_height="425dp"
+            android:layout_height="400dp"
             android:contentDescription="@string/app_name"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 

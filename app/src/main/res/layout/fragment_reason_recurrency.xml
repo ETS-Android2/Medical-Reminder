@@ -19,36 +19,16 @@
 
     <AutoCompleteTextView
         android:id="@+id/MedicineReasonEditText"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_width="359dp"
+        android:layout_height="70dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="64dp"
         android:hint="ُExample: I suffer from chronic migraines"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
     </AutoCompleteTextView>
-
-    <TextView
-        android:id="@+id/MedicineRecurrencyTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center_horizontal"
-        android:text="@string/MedRecurrency"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MedicineReasonEditText" />
-
-    <Spinner
-        android:id="@+id/MedicineRecurrencySpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/MedRecurrency"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MedicineRecurrencyTextView" />
 
     <Button
         android:id="@+id/NextReasonRecurrencyBtn"
@@ -56,10 +36,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="160dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="76dp"
         android:background="@color/dark_gray"
         android:text="Next"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MedicineRecurrencySpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/MedicineReasonEditText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

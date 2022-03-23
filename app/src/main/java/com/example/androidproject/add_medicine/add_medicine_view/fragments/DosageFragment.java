@@ -28,7 +28,7 @@ import com.example.androidproject.add_medicine.add_medicine_view.AddMedicineFrag
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class DosageFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class DosageFragment extends Fragment   {
     View view;
 
 
@@ -52,11 +52,7 @@ public class DosageFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_dosage, container, false);
-        Spinner MedicineDosagesSpinner = (Spinner) view.findViewById(R.id.MedicineDosagesSpinner);
-        ArrayAdapter<CharSequence> medicineDosagesAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.Medicine_Dosages, android.R.layout.simple_spinner_item);
-        medicineDosagesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        MedicineDosagesSpinner.setAdapter(medicineDosagesAdapter);
-        MedicineDosagesSpinner.setOnItemSelectedListener(this);
+
         return view;
 
     }
@@ -102,15 +98,7 @@ public class DosageFragment extends Fragment implements AdapterView.OnItemSelect
     }
 
 
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
 
     public static class TimePickerFragment extends DialogFragment
             implements TimePickerDialog.OnTimeSetListener {

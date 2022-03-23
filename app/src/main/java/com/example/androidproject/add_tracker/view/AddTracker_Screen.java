@@ -1,4 +1,4 @@
-package com.example.androidproject.add_tracker;
+package com.example.androidproject.add_tracker.view;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,6 +14,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.androidproject.R;
+import com.example.androidproject.add_tracker.Presenter.AddTrackerPresenter;
+import com.example.androidproject.add_tracker.Presenter.AddTrackerPresenterInterface;
 import com.example.androidproject.model.RequestModel;
 import com.example.androidproject.remote_data.AddTracker;
 import com.example.androidproject.remote_data.AddTrackerInterface;
@@ -22,7 +24,7 @@ public class AddTracker_Screen extends AppCompatActivity {
 
     private Button mButton;
     final Context c = this;
-    AddTrackerInterface addTracker = new AddTracker();
+    AddTrackerPresenterInterface addTracker;
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class AddTracker_Screen extends AppCompatActivity {
         Intent intent = getIntent();
         String myEmail = intent.getStringExtra("SenderEmail");
         String myID = intent.getStringExtra("SenderID");
+        addTracker = new AddTrackerPresenter(this);
 
         mButton = (Button) findViewById(R.id.openUserInputDialog);
         mButton.setOnClickListener(new View.OnClickListener() {
