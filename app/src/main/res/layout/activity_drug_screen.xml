@@ -38,21 +38,11 @@
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
-                android:id="@+id/editDrugItemButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/editbtn2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
-            <Button
                 android:id="@+id/deleteDrugItem"
                 android:layout_width="49dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="72dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/deletebtn2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -66,16 +56,16 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.632" />
+                app:layout_constraintVertical_bias="0.576" />
 
             <TextView
                 android:id="@+id/drugAmountTextView"
                 android:layout_width="255dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="64dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editDrugItemButton" />
+                app:layout_constraintTop_toBottomOf="@+id/drugItemNameextView" />
 
             <ImageView
                 android:id="@+id/imageViewdrugscreen"
