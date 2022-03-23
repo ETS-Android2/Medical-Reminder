@@ -52,7 +52,18 @@
             android:exported="false" />
         <activity android:name=".drug_screen.view.DrugScreenActivity"
             android:exported="false"/>
-
+        <activity
+            android:name=".add_tracker.view.AddTracker_Screen"
+            android:exported="false" />
+        <activity
+            android:name=".add_tracker.view.RequestList"
+            android:exported="false" />
+        <activity
+            android:name=".friend_list.FriendList"
+            android:exported="false" />
+        <activity
+            android:name=".login.loginView.GoogelAuthentication"
+            android:exported="false" />
     </application>
 
 </manifest>

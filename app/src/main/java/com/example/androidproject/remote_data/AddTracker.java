@@ -1,12 +1,17 @@
 package com.example.androidproject.remote_data;
 
+import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.androidproject.add_medicine.add_medicine_presenter.AddMedicinePresenter;
+import com.example.androidproject.add_medicine.add_medicine_presenter.AddmedicinePresenterInterface;
+import com.example.androidproject.local_data.LocalDataBase;
 import com.example.androidproject.model.Medicine;
 import com.example.androidproject.model.RequestModel;
+import com.example.androidproject.repo.ListRepository;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -23,7 +28,9 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonReader;
 
+import java.io.StringReader;
 import java.util.ArrayList;
 
 public class AddTracker implements AddTrackerInterface {
@@ -34,6 +41,7 @@ public class AddTracker implements AddTrackerInterface {
     ArrayList<RequestModel> friends = new ArrayList<>();
     ArrayList<Medicine> friendMedicines = new ArrayList<>();
 
+    Context context;
 
     public AddTracker() {
         fireStore = FirebaseFirestore.getInstance();
@@ -42,48 +50,61 @@ public class AddTracker implements AddTrackerInterface {
 
     @Override
     public void sendRequest(String id, RequestModel req) {
-        Log.i("TAG", "sendRequest: ");
-        fireStore.collection("Requests").document("FriendRequests").collection(req.getReceiverEmail()).document().set(req)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Log.i("TAG", "sendRequest: doneeee ");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Log.i("TAG", "sendRequest: ");
+                fireStore.collection("Requests").document("FriendRequests").collection(req.getReceiverEmail()).document().set(req)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Log.i("TAG", "sendRequest: doneeee ");
 
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.i("TAG", "onFailure: ");
-                    }
-                });
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.i("TAG", "onFailure: ");
+                            }
+                        });
+
+            }
+        }).start();
+
     }
 
     @Override
     public void reqList(String id) {
-if(user!=null) {
-    fireStore.collection("Requests").document("FriendRequests").collection(id).whereEqualTo("states", "Pending")
-            .
+        if (user != null) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    fireStore.collection("Requests").document("FriendRequests").collection(id).whereEqualTo("states", "Pending")
+                            .
 
-                    addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                    addSnapshotListener(new EventListener<QuerySnapshot>() {
 
-                        @Override
-                        public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                            if (error != null) {
-                                Log.d(TAG, "Error: " + error.getMessage());
-                            }
-                            for (DocumentChange doc : value.getDocumentChanges()) {
-                                if (doc.getType() == DocumentChange.Type.ADDED) {
+                                        @Override
+                                        public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                                            if (error != null) {
+                                                Log.d(TAG, "Error: " + error.getMessage());
+                                            }
+                                            for (DocumentChange doc : value.getDocumentChanges()) {
+                                                if (doc.getType() == DocumentChange.Type.ADDED) {
 
-                                    Log.i(TAG, "onEvent: " + doc.getDocument().getId());
-                                    RequestModel req = doc.getDocument().toObject(RequestModel.class);
-                                    req.setDocId(doc.getDocument().getId());
-                                    trackers.add(req);
-                                }
-                            }
-                        }
-                    });
-}
+                                                    Log.i(TAG, "onEvent: " + doc.getDocument().getId());
+                                                    RequestModel req = doc.getDocument().toObject(RequestModel.class);
+                                                    req.setDocId(doc.getDocument().getId());
+                                                    trackers.add(req);
+                                                }
+                                            }
+                                        }
+                                    });
+
+                }
+            }).start();
+        }
     }
 
     @Override
@@ -93,27 +114,33 @@ if(user!=null) {
 
     @Override
     public void updateStatus(String id) {
-        DocumentReference washingtonRef =
-                fireStore.collection("Requests").document("FriendRequests").collection(user.getEmail()).document(id);
-        washingtonRef.
-                update("states", "accepted")
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "DocumentSnapshot successfully updated!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error updating document", e);
-                    }
-                });
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                DocumentReference docRef =
+                        fireStore.collection("Requests").document("FriendRequests").collection(user.getEmail()).document(id);
+                docRef.
+                        update("states", "accepted")
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d(TAG, "DocumentSnapshot successfully updated!");
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Error updating document", e);
+                            }
+                        });
+            }
+        }).start();
+
     }
 
     @Override
     public ArrayList<Medicine> friendList(String id) {
-        if(user!=null) {
+        if (user != null) {
             fireStore.collection("Requests").document("FriendRequests").collection(user.getEmail())
                     .whereEqualTo("states", "accepted")
                     .get()
@@ -139,13 +166,15 @@ if(user!=null) {
         }
         return friendMedicines;
     }
+
     @Override
     public ArrayList<RequestModel> returnFriendsArr() {
         return friends;
     }
 
     @Override
-    public void getMyFriendMedicines(String id) {
+    public ArrayList<Medicine> getMyFriendMedicines(String id, Context context) {
+        this.context = context;
         ArrayList<Medicine> list = new ArrayList<>();
         fireStore.collection(id).document("Medicines").collection("myMedicinesList").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -154,38 +183,75 @@ if(user!=null) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
-                               getAllMedicinesName(id,document.getId());
+                                getAllMedicinesName(id, document.getId());
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     }
                 });
+        return friendMedicines;
     }
 
-    private   void getAllMedicinesName(String friendID,String id) {
-        fireStore.collection(friendID).document("Medicines").collection("myMedicinesList").document(id).get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                                Gson gson = new GsonBuilder()
-                                        .setLenient()
-                                        .create();
-                                String returned = String.valueOf(document.getData());
-                                Log.i(TAG, "My Friend Medications"+returned);
-                                Medicine med = gson.fromJson(returned, Medicine.class);
-                                friendMedicines.add(med);
-                            } else {
-                                Log.d(TAG, "No such document");
+    private void getAllMedicinesName(String friendID, String id) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                fireStore.collection(friendID).document("Medicines").collection("myMedicinesList").document(id).get()
+                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    DocumentSnapshot document = task.getResult();
+                                    if (document.exists()) {
+                                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+
+
+                                        AddmedicinePresenterInterface presenterInterface = new AddMedicinePresenter(ListRepository.getInstance(context, LocalDataBase.getInstance(context)));
+
+                                        String returned = String.valueOf(document.getData());
+                                        returned = returned.replace('=', ':').trim();
+                                        Gson gson = new Gson();
+                                        JsonReader reader = new JsonReader(new StringReader(returned));
+                                        reader.setLenient(true);
+                                        Medicine med = gson.fromJson(returned, Medicine.class);
+                                        Log.i(TAG, "My Friend Medications" + returned);
+
+                                        presenterInterface.addNewMedicine(med);
+
+
+                                        friendMedicines.add(med);
+                                    } else {
+                                        Log.d(TAG, "No such document");
+                                    }
+                                } else {
+                                    Log.d(TAG, "get failed with ", task.getException());
+                                }
                             }
-                        } else {
-                            Log.d(TAG, "get failed with ", task.getException());
-                        }
+                        });
+
+            }
+        }).start();
+
+    }
+
+    @Override
+    public void deleteHealthTracker(String id) {
+        DocumentReference docRef =
+                fireStore.collection("Requests").document("FriendRequests").collection(user.getEmail()).document(id);
+        docRef.delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully deleted!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error deleting document", e);
                     }
                 });
+
     }
 }

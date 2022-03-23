@@ -98,7 +98,7 @@ public class DurationFragment extends Fragment  {
 
 
 
-     public static class DatePickerFragment extends DialogFragment
+    public static class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {
 
         @Override
@@ -114,7 +114,7 @@ public class DurationFragment extends Fragment  {
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
-             onDateSelected( view,  year,  month,  day);
+            onDateSelected( view,  year,  month,  day);
 
         }
     }

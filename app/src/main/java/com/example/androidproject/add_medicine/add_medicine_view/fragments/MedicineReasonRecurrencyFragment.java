@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
@@ -18,12 +19,16 @@ import com.example.androidproject.R;
 import com.example.androidproject.SplashActivity;
 import com.example.androidproject.add_medicine.add_medicine_view.AddMedicineFragmentsCommunicator;
 
-public class MedicineReasonRecurrencyFragment extends Fragment implements AdapterView.OnItemSelectedListener{
+public class MedicineReasonRecurrencyFragment extends Fragment {
     View view;
     AddMedicineFragmentsCommunicator communicator;
     Button next;
+    EditText reason;
 
-    public MedicineReasonRecurrencyFragment(){}
+
+    public MedicineReasonRecurrencyFragment() {
+    }
+
     public MedicineReasonRecurrencyFragment(AddMedicineFragmentsCommunicator communicator) {
         this.communicator = communicator;
 
@@ -32,13 +37,7 @@ public class MedicineReasonRecurrencyFragment extends Fragment implements Adapte
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_reason_recurrency,container,false);
-        Spinner medicineRecurrencySpinner = (Spinner) view.findViewById(R.id.MedicineRecurrencySpinner);
-        ArrayAdapter<CharSequence> medicineRecurrencyAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.Medicine_Recurrency, android.R.layout.simple_spinner_item);
-        medicineRecurrencyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        medicineRecurrencySpinner.setAdapter(medicineRecurrencyAdapter);
-        medicineRecurrencySpinner.setOnItemSelectedListener(this);
-
+        view = inflater.inflate(R.layout.fragment_reason_recurrency, container, false);
         return view;
     }
 
@@ -51,19 +50,14 @@ public class MedicineReasonRecurrencyFragment extends Fragment implements Adapte
         ArrayAdapter<String> medArrayAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), R.layout.auto_complete_list_items, SplashActivity.diseases);
         medAutoCompleteTextView.setThreshold(1);
         medAutoCompleteTextView.setAdapter(medArrayAdapter);
-
-
         next = view.findViewById(R.id.NextReasonRecurrencyBtn);
-        next.setOnClickListener(view1 -> communicator.nextFragment());
-    }
 
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        reason = view.findViewById(R.id.MedicineReasonEditText);
 
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
+        next.setOnClickListener((view1) ->
+        {
+            communicator.setReasonOfTakingDrug(reason.getText().toString());
+            communicator.nextFragment();
+        });
     }
 }

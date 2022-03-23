@@ -1,5 +1,7 @@
 package com.example.androidproject.remote_data;
 
+import android.content.Context;
+
 import com.example.androidproject.model.Medicine;
 import com.example.androidproject.model.RequestModel;
 
@@ -12,6 +14,7 @@ public interface AddTrackerInterface {
     public void updateStatus(String id);
     public ArrayList<Medicine> friendList(String id);
     public ArrayList<RequestModel> returnFriendsArr();
-    public void getMyFriendMedicines(String id);
+    public ArrayList<Medicine> getMyFriendMedicines(String id, Context context);
+    public void deleteHealthTracker(String id);
 
 }

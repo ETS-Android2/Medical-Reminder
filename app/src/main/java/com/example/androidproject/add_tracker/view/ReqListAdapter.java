@@ -1,4 +1,4 @@
-package com.example.androidproject.add_tracker;
+package com.example.androidproject.add_tracker.view;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,9 +13,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.androidproject.R;
+import com.example.androidproject.add_medicine.add_medicine_presenter.AddMedicinePresenter;
+import com.example.androidproject.add_medicine.add_medicine_presenter.AddmedicinePresenterInterface;
+import com.example.androidproject.add_tracker.Presenter.AddTrackerPresenter;
+import com.example.androidproject.local_data.LocalDataBase;
 import com.example.androidproject.model.RequestModel;
 import com.example.androidproject.remote_data.AddTracker;
 import com.example.androidproject.remote_data.AddTrackerInterface;
+import com.example.androidproject.repo.ListRepository;
 
 import java.util.ArrayList;
 
@@ -53,7 +58,10 @@ public class ReqListAdapter extends ArrayAdapter<RequestModel> {
             @Override
             public void onClick(View view) {
                 addTracker.updateStatus(personArr.get(position).getDocId());
-                addTracker.getMyFriendMedicines(personArr.get(position).getSenderID());
+                addTracker.getMyFriendMedicines(personArr.get(position).getSenderID(), view.getContext());
+                personArr.remove(position);
+                notifyDataSetChanged();
+
             }
         });
 
