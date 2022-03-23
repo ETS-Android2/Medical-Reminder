@@ -4,19 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.NotificationCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.work.OneTimeWorkRequest;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
 import android.Manifest;
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -30,6 +24,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.androidproject.add_medicine.add_medicine_view.AddMedicine;
+import com.example.androidproject.alarm_dialog.presenter.MyPeriodicWorker;
 import com.example.androidproject.local_data.LocalDataBase;
 import com.example.androidproject.R;
 import com.example.androidproject.home.presenter.HomePresenter;
@@ -86,7 +81,7 @@ public class Home extends AppCompatActivity implements HomeInterface {
 
 
         PeriodicWorkRequest periodicWork =
-                new PeriodicWorkRequest.Builder(MyPeriodicWorker.class,20, TimeUnit.MINUTES )
+                new PeriodicWorkRequest.Builder(MyPeriodicWorker.class,50, TimeUnit.MINUTES )
                         .addTag("periodicWork")
                         .build();
         WorkManager workManager = WorkManager.getInstance();

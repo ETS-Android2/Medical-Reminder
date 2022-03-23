@@ -2,13 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.androidproject">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-
-
 
     <application
         android:allowBackup="true"
@@ -18,12 +17,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".alarm_dialog.view.FloatingWindow"
-            android:theme="@style/Theme.Transparent"
-            android:exported="false" />
+            android:name=".refill_reminder.view.RefillReminder"
+            android:exported="false"
+            android:theme="@style/Theme.Transparent" />
+
         <activity
-            android:name=".email_verification.emailVerification_Viewer.EmailVerificatinScreen"
-            android:exported="false" />
+            android:name=".alarm_dialog.view.FloatingWindow"
+            android:exported="false"
+            android:theme="@style/Theme.Transparent" />
+
         <activity
             android:name=".login.loginView.LoginScreen"
             android:exported="false" />
@@ -48,6 +50,9 @@
         <activity
             android:name=".home.view.Home"
             android:exported="false" />
+        <activity android:name=".drug_screen.view.DrugScreenActivity"
+            android:exported="false"/>
+
     </application>
 
 </manifest>

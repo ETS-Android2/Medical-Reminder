@@ -2,6 +2,7 @@ package com.example.androidproject.add_medicine.add_medicine_presenter;
 
 import android.util.Log;
 
+import com.example.androidproject.alarm_dialog.presenter.MyWorkManager;
 import com.example.androidproject.model.Medicine;
 import com.example.androidproject.model.MedicineDose;
 import com.example.androidproject.model.MedicineList;
@@ -27,6 +28,14 @@ public class AddMedicinePresenter implements AddmedicinePresenterInterface {
         String startDate = medicine.getStartDate();
         String endDate = medicine.getEndDate();
         ArrayList<int[]> doses = medicine.getDoseTime();
+        int timeInterval = medicine.getTreatmentDuration();
+
+        int items = medicine.getRecurrence();
+        int limit = medicine.getRefillReminder();
+
+        int reminder = 0 ;
+
+        boolean whileFlag = true;
 
         Calendar currentDate = Calendar.getInstance();
 
@@ -36,7 +45,7 @@ public class AddMedicinePresenter implements AddmedicinePresenterInterface {
         }
 
 
-        while (!endDate.equals(toString(currentDate))){
+        while (whileFlag){
             ArrayList<MedicineDose> doseArrayList = new ArrayList<>();
 
             for (int i = 0;i < doses.size();i++){
@@ -51,8 +60,14 @@ public class AddMedicinePresenter implements AddmedicinePresenterInterface {
                 doseArrayList.add(medicineDose);
 
                 Log.i("TAG", "Dose added: "+i);
+                items--;
 
             }
+
+            if (items>limit){
+                reminder +=24;
+            }
+
 
 
             Log.i("TAG", "List added: ");
@@ -61,11 +76,16 @@ public class AddMedicinePresenter implements AddmedicinePresenterInterface {
             MedicineList list = new MedicineList(toString(currentDate),doseArrayList);
             repository.insertList(list);
 
-            currentDate.add(Calendar.DAY_OF_MONTH,1);
+            for (int d=0;d<=timeInterval;d++){
+                currentDate.add(Calendar.DAY_OF_MONTH,1);
+                if (endDate.equals(toString(currentDate)))
+                    whileFlag = false;
+            }
 
         }
         repository.insertMedicine(medicine);
         repository.updateManagerTimes();
+        MyWorkManager.setCustomAlarm(reminder*60,medicine.getName());
     }
 
     String toString(Calendar calendar){

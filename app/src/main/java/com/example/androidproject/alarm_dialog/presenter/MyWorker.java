@@ -1,4 +1,4 @@
-package com.example.androidproject.home.view;
+package com.example.androidproject.alarm_dialog.presenter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,10 +22,6 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class MyWorker extends Worker {
-
-    Calendar currentTime=Calendar.getInstance();
-    Date  userSettedTime;
-    int durationBetweenTimes;
 
 
     public MyWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
@@ -61,9 +57,4 @@ public class MyWorker extends Worker {
         return Result.success();
     }
 
-    OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(MyWorker.class)
-                                            .setInitialDelay(durationBetweenTimes, TimeUnit.MINUTES)
-                                            .build();
-
-     PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(MyWorker.class,12 ,TimeUnit.HOURS).build();
 }

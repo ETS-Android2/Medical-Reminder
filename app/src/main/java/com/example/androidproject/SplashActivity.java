@@ -91,9 +91,6 @@ public class SplashActivity extends AppCompatActivity {
             getData();
         }
 
-
-
-
     }
 
     void getData(){
@@ -156,8 +153,7 @@ public class SplashActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     } catch (BiffException e) {
-                        e.printStackTrace();
-                    }
+                        e.printStackTrace();                    }
                 }
             }
         });

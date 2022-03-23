@@ -1,4 +1,4 @@
-package com.example.androidproject.home.view;
+package com.example.androidproject.alarm_dialog.presenter;
 
 import android.content.Context;
 import android.util.Log;
@@ -21,8 +21,6 @@ public class MyPeriodicWorker extends Worker {
     @NonNull
     @Override
     public Result doWork() {
-
-
         Log.i("TAG", "MyPeriodicWorker doWork: ");
         ListRepository repository = ListRepository.getInstance(context, LocalDataBase.getInstance(context));
         repository.updateManagerTimes();
