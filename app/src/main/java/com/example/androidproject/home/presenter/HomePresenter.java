@@ -31,6 +31,11 @@ public class HomePresenter implements HomePresenterInterface{
 
     }
 
+    @Override
+    public void updateTimes() {
+        repository.updateManagerTimes();
+    }
+
     void updateList(){
         homeInterface.updateList(medicineList);
 

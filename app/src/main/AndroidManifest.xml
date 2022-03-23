@@ -34,9 +34,7 @@
         <activity
             android:name=".registration.view.RegisterScreen"
             android:exported="false" />
-        <activity
-            android:name=".EditMedicationDrugActivity"
-            android:exported="false" />
+
         <activity
             android:name=".SplashActivity"
             android:exported="true">

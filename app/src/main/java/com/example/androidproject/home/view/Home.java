@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.example.androidproject.add_medicine.add_medicine_view.AddMedicine;
 import com.example.androidproject.alarm_dialog.presenter.MyPeriodicWorker;
+import com.example.androidproject.alarm_dialog.presenter.MyWorkManager;
 import com.example.androidproject.local_data.LocalDataBase;
 import com.example.androidproject.R;
 import com.example.androidproject.home.presenter.HomePresenter;
@@ -88,8 +89,7 @@ public class Home extends AppCompatActivity implements HomeInterface {
         workManager.cancelAllWorkByTag("periodicWork");
         workManager.enqueue(periodicWork);
 
-
-
+        presenterInterface.updateTimes();
     }
 
     @Override
