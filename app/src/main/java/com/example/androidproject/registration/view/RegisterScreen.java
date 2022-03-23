@@ -13,15 +13,20 @@ import android.widget.Toast;
 
 import com.example.androidproject.email_verification.emailVerification_Viewer.EmailVerificatinScreen;
 import com.example.androidproject.R;
+import com.example.androidproject.home.view.Home;
+import com.example.androidproject.login.loginView.LoginScreen;
+import com.example.androidproject.registration.presenter.RegisterPresenter;
+import com.example.androidproject.registration.presenter.RegisterPresenterInterface;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class RegisterScreen extends AppCompatActivity {
+public class RegisterScreen extends AppCompatActivity implements RegisterViewInterface {
     TextView registerFullName, registerEmail, registerPassword, registerConfirmPassword;
     Button registerUserButton, goToLoginButton;
-    FirebaseAuth fAuth;
+    RegisterPresenterInterface registerPresenterInterface;
+
 
 
     @Override
@@ -37,7 +42,9 @@ public class RegisterScreen extends AppCompatActivity {
         registerConfirmPassword = findViewById(R.id.confirmRegisterPassword);
         registerUserButton = findViewById(R.id.registerbtn);
         goToLoginButton = findViewById(R.id.goToLoginButton);
-        fAuth = FirebaseAuth.getInstance();
+
+        registerPresenterInterface= RegisterPresenter.getPresenter(this);
+        //fAuth = FirebaseAuth.getInstance();
 
         registerUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,26 +80,13 @@ public class RegisterScreen extends AppCompatActivity {
                     registerConfirmPassword.setError(" Password Do not match");
                     return;
                 }
+                registerPresenterInterface.register(emailAddress,password);
 
                 //data is validated
-                Toast.makeText(getApplicationContext(), "Data is Validated", Toast.LENGTH_SHORT).show();
-                //register the user using firebase
-                fAuth.createUserWithEmailAndPassword(emailAddress, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        //send user to Next Page
-                        Log.i("TAG", "onSuccess:register done ");
-                       // startActivity(new Intent(getApplicationContext(), Home.class));
-                        Intent outIntent=new Intent(getApplicationContext(), EmailVerificatinScreen.class);
-                        startActivity(outIntent);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
+               // Toast.makeText(getApplicationContext(), "Data is Validated", Toast.LENGTH_SHORT).show();
 
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+
+
 
 
             }
@@ -104,6 +98,16 @@ public class RegisterScreen extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    public void registeredSuccessfully(){
+        Toast.makeText(getApplicationContext(),"Data is validated Successfully",Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getApplicationContext(), LoginScreen.class));
+    }
+
+    @Override
+    public void sendError(String error){
+        Toast.makeText(this,error,Toast.LENGTH_SHORT).show();
     }
 
 }

@@ -8,6 +8,8 @@ import com.example.androidproject.alarm_dialog.presenter.MyWorkManager;
 import com.example.androidproject.local_data.LocalSource;
 import com.example.androidproject.model.Medicine;
 import com.example.androidproject.model.MedicineList;
+import com.example.androidproject.remote_data.MedicineDAO;
+import com.example.androidproject.remote_data.RemoteSource;
 
 import java.util.ArrayList;
 
@@ -15,6 +17,7 @@ public class ListRepository implements RepoInterface {
 
     private Context context;
     private LocalSource localSource;
+    private RemoteSource remoteSource = new MedicineDAO();
 
     private static ListRepository repository = null;
 
@@ -43,7 +46,8 @@ public class ListRepository implements RepoInterface {
 
     @Override
     public MedicineList findListByDate(String date) {
-        return localSource.findListByDate(date);
+        return remoteSource.retrieveData(date);
+        // localSource.findListByDate(date);
     }
 
     @Override

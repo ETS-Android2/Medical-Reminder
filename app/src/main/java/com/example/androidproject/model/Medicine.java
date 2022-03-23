@@ -8,6 +8,7 @@ import androidx.room.PrimaryKey;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity(tableName = "medicine")
 public class Medicine {
@@ -56,7 +57,6 @@ public class Medicine {
 
     @ColumnInfo(name = "doseTime")
     private ArrayList<int[]> doseTime;
-
     public Medicine() {
     }
 

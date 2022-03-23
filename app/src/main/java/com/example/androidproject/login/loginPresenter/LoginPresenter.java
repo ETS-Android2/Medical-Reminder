@@ -6,7 +6,8 @@ import com.example.androidproject.login.login_repository.LoginRepositoryInterfac
 
 public class LoginPresenter implements LoginPresenterInterface{
 
-    LoginRepositoryInterface repositoryInterface= new LoginRepository();
+   //LoginRepositoryInterface repositoryInterface= new LoginRepository();
+   public static LoginRepositoryInterface repositoryInterface;
     public static LoginViewInterface viewInterface ;
 
     private static LoginPresenter presenter = null;
@@ -16,7 +17,8 @@ public class LoginPresenter implements LoginPresenterInterface{
 
     }
 
-    public static LoginPresenter getPresenter(){
+    public static LoginPresenter getPresenter(LoginRepositoryInterface loginRepositoryInterface){
+        repositoryInterface =loginRepositoryInterface;
         if(presenter == null)
             presenter = new LoginPresenter();
 
@@ -42,6 +44,6 @@ public class LoginPresenter implements LoginPresenterInterface{
 
     @Override
     public void sendError(String error) {
-
+        viewInterface.sendError(error);
     }
 }

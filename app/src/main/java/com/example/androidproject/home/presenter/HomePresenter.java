@@ -21,7 +21,7 @@ public class HomePresenter implements HomePresenterInterface{
         new Thread(new Runnable() {
             @Override
             public void run() {
-               medicineList = repository.findListByDate(date);
+              medicineList = repository.findListByDate(date);
                updateList();
             }
         }).start();
@@ -30,5 +30,6 @@ public class HomePresenter implements HomePresenterInterface{
 
     void updateList(){
         homeInterface.updateList(medicineList);
+
     }
 }
