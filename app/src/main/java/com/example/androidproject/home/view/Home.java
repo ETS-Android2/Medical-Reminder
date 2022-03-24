@@ -126,6 +126,7 @@ public class Home extends AppCompatActivity implements HomeInterface , Navigatio
 
         addTracker.reqList(myEmail);
         addTracker.friendList(myEmail);
+        presenterInterface.updateTimes();
 
     }
     public void onStart() {

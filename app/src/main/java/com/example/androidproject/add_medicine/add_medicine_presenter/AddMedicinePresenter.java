@@ -112,11 +112,13 @@ public class AddMedicinePresenter implements AddmedicinePresenterInterface {
         Map<String, Object> doc = new HashMap<>();
         //  Map<String, ArrayList<int[]>> doc2 = new HashMap<>();
         Map<String, Object> nestedData = new HashMap<>();
+        String reason[] = medicine.getReasonOfTakingDrug().split(" ");
+
 
 
         doc.put("\"name\"", id);
         doc.put("\"medicineForm\"", medicine.getMedicineForm());
-        doc.put("\"reasonOfTakingDrug\"", medicine.getReasonOfTakingDrug());
+        doc.put("\"reasonOfTakingDrug\"", reason[0]);
         doc.put("\"recurrenceOfTakingDrug\"", medicine.getRecurrenceOfTakingDrug());
         doc.put("\"medicineStrength\"", medicine.getMedicineStrength());
         doc.put("\"recurrence\"", medicine.getRecurrence());

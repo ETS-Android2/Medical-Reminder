@@ -40,19 +40,10 @@
         android:id="@+id/deleteFriend_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="59dp"
+        android:layout_marginStart="252dp"
+        android:layout_marginTop="40dp"
         android:text="Delete"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <Button
-        android:id="@+id/send_button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="72dp"
-        android:text="Send Medications"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relationStates" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

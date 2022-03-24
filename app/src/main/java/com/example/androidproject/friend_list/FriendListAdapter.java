@@ -25,7 +25,6 @@ public class FriendListAdapter extends ArrayAdapter<RequestModel> {
     Context context;
     ArrayList<RequestModel> personArr;
     int customRowId;
-    Button send;
     Button delete;
     AddTrackerInterface addTracker = new AddTracker();
 
@@ -46,15 +45,16 @@ public class FriendListAdapter extends ArrayAdapter<RequestModel> {
         ImageView img = rowView.findViewById(R.id.imageView);
         TextView senderName = rowView.findViewById(R.id.senderEmail);
         TextView states = rowView.findViewById(R.id.relationStates);
-        send = rowView.findViewById(R.id.send_button2);
         delete = rowView.findViewById(R.id.deleteFriend_button);
         img.setImageResource(R.drawable.nurse);
         senderName.setText(personArr.get(position).getSenderEmail());
         states.setText(personArr.get(position).getStates());
-        send.setOnClickListener(new View.OnClickListener() {
+        delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("TAG", "onClick: iam on the friend list");
+                addTracker.deleteHealthTracker(personArr.get(position).getReceiverEmail());
+                personArr.remove(position);
+                notify();
 
             }
         });

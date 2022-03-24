@@ -9,8 +9,8 @@
     <string name="MedDosages">The Recurrence of taking this drug per day</string>
     <string name="MedDuration">Enter the duration of treatment</string>
     <string name="RefillReminder">Refill Reminder</string>
-    <string name="RefillItem">the total number of items</string>
-    <string name="RefillLimit">limit wanted reminded to refill</string>
+    <string name="RefillItem">The total number of items</string>
+    <string name="RefillLimit">Limit wanted reminded to refill</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">close navigation drawer</string>
 
@@ -76,7 +76,7 @@
     <string name="Login">Login in Using</string>
     <string name="Email">Email Address</string>
     <string name="Password">Password</string>
-    <string name="LoginForm">Login</string>
+    <string name="LoginForm">SIGN IN</string>
     <string name="FullName">Full Name</string>
     <string name="ConfirmPassword">Confirm Password</string>
     <string name="Register">Register</string>

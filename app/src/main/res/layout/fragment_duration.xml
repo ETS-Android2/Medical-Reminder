@@ -22,17 +22,17 @@
 
     <EditText
         android:id="@+id/MedicineDurationEditText"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_width="111dp"
+        android:layout_height="56dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="20dp"
-        android:hint="Example : 2 "
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="56dp"
+        android:hint="2 days"
         android:importantForAutofill="no"
         android:inputType="number"
         android:minHeight="48dp"
         android:textColorHint="#546E7A"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/MedicineDurationTextView"></EditText>
 
     <Button
@@ -40,24 +40,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="44dp"
         android:background="@color/dark_gray"
         android:text="Next"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MedicineDurationEditText" />
 
     <TextView
-        android:id="@+id/dayTextView"
-        android:layout_width="65dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:gravity="center_horizontal"
-        android:text="Days"
+        android:id="@+id/textView2"
+        android:layout_width="225dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="56dp"
+        android:text="The Interval between doses"
         android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/MedicineDurationEditText"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MedicineDurationTextView" />
 
 

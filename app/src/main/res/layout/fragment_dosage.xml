@@ -21,12 +21,12 @@
 
     <EditText
         android:id="@+id/MedicineDosagesEditText"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_width="178dp"
+        android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="128dp"
-        android:hint="Example : 2 Pills"
+        android:layout_marginEnd="108dp"
+        android:hint="Example : 3 Times"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
