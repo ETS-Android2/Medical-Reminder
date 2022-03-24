@@ -19,6 +19,7 @@ import com.example.androidproject.R;
 import com.example.androidproject.alarm_dialog.presenter.FloatingWindowPresenter;
 import com.example.androidproject.alarm_dialog.presenter.FloatingWindowPresenterInterface;
 import com.example.androidproject.alarm_dialog.presenter.MyWorkManager;
+import com.example.androidproject.home.view.Notifications;
 import com.example.androidproject.local_data.LocalDataBase;
 import com.example.androidproject.repo.ListRepository;
 import java.util.ArrayList;
@@ -55,6 +56,7 @@ public class FloatingWindow extends AppCompatActivity implements FloatingWindowI
         mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         mMediaPlayer.setLooping(true);
         mMediaPlayer.start();
+        Notifications.showNotifications(this);
 
         long[] vibrationWaveFormDurationPattern = {0, 10, 200, 500, 700, 1000, 300, 200, 50, 10};
 

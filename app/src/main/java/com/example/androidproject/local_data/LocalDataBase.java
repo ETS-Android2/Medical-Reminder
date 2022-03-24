@@ -88,7 +88,7 @@ public class LocalDataBase implements LocalSource {
         Collections.sort(dose, new Comparator<MedicineDose>() {
             @Override
             public int compare(MedicineDose m1, MedicineDose m2) {
-                return m2.getHour() * 60 + m2.getMinute() > m1.getDose() * 60 + m1.getMinute() ? 1 : m1.getHour() * 60 + m1.getMinute() > m2.getHour() * 60 + m2.getMinute() ? -1 : 0;
+                return (m2.getHour() * 60 + m2.getMinute()) > (m1.getHour() * 60 + m1.getMinute()) ? 1 : m1.getHour() * 60 + m1.getMinute() > m2.getHour() * 60 + m2.getMinute() ? -1 : 0;
             }
         });
 
