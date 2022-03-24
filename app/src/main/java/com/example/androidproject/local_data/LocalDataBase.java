@@ -120,12 +120,14 @@ public class LocalDataBase implements LocalSource {
                 Log.i("TAG", "run: findAll size is " + medicineLists.size());
                 for (MedicineList list : medicineLists) {
                     ArrayList<MedicineDose> doses = list.getMedicineDoseArrayList();
+                    ArrayList<MedicineDose> old = new ArrayList<>();
                     for (MedicineDose dose : doses) {
                         if (dose.getName().equals(name)) {
-                            doses.remove(dose);
+                            old.add(dose);
                             Log.i("TAG", "run: removed from "+list.getDate());
                         }
                     }
+                    doses.removeAll(old);
                     medicineDao.deleteList(list);
                     list.setMedicineDoseArrayList(doses);
                     medicineDao.insertList(list);
