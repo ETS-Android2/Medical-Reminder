@@ -53,7 +53,6 @@ public class FriendListAdapter extends ArrayAdapter<RequestModel> {
             @Override
             public void onClick(View view) {
                 addTracker.deleteHealthTracker(personArr.get(position).getReceiverEmail());
-                personArr.remove(position);
                 notify();
 
             }

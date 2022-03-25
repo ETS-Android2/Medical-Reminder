@@ -25,7 +25,6 @@ public class MedicineReasonRecurrencyFragment extends Fragment {
     Button next;
     EditText reason;
 
-
     public MedicineReasonRecurrencyFragment() {
     }
 
@@ -46,10 +45,11 @@ public class MedicineReasonRecurrencyFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        AutoCompleteTextView medAutoCompleteTextView = (AutoCompleteTextView) view.findViewById(R.id.MedicineReasonEditText);
-        ArrayAdapter<String> medArrayAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), R.layout.auto_complete_list_items, SplashActivity.diseases);
-        medAutoCompleteTextView.setThreshold(1);
-        medAutoCompleteTextView.setAdapter(medArrayAdapter);
+//        AutoCompleteTextView medAutoCompleteTextView = (AutoCompleteTextView) view.findViewById(R.id.MedicineReasonEditText);
+//        ArrayAdapter<String> medArrayAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), R.layout.auto_complete_list_items, SplashActivity.diseases);
+//        medAutoCompleteTextView.setThreshold(1);
+//        medAutoCompleteTextView.setAdapter(medArrayAdapter);
+        reason = view.findViewById(R.id.MedicineReasonEditText);
         next = view.findViewById(R.id.NextReasonRecurrencyBtn);
 
         reason = view.findViewById(R.id.MedicineReasonEditText);

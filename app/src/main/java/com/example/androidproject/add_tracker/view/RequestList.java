@@ -34,7 +34,6 @@ public class RequestList extends AppCompatActivity  {
         setContentView(R.layout.activity_request);
         Intent intent = getIntent();
         ArrayList<RequestModel> persons = (ArrayList<RequestModel>)getIntent().getSerializableExtra("ARRAYLIST");
-        Log.i("TAG", "test elmo4kela feen"+persons.size());
         lstPersons = findViewById(R.id.listview);
         for(int i=0;i<persons.size();i++) {
             ReqListAdapter adapter = new ReqListAdapter(this, R.layout.reqlist_item, R.id.senderEmail, persons);
