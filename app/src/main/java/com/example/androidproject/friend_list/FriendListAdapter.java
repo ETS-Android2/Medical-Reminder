@@ -47,7 +47,7 @@ public class FriendListAdapter extends ArrayAdapter<RequestModel> {
         TextView states = rowView.findViewById(R.id.relationStates);
         delete = rowView.findViewById(R.id.deleteFriend_button);
         img.setImageResource(R.drawable.nurse);
-        senderName.setText(personArr.get(position).getSenderEmail());
+        senderName.setText(personArr.get(position).getReceiverEmail());
         states.setText(personArr.get(position).getStates());
         delete.setOnClickListener(new View.OnClickListener() {
             @Override

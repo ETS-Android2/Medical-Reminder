@@ -29,8 +29,8 @@ public class AddTrackerPresenter implements AddTrackerPresenterInterface{
     }
 
     @Override
-    public void updateStatus(String id) {
-        addTrackerInterface.updateStatus(id);
+    public void updateStatus(RequestModel req) {
+        addTrackerInterface.updateStatus(req);
 
     }
 
@@ -42,5 +42,10 @@ public class AddTrackerPresenter implements AddTrackerPresenterInterface{
     @Override
     public void deleteHealthTracker(String id) {
         addTrackerInterface.deleteHealthTracker(id);
+    }
+
+    @Override
+    public void friendList(String friendEmail) {
+        addTrackerInterface.friendList(friendEmail);
     }
 }

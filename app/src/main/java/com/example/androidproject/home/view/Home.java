@@ -125,7 +125,7 @@ public class Home extends AppCompatActivity implements HomeInterface , Navigatio
         workManager.enqueue(periodicWork);
 
         addTracker.reqList(myEmail);
-        addTracker.friendList(myEmail);
+        addTracker.friendList(user.getUid());
         presenterInterface.updateTimes();
 
     }

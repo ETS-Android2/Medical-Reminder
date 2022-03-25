@@ -5,8 +5,9 @@ import com.example.androidproject.model.RequestModel;
 
 public interface AddTrackerPresenterInterface {
     public void sendRequest(String id, RequestModel req);
-    public void updateStatus(String id);
+    public void updateStatus(RequestModel req);
     public void getMyFriendMedicines(String id);
     public void deleteHealthTracker(String id);
 
+    void friendList(String friendEmail);
 }

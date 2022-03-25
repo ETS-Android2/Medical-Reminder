@@ -57,10 +57,10 @@ public class ReqListAdapter extends ArrayAdapter<RequestModel> {
         accpet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addTracker.updateStatus(personArr.get(position).getDocId());
+                addTracker.updateStatus(personArr.get(position));
                 addTracker.getMyFriendMedicines(personArr.get(position).getSenderID(), view.getContext());
                 personArr.remove(position);
-                notifyDataSetChanged();
+               notifyDataSetChanged();
 
             }
         });

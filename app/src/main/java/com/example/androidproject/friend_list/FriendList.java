@@ -31,8 +31,8 @@ public class FriendList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_list);
         Intent intent = getIntent();
+        addTracker.friendList(user.getUid());
         ArrayList<RequestModel> persons = (ArrayList<RequestModel>)getIntent().getSerializableExtra("ARRAYLISTFRIENDS");
-        Log.i("TAG", "test elmo4kela feen"+persons.size());
         lstPersons = findViewById(R.id.listFriendView);
         for(int i=0;i<persons.size();i++) {
             FriendListAdapter adapter = new FriendListAdapter(this, R.layout.friend_row, R.id.senderEmail, persons);

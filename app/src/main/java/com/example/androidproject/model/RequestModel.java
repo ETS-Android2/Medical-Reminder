@@ -8,6 +8,7 @@ public class RequestModel implements Serializable {
     private String states;
     private String senderID;
     private String DocId;
+
     public RequestModel(){}
 
     public RequestModel(String senderEmail, String receiverEmail, String states, String senderID, String docId) {
@@ -17,6 +18,7 @@ public class RequestModel implements Serializable {
         this.senderID = senderID;
         DocId = docId;
     }
+
 
     public String getDocId() {
         return DocId;

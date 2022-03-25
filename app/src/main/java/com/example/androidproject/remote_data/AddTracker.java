@@ -54,11 +54,12 @@ public class AddTracker implements AddTrackerInterface {
             @Override
             public void run() {
                 Log.i("TAG", "sendRequest: ");
-                fireStore.collection("Requests").document("FriendRequests").collection(req.getReceiverEmail()).document().set(req)
+                fireStore.collection("Requests").document("FriendRequests").collection(id).document().set(req)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 Log.i("TAG", "sendRequest: doneeee ");
+                                CreateFriendList(req);
 
                             }
                         })
@@ -113,18 +114,19 @@ public class AddTracker implements AddTrackerInterface {
     }
 
     @Override
-    public void updateStatus(String id) {
+    public void updateStatus(RequestModel req) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 DocumentReference docRef =
-                        fireStore.collection("Requests").document("FriendRequests").collection(user.getEmail()).document(id);
+                        fireStore.collection("Requests").document("FriendRequests").collection(user.getEmail()).document(req.getDocId());
                 docRef.
                         update("states", "accepted")
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Log.d(TAG, "DocumentSnapshot successfully updated!");
+                                updateFriendLst(req);
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -139,10 +141,9 @@ public class AddTracker implements AddTrackerInterface {
     }
 
     @Override
-    public ArrayList<Medicine> friendList(String id) {
+    public ArrayList<RequestModel> friendList(String id) {
         if (user != null) {
-            fireStore.collection("Requests").document("FriendRequests").collection(user.getEmail())
-                    .whereEqualTo("states", "accepted")
+            fireStore.collection("FriendList").document("your health  taker").collection(id)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
@@ -153,8 +154,10 @@ public class AddTracker implements AddTrackerInterface {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     if (document.getData() != null) {
                                         Log.d(TAG, document.getId() + " => " + document.getData());
+
                                         RequestModel friend = document.toObject(RequestModel.class);
                                         friends.add(friend);
+
 
                                     }
                                 }
@@ -164,7 +167,7 @@ public class AddTracker implements AddTrackerInterface {
                         }
                     });
         }
-        return friendMedicines;
+        return friends;
     }
 
     @Override
@@ -207,7 +210,7 @@ public class AddTracker implements AddTrackerInterface {
                                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
 
 
-                                        AddmedicinePresenterInterface presenterInterface = new AddMedicinePresenter(ListRepository.getInstance(context, LocalDataBase.getInstance(context)));
+                                       AddmedicinePresenterInterface presenterInterface = new AddMedicinePresenter(ListRepository.getInstance(context, LocalDataBase.getInstance(context)));
 
                                         String returned = String.valueOf(document.getData());
                                         returned = returned.replace('=', ':').trim();
@@ -217,7 +220,7 @@ public class AddTracker implements AddTrackerInterface {
                                         Medicine med = gson.fromJson(returned, Medicine.class);
                                         Log.i(TAG, "My Friend Medications" + returned);
 
-                                        presenterInterface.addNewMedicine(med);
+                                       presenterInterface.addNewMedicine(med);
 
 
                                         friendMedicines.add(med);
@@ -250,6 +253,41 @@ public class AddTracker implements AddTrackerInterface {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.w(TAG, "Error deleting document", e);
+                    }
+                });
+
+    }
+    public void CreateFriendList(RequestModel req){
+        fireStore.collection("FriendList").document("your health  taker").collection(req.getSenderID()).document(req.getReceiverEmail()).set(req)
+          .addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Log.i("TAG", "added to friend list: doneeee ");
+
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.i("TAG", "onFailure: ");
+                    }
+                });
+
+
+    }
+    public void updateFriendLst(RequestModel req){
+        fireStore.collection("FriendList").document("your health  taker").collection(req.getSenderID()).document(req.getReceiverEmail())
+                .update("states","accepted")
+           .addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d(TAG, "DocumentSnapshot successfully updated!");
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error updating document", e);
                     }
                 });
 

@@ -19,12 +19,16 @@ import com.example.androidproject.add_tracker.Presenter.AddTrackerPresenterInter
 import com.example.androidproject.model.RequestModel;
 import com.example.androidproject.remote_data.AddTracker;
 import com.example.androidproject.remote_data.AddTrackerInterface;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class AddTracker_Screen extends AppCompatActivity {
 
     private Button mButton;
     final Context c = this;
     AddTrackerPresenterInterface addTracker;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,7 @@ public class AddTracker_Screen extends AppCompatActivity {
                                 Log.i("TAG", "onClick: " + myEmail);
                                 RequestModel friend = new RequestModel(myEmail,friendEmail,"Pending",myID,"");
                                      addTracker.sendRequest(friendEmail,friend);
+                                     addTracker.friendList(user.getEmail());
 
                             }
                         })
