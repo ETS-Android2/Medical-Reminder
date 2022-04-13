@@ -1,6 +1,6 @@
 # Medical-Reminder
 Native Mobile Android Application that helps the user to record his list of medication drugs with the detailed treatments. In addition he can schedule reminders of the treatments and dosages. In addition he receives notifications as refill reminders. Besides, it supports registering more than one health taker.
- Developed using Java with RoomDB , Firebase an design architecture MVP.
+ Developed using Java with RoomDB , Firebase and design architecture MVP.
 ## Application Features :
 1- Login with email or google account and Register<br />
 2- Add and delete your medications<br />
